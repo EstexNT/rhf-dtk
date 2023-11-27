@@ -1,0 +1,26 @@
+Sections:
+	.init       type:code
+	extab       type:rodata
+	extabindex  type:rodata
+	.text       type:code
+	.ctors      type:rodata
+	.dtors      type:rodata
+	.rodata     type:rodata
+	.data       type:data
+	.sdata      type:data
+	.sbss       type:bss
+	.sdata2     type:rodata
+	.sbss2      type:bss
+	.bss        type:bss
+
+Runtime.PPCEABI.H/__init_cpp_exceptions.cpp:
+	.text       start:0x80104760 end:0x801047D0
+	.ctors      start:0x801F74E0 end:0x801F74E4 rename:.ctors$10
+	.dtors      start:0x801F7580 end:0x801F7584 rename:.dtors$10
+	.dtors      start:0x801F7584 end:0x801F7588 rename:.dtors$15
+	.sdata      start:0x8031FC40 end:0x8031FC48
+
+GameUtil/CList.cpp:
+	.text       start:0x801EAA7C end:0x801EAC38
+	.data       start:0x8031EA40 end:0x8031EA58
+	.sdata2     start:0x803211F0 end:0x803211F8
