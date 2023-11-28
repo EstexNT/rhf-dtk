@@ -128,11 +128,9 @@ config.check_sha_path = Path("config") / config.version / "build.sha1"
 config.ldflags = [
     "-fp hardware",
     "-nodefaults",
-    # "-listclosure", # Uncomment for Wii linkers
+    "-listclosure",
 ]
 
-# Base flags, common to most GC/Wii games.
-# Generally leave untouched, with overrides added below.
 cflags_base = [
     "-nodefaults",
     "-proc gekko",
@@ -150,7 +148,7 @@ cflags_base = [
     "-RTTI off",
     "-fp_contract on",
     "-str reuse",
-	"-multibyte", # For Wii compilers, replace with `-enc SJIS`
+	"-enc SJIS",
     "-i include",
     f"-i build/{config.version}/include",
     f"-DVERSION={version_num}",
@@ -172,17 +170,11 @@ cflags_runtime = [
 	"-inline auto",
 ]
 
-# REL flags
-cflags_rel = [
-    *cflags_base,
-    "-sdata 0",
-    "-sdata2 0",
-]
-
 # Game utilities
 cflags_gameutil = [
     *cflags_base,
     "-RTTI on",
+    "-str readonly"
 ]
 
 config.linker_version = "Wii/1.0"
