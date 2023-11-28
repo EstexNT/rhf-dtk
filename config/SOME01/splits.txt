@@ -13,6 +13,17 @@ Sections:
 	.sbss2      type:bss
 	.bss        type:bss
 
+Game/Menu/SceneMenu.cpp:
+	.sdata      start:0x8031EEC0 end:0x8031EF50
+	.bss        start:0x80329980 end:0x8032A1A0
+
+Game/ExScene.cpp:
+	.text       start:0x80008160 end:0x8000ABC0
+	.ctors      start:0x801F74E4 end:0x801F74E8
+	.data       start:0x802E5870 end:0x802E58C0
+	.sbss       start:0x80320198 end:0x803201CC
+	.bss        start:0x8032A1A0 end:0x8032A278
+
 Runtime.PPCEABI.H/__init_cpp_exceptions.cpp:
 	.text       start:0x80104760 end:0x801047D0
 	.ctors      start:0x801F74E0 end:0x801F74E4 rename:.ctors$10
