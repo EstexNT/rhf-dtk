@@ -222,6 +222,7 @@ config.libs = [
         "cflags": cflags_gameutil,
         "host": False,
         "objects": [
+            Object(NonMatching, "GameUtil/Mem.cpp"),
             Object(NonMatching, "GameUtil/CList.cpp"),
         ],
     },

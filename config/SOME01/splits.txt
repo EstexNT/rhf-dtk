@@ -31,6 +31,11 @@ Runtime.PPCEABI.H/__init_cpp_exceptions.cpp:
 	.dtors      start:0x801F7584 end:0x801F7588 rename:.dtors$15
 	.sdata      start:0x8031FC40 end:0x8031FC48
 
+GameUtil/Mem.cpp:
+	.text       start:0x801D3284 end:0x801D392C
+	.rodata     start:0x802E4A88 end:0x802E4AE8
+	.sbss       start:0x80320F80 end:0x80320F90
+
 GameUtil/CList.cpp:
 	.text       start:0x801EAA7C end:0x801EAC38
 	.data       start:0x8031EA40 end:0x8031EA58
