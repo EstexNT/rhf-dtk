@@ -150,6 +150,9 @@ cflags_base = [
     "-str reuse",
 	"-enc SJIS",
     "-i include",
+    "-i include/stl",
+    "-i include/revolution",
+    "-i src/GameUtil",
     f"-i build/{config.version}/include",
     f"-DVERSION={version_num}",
 ]
@@ -220,7 +223,7 @@ config.libs = [
         "host": False,
         "objects": [
             Object(NonMatching, "GameUtil/CList.cpp"),
-        ]
+        ],
     },
 ]
 
