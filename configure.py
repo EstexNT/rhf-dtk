@@ -160,6 +160,13 @@ if config.debug:
 else:
     cflags_base.append("-DNDEBUG=1")
 
+# Actual game code 
+cflags_game = [
+    *cflags_base,
+    "-RTTI on",
+    "-str readonly",
+]
+
 # Metrowerks library flags
 cflags_runtime = [
     *cflags_base,
@@ -174,8 +181,9 @@ cflags_runtime = [
 cflags_gameutil = [
     *cflags_base,
     "-RTTI on",
-    "-str readonly"
+    "-str readonly",
 ]
+
 
 config.linker_version = "Wii/1.0"
 
@@ -185,6 +193,16 @@ NonMatching = False
 config.warn_missing_config = True
 config.warn_missing_source = False
 config.libs = [
+    {
+        "lib": "Game", 
+        "mw_version": config.linker_version,
+        "cflags": cflags_game,
+        "host": False,
+        "objects": [
+            Object(NonMatching, "Game/Menu/SceneMenu.cpp"),
+            Object(NonMatching, "Game/ExScene.cpp"),
+        ],
+    },
     {
         "lib": "Runtime.PPCEABI.H",
         "mw_version": config.linker_version,
