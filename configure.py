@@ -185,6 +185,8 @@ cflags_gameutil = [
     *cflags_base,
     "-RTTI on",
     "-str readonly",
+    "-use_lmw_stmw on",
+    "-func_align 4",
 ]
 
 
@@ -222,7 +224,7 @@ config.libs = [
         "cflags": cflags_gameutil,
         "host": False,
         "objects": [
-            Object(NonMatching, "GameUtil/Mem.cpp"),
+            Object(Matching, "GameUtil/Mem.cpp"),
             Object(NonMatching, "GameUtil/CList.cpp"),
         ],
     },
