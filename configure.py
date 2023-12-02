@@ -225,7 +225,10 @@ config.libs = [
         "host": False,
         "objects": [
             Object(Matching, "GameUtil/Mem.cpp"),
-            Object(NonMatching, "GameUtil/CList.cpp"),
+            Object(NonMatching, "GameUtil/CFileManager.cpp"),
+            Object(NonMatching, "GameUtil/CRandom.cpp"),
+            Object(NonMatching, "GameUtil/CTickFlow.cpp"), # possibly CTickFlow and CTickFlowManager are both CTickFlowManager.cpp?
+            Object(NonMatching, "GameUtil/CList.cpp"), # matching; not linked because weak RTTI
         ],
     },
 ]

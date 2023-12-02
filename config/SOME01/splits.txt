@@ -37,6 +37,26 @@ GameUtil/Mem.cpp:
 	.sbss       start:0x80320F80 end:0x80320F90
 	.bss        start:0x803D5C28 end:0x803D5C48
 
+GameUtil/CFileManager.cpp:
+	.text       start:0x801D392C end:0x801D4A54
+	.rodata     start:0x802E4AE8 end:0x802E4B28
+	.data       start:0x80315F30 end:0x80315F68
+	.sdata      start:0x8031FFD8 end:0x8031FFE8
+	.bss        start:0x803D5C48 end:0x803D5CA0
+
+GameUtil/CRandom.cpp:
+	.text       start:0x801DA8A4 end:0x801DAA60
+	.ctors      start:0x801F756C end:0x801F7570
+	.data       start:0x803163F0 end:0x80316400
+	.sdata      start:0x80320040 end:0x80320048
+	.bss        start:0x803D5D10 end:0x803D5D38
+
+GameUtil/CTickFlow.cpp:
+	.text       start:0x801DD6F4 end:0x801DEFE4
+	.data       start:0x8031E748 end:0x8031E8B0
+	.sbss       start:0x80320FA8 end:0x80320FB0
+	.bss        start:0x803D5D38 end:0x803D5D78
+
 GameUtil/CList.cpp:
 	.text       start:0x801EAA7C end:0x801EAC38
 	.data       start:0x8031EA40 end:0x8031EA58
