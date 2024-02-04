@@ -49,7 +49,12 @@ GameUtil/CRandom.cpp:
 	.ctors      start:0x801F756C end:0x801F7570
 	.data       start:0x803163F0 end:0x80316400
 	.sdata      start:0x80320040 end:0x80320048
+	.sdata2     start:0x803295C8 end:0x803295E0
 	.bss        start:0x803D5D10 end:0x803D5D38
+
+GameUtil/CCellAnimManager.cpp:
+	.text       start:0x801DAA60 end:0x801DC188
+	.sdata2     start:0x803295E0 end:0x80329618
 
 GameUtil/CTickFlow.cpp:
 	.text       start:0x801DD6F4 end:0x801DEFE4
@@ -60,4 +65,3 @@ GameUtil/CTickFlow.cpp:
 GameUtil/CList.cpp:
 	.text       start:0x801EAA7C end:0x801EAC38
 	.data       start:0x8031EA40 end:0x8031EA58
-	.sdata2     start:0x803211F0 end:0x803211F8
