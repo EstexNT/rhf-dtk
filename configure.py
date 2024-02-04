@@ -246,7 +246,7 @@ config.libs = [
             Object(NonMatching, "GameUtil/CTimeRatio.cpp"),
             Object(NonMatching, "GameUtil/CList.cpp"), # matching; not linked because weak RTTI
             Object(NonMatching, "GameUtil/CCheckPointManager.cpp"),
-            Object(NonMatching, "GameUtil/CSDManager.cpp"),
+            Object(Matching, "GameUtil/CSDManager.cpp"),
             Object(NonMatching, "GameUtil/CDebugPrint.cpp"),
             Object(NonMatching, "GameUtil/CVarParamManager.cpp"),
             Object(NonMatching, "GameUtil/code_801ed6a8.cpp"),
