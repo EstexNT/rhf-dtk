@@ -236,6 +236,7 @@ config.libs = [
             Object(NonMatching, "GameUtil/CLayout.cpp"),
             Object(NonMatching, "GameUtil/CLayoutAnimation.cpp"),
             Object(Matching, "GameUtil/CRandom.cpp"),
+            Object(Matching, "GameUtil/DiscMessages.cpp"),
             Object(NonMatching, "GameUtil/CCellAnimManager.cpp"),
             Object(NonMatching, "GameUtil/CCellAnim.cpp"),
             Object(NonMatching, "GameUtil/CTickFlow.cpp"),
