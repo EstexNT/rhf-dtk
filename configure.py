@@ -238,8 +238,20 @@ config.libs = [
             Object(Matching, "GameUtil/CRandom.cpp"),
             Object(NonMatching, "GameUtil/CCellAnimManager.cpp"),
             Object(NonMatching, "GameUtil/CCellAnim.cpp"),
-            Object(NonMatching, "GameUtil/CTickFlow.cpp"), # possibly CTickFlow and CTickFlowManager are both CTickFlowManager.cpp?
+            Object(NonMatching, "GameUtil/CTickFlow.cpp"),
+            Object(NonMatching, "GameUtil/CTickFlowManager.cpp"),
+            Object(NonMatching, "GameUtil/CSoundManager.cpp"),
+            Object(NonMatching, "GameUtil/CInputChecker.cpp"),
+            Object(NonMatching, "GameUtil/CInputCheckManager.cpp"),
+            Object(NonMatching, "GameUtil/CTimeRatio.cpp"),
             Object(NonMatching, "GameUtil/CList.cpp"), # matching; not linked because weak RTTI
+            Object(NonMatching, "GameUtil/CCheckPointManager.cpp"),
+            Object(NonMatching, "GameUtil/CSDManager.cpp"),
+            Object(NonMatching, "GameUtil/CDebugPrint.cpp"),
+            Object(NonMatching, "GameUtil/CVarParamManager.cpp"),
+            Object(NonMatching, "GameUtil/code_801ed6a8.cpp"),
+            Object(NonMatching, "GameUtil/CDebugConsole.cpp"),
+            
         ],
     },
 ]

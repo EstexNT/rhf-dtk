@@ -101,6 +101,39 @@ GameUtil/CTickFlow.cpp:
 	.sbss       start:0x80320FA8 end:0x80320FB0
 	.bss        start:0x803D5D38 end:0x803D5D78
 
+GameUtil/CTickFlowManager.cpp:
+	.text       start:0x801DEFE4 end:0x801E4198
+
+GameUtil/CSoundManager.cpp:
+	.text       start:0x801E4198 end:0x801E7B40
+
+GameUtil/CInputChecker.cpp:
+	.text       start:0x801E7B40 end:0x801E8118
+
+GameUtil/CInputCheckManager.cpp:
+	.text       start:0x801E8118 end:0x801E9D90
+
+GameUtil/CTimeRatio.cpp:
+	.text       start:0x801E9D90 end:0x801EAA7C
+
 GameUtil/CList.cpp:
 	.text       start:0x801EAA7C end:0x801EAC38
 	.data       start:0x8031EA40 end:0x8031EA58
+
+GameUtil/CCheckPointManager.cpp:
+	.text       start:0x801EAC38 end:0x801EC2B4
+
+GameUtil/CSDManager.cpp:
+	.text       start:0x801EC2B4 end:0x801EC3B0
+
+GameUtil/CDebugPrint.cpp:
+	.text       start:0x801EC3B0 end:0x801ECEC4
+
+GameUtil/CVarParamManager.cpp:
+	.text       start:0x801ECEC4 end:0x801ED6A8
+
+GameUtil/code_801ed6a8.cpp:
+	.text       start:0x801ED6A8 end:0x801ED7EC
+
+GameUtil/CDebugConsole.cpp:
+	.text       start:0x801ED7EC end:0x801EDA30
