@@ -226,8 +226,18 @@ config.libs = [
         "objects": [
             Object(Matching, "GameUtil/Mem.cpp"),
             Object(NonMatching, "GameUtil/CFileManager.cpp"),
+            Object(NonMatching, "GameUtil/CController.cpp"),
+            Object(NonMatching, "GameUtil/CControllerManager.cpp"),
+            Object(NonMatching, "GameUtil/CGraphicManager.cpp"),
+            Object(NonMatching, "GameUtil/CLayoutManager.cpp"),
+            Object(NonMatching, "GameUtil/CGameManager.cpp"),
+            Object(NonMatching, "GameUtil/CScene.cpp"),
+            Object(NonMatching, "GameUtil/code_801d85bc.cpp"),
+            Object(NonMatching, "GameUtil/CLayout.cpp"),
+            Object(NonMatching, "GameUtil/CLayoutAnimation.cpp"),
             Object(Matching, "GameUtil/CRandom.cpp"),
             Object(NonMatching, "GameUtil/CCellAnimManager.cpp"),
+            Object(NonMatching, "GameUtil/CCellAnim.cpp"),
             Object(NonMatching, "GameUtil/CTickFlow.cpp"), # possibly CTickFlow and CTickFlowManager are both CTickFlowManager.cpp?
             Object(NonMatching, "GameUtil/CList.cpp"), # matching; not linked because weak RTTI
         ],

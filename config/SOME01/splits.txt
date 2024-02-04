@@ -44,6 +44,35 @@ GameUtil/CFileManager.cpp:
 	.sdata      start:0x8031FFD8 end:0x8031FFE8
 	.bss        start:0x803D5C48 end:0x803D5CA0
 
+GameUtil/CController.cpp:
+	.text       start:0x801D4A54 end:0x801D5950
+
+GameUtil/CControllerManager.cpp:
+	.text       start:0x801D5950 end:0x801D6090
+
+GameUtil/CGraphicManager.cpp:
+	.text       start:0x801D6090 end:0x801D668C
+
+GameUtil/CLayoutManager.cpp:
+	.text       start:0x801D668C end:0x801D7210
+
+GameUtil/CGameManager.cpp:
+	.text       start:0x801D7210 end:0x801D83BC
+	.ctors      start:0x801F7564 end:0x801F7568
+
+GameUtil/CScene.cpp:
+	.text       start:0x801D83BC end:0x801D85BC
+
+GameUtil/code_801d85bc.cpp:
+	.text       start:0x801D85BC end:0x801D9A2C
+
+GameUtil/CLayout.cpp:
+	.text       start:0x801D9A2C end:0x801D9E40
+	.ctors      start:0x801F7568 end:0x801F756C
+
+GameUtil/CLayoutAnimation.cpp:
+	.text       start:0x801D9E40 end:0x801DA8A4
+
 GameUtil/CRandom.cpp:
 	.text       start:0x801DA8A4 end:0x801DAA60
 	.ctors      start:0x801F756C end:0x801F7570
@@ -54,7 +83,17 @@ GameUtil/CRandom.cpp:
 
 GameUtil/CCellAnimManager.cpp:
 	.text       start:0x801DAA60 end:0x801DC188
+	.rodata     start:0x802E4C58 end:0x802E4C90
+	.data       start:0x8031E6E0 end:0x8031E728
+	.sdata      start:0x80320048 end:0x80320058
 	.sdata2     start:0x803295E0 end:0x80329618
+
+GameUtil/CCellAnim.cpp:
+	.text       start:0x801DC188 end:0x801DD6F4
+	.rodata     start:0x802E4C90 end:0x802E4CA0
+	.data       start:0x8031E728 end:0x8031E748
+	.sdata      start:0x80320058 end:0x80320060
+	.sdata2     start:0x80329618 end:0x80329670
 
 GameUtil/CTickFlow.cpp:
 	.text       start:0x801DD6F4 end:0x801DEFE4
