@@ -206,6 +206,7 @@ config.libs = [
         "objects": [
             Object(NonMatching, "Game/Menu/SceneMenu.cpp"),
             Object(NonMatching, "Game/ExScene.cpp"),
+            Object(NonMatching, "Game/SceneManager.cpp"),
         ],
     },
     {
