@@ -153,6 +153,7 @@ cflags_base = [
     "-i include/stl",
     "-i include/revolution",
     "-i src/GameUtil",
+    "-i src/Game",
     f"-i build/{config.version}/include",
     f"-DVERSION={version_num}",
 ]
@@ -168,6 +169,7 @@ cflags_game = [
     *cflags_base,
     "-RTTI on",
     "-str readonly",
+    "-func_align 4", 
 ]
 
 # Metrowerks library flags
@@ -206,7 +208,7 @@ config.libs = [
         "objects": [
             Object(NonMatching, "Game/Menu/SceneMenu.cpp"),
             Object(NonMatching, "Game/ExScene.cpp"),
-            Object(NonMatching, "Game/SceneManager.cpp"),
+            Object(Matching, "Game/SceneManager.cpp"),
         ],
     },
     {
