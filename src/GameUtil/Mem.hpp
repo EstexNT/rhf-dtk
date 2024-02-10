@@ -29,7 +29,7 @@ void fn_801D3638(u32);
 u16 fn_801D363C(void);
 
 void fn_801D3644(void);
-void fn_801D369C(u32);
+void fn_801D369C(u16);
 void fn_801D3700(void *, MEMiHeapHead *, u32);
 void fn_801D375C(u32);
 void fn_801D3770(u32);

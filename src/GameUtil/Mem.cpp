@@ -115,8 +115,8 @@ void fn_801D3568(void) {
         OSSetMEM2ArenaLo(arena2Hi);
         lbl_80320F88 = 1;
         lbl_80320F89 = 0;
-        MEMSetAllocModeForExpHeap(lbl_80320F80, 0);
-        MEMSetAllocModeForExpHeap(lbl_80320F84, 0);
+        MEMSetGroupIDForExpHeap(lbl_80320F80, 0);
+        MEMSetGroupIDForExpHeap(lbl_80320F84, 0);
     }
 }
 
@@ -129,21 +129,21 @@ void fn_801D3638(u32 arg0) {
 }
 
 u16 fn_801D363C(void) {
-    return MEMGetAllocModeForExpHeap(lbl_80320F80);
+    return MEMGetGroupIDForExpHeap(lbl_80320F80);
 }
 
 void fn_801D3644(void) {
-    u32 mode;
+    u32 id;
     
-    mode = lbl_803D5C28[--lbl_80320F89];
-    MEMSetAllocModeForExpHeap(lbl_80320F80, mode);
-    MEMSetAllocModeForExpHeap(lbl_80320F84, mode);
+    id = lbl_803D5C28[--lbl_80320F89];
+    MEMSetGroupIDForExpHeap(lbl_80320F80, id);
+    MEMSetGroupIDForExpHeap(lbl_80320F84, id);
 }
 
-void fn_801D369C(u32 mode) {
-    lbl_803D5C28[lbl_80320F89++] = MEMGetAllocModeForExpHeap(lbl_80320F80);
-    MEMSetAllocModeForExpHeap(lbl_80320F80, mode);
-    MEMSetAllocModeForExpHeap(lbl_80320F84, mode);
+void fn_801D369C(u16 id) {
+    lbl_803D5C28[lbl_80320F89++] = MEMGetGroupIDForExpHeap(lbl_80320F80);
+    MEMSetGroupIDForExpHeap(lbl_80320F80, id);
+    MEMSetGroupIDForExpHeap(lbl_80320F84, id);
 }
 
 void fn_801D3700(void *mem, MEMiHeapHead *heap, u32 id) {
