@@ -194,6 +194,15 @@ cflags_gameutil = [
 
 config.linker_version = "Wii/1.0"
 
+def RevolutionLib(lib_name, objects):
+    return {
+        "lib": lib_name,
+        "mw_version": config.linker_version,
+        "cflags": cflags_base,
+        "host": False,
+        "objects": objects,
+    }
+
 Matching = True
 NonMatching = False
 
@@ -221,6 +230,18 @@ config.libs = [
             Object(NonMatching, "Runtime.PPCEABI.H/__init_cpp_exceptions.cpp"),
         ],
     },
+    RevolutionLib(
+        "hbm", 
+        [
+            Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_bounding.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_pane.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_picture.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_textBox.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_window.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/lyt/ut_TextWriterBase.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/ut/ut_TextWriterBase.cpp"),   
+        ]
+    ),
     {
         "lib": "GameUtil",
         "mw_version": config.linker_version,

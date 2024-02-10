@@ -38,6 +38,30 @@ Runtime.PPCEABI.H/__init_cpp_exceptions.cpp:
 	.dtors      start:0x801F7584 end:0x801F7588 rename:.dtors$15
 	.sdata      start:0x8031FC40 end:0x8031FC48
 
+revolution/hbm/nw4hbm/lyt/lyt_bounding.cpp:
+	.text       start:0x801814D0 end:0x80181650
+	.ctors      start:0x801F7504 end:0x801F7508
+
+revolution/hbm/nw4hbm/lyt/lyt_pane.cpp:
+	.text       start:0x801867F0 end:0x80187940
+	.ctors      start:0x801F7508 end:0x801F750C
+
+revolution/hbm/nw4hbm/lyt/lyt_picture.cpp:
+	.text       start:0x80187940 end:0x80187EA0
+	.ctors      start:0x801F750C end:0x801F7510
+
+revolution/hbm/nw4hbm/lyt/lyt_textBox.cpp:
+	.text       start:0x80187F00 end:0x80189350
+	.ctors      start:0x801F7510 end:0x801F7514
+
+revolution/hbm/nw4hbm/lyt/lyt_window.cpp:
+	.text       start:0x80189350 end:0x8018B980
+	.ctors      start:0x801F7514 end:0x801F7518
+
+revolution/hbm/nw4hbm/ut/ut_TextWriterBase.cpp:
+	.text       start:0x8018EF10 end:0x80194380
+	.ctors      start:0x801F7518 end:0x801F751C
+
 GameUtil/Mem.cpp:
 	.text       start:0x801D3284 end:0x801D392C
 	.rodata     start:0x802E4A88 end:0x802E4AE8
