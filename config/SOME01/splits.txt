@@ -62,6 +62,30 @@ revolution/hbm/nw4hbm/ut/ut_TextWriterBase.cpp:
 	.text       start:0x8018EF10 end:0x80194380
 	.ctors      start:0x801F7518 end:0x801F751C
 
+nw4r/g3d/g3d_state.cpp:
+	.text       start:0x80199EF0 end:0x8019B140
+	.ctors      start:0x801F751C end:0x801F7520
+
+nw4r/lyt/lyt_pane.cpp:
+	.text       start:0x8019B760 end:0x8019C7E0
+	.ctors      start:0x801F7520 end:0x801F7524
+
+nw4r/lyt/lyt_picture.cpp:
+	.text       start:0x8019DBA0 end:0x8019E130
+	.ctors      start:0x801F7524 end:0x801F7528
+
+nw4r/lyt/lyt_textBox.cpp:
+	.text       start:0x8019E130 end:0x8019F870
+	.ctors      start:0x801F7528 end:0x801F752C
+
+nw4r/lyt/lyt_window.cpp:
+	.text       start:0x8019F870 end:0x801A1E10
+	.ctors      start:0x801F752C end:0x801F7530
+
+nw4r/lyt/lyt_bounding.cpp:
+	.text       start:0x801A1E10 end:0x801A1EE0
+	.ctors      start:0x801F7530 end:0x801F7534
+
 GameUtil/Mem.cpp:
 	.text       start:0x801D3284 end:0x801D392C
 	.rodata     start:0x802E4A88 end:0x802E4AE8

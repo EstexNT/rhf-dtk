@@ -203,6 +203,15 @@ def RevolutionLib(lib_name, objects):
         "objects": objects,
     }
 
+def Nw4rLib(lib_name, objects):
+    return {
+        "lib": lib_name,
+        "mw_version": config.linker_version,
+        "cflags": cflags_base,
+        "host": False,
+        "objects": objects,
+    }
+
 Matching = True
 NonMatching = False
 
@@ -240,6 +249,22 @@ config.libs = [
             Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_window.cpp"),
             Object(NonMatching, "revolution/hbm/nw4hbm/lyt/ut_TextWriterBase.cpp"),
             Object(NonMatching, "revolution/hbm/nw4hbm/ut/ut_TextWriterBase.cpp"),   
+        ]
+    ),
+    Nw4rLib(
+        "g3d",
+        [
+            Object(NonMatching, "nw4r/g3d/g3d_state.cpp"),
+        ]
+    ),
+    Nw4rLib(
+        "lyt",
+        [
+            Object(NonMatching, "nw4r/lyt/lyt_pane.cpp"),
+            Object(NonMatching, "nw4r/lyt/lyt_picture.cpp"),
+            Object(NonMatching, "nw4r/lyt/lyt_textBox.cpp"),
+            Object(NonMatching, "nw4r/lyt/lyt_window.cpp"),
+            Object(NonMatching, "nw4r/lyt/lyt_bounding.cpp"),
         ]
     ),
     {
