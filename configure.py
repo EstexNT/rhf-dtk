@@ -267,6 +267,28 @@ config.libs = [
             Object(NonMatching, "nw4r/lyt/lyt_bounding.cpp"),
         ]
     ),
+    Nw4rLib(
+        "snd",
+        [
+            Object(NonMatching, "nw4r/snd/snd_AxManager.cpp"),
+            Object(NonMatching, "nw4r/snd/snd_BasicSound.cpp"),
+            Object(NonMatching, "nw4r/snd/snd_SeqSound.cpp"),
+            Object(NonMatching, "nw4r/snd/snd_SoundSystem.cpp"),
+            Object(NonMatching, "nw4r/snd/snd_StrmSound.cpp"),
+            Object(NonMatching, "nw4r/snd/snd_WaveSound.cpp"),
+        ]
+    ),
+    Nw4rLib(
+        "ut",
+        [
+            Object(NonMatching, "nw4r/ut/ut_IOStream.cpp"),
+            Object(NonMatching, "nw4r/ut/ut_FileStream.cpp"),
+            Object(NonMatching, "nw4r/ut/ut_DvdFileStream.cpp"),
+            Object(NonMatching, "nw4r/ut/ut_DvdLockedFileStream.cpp"),
+            Object(NonMatching, "nw4r/ut/ut_LockedCache.cpp"),
+            Object(NonMatching, "nw4r/ut/ut_TextWriterBase.cpp"),
+        ]
+    ),
     {
         "lib": "GameUtil",
         "mw_version": config.linker_version,

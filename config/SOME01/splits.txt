@@ -86,6 +86,54 @@ nw4r/lyt/lyt_bounding.cpp:
 	.text       start:0x801A1E10 end:0x801A1EE0
 	.ctors      start:0x801F7530 end:0x801F7534
 
+nw4r/snd/snd_AxManager.cpp:
+	.text       start:0x801A7DA0 end:0x801A91D0
+	.ctors      start:0x801F7534 end:0x801F7538
+
+nw4r/snd/snd_BasicSound.cpp:
+	.text       start:0x801AD220 end:0x801AEAB0
+	.ctors      start:0x801F7538 end:0x801F753C
+
+nw4r/snd/snd_SeqSound.cpp:
+	.text       start:0x801B6280 end:0x801B6AD0
+	.ctors      start:0x801F753C end:0x801F7540
+
+nw4r/snd/snd_SoundSystem.cpp:
+	.text       start:0x801BD7D0 end:0x801BDA30
+	.ctors      start:0x801F7540 end:0x801F7544
+
+nw4r/snd/snd_StrmSound.cpp:
+	.text       start:0x801C1890 end:0x801C1F40
+	.ctors      start:0x801F7544 end:0x801F7548
+
+nw4r/snd/snd_WaveSound.cpp:
+	.text       start:0x801C6100 end:0x801C64C0
+	.ctors      start:0x801F7548 end:0x801F754C
+
+nw4r/ut/ut_IOStream.cpp:
+	.text       start:0x801C89C0 end:0x801C8A10
+	.ctors      start:0x801F754C end:0x801F7550
+
+nw4r/ut/ut_FileStream.cpp:
+	.text       start:0x801C8A10 end:0x801C8B40
+	.ctors      start:0x801F7550 end:0x801F7554
+
+nw4r/ut/ut_DvdFileStream.cpp:
+	.text       start:0x801C8B40 end:0x801C9180
+	.ctors      start:0x801F7554 end:0x801F7558
+
+nw4r/ut/ut_DvdLockedFileStream.cpp:
+	.text       start:0x801C9180 end:0x801C9570
+	.ctors      start:0x801F7558 end:0x801F755C
+
+nw4r/ut/ut_LockedCache.cpp:
+	.text       start:0x801C9570 end:0x801C9670
+	.ctors      start:0x801F755C end:0x801F7560
+
+nw4r/ut/ut_TextWriterBase.cpp:
+	.text       start:0x801CDF10 end:0x801D3284
+	.ctors      start:0x801F7560 end:0x801F7564
+
 GameUtil/Mem.cpp:
 	.text       start:0x801D3284 end:0x801D392C
 	.rodata     start:0x802E4A88 end:0x802E4AE8
