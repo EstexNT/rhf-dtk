@@ -16,6 +16,11 @@ public:
     virtual bool _24(void); // fn_801D8594
     virtual void _28(void);
 
+    CScene(void) {
+        unk08 = 0;
+        unk04 = 1;
+    }
+
     void fn_801D83BC(void);
     void fn_801D83DC(void);
     void fn_801D8554(void);
@@ -25,6 +30,7 @@ private:
     u8 unk04;
     s32 unk08;
     u16 unk0C;
+    u8 unk0E;
 };
 
 #endif
