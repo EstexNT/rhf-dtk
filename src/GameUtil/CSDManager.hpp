@@ -7,8 +7,8 @@
 class CSDManager : public TSingleton<CSDManager> {
 public:
 
-    virtual ~CSDManager(void);
     virtual void _08(void);
+    virtual ~CSDManager(void);
     virtual void _10(void);
     virtual void _14(void);
 

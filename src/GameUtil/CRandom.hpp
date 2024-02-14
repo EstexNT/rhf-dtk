@@ -2,7 +2,7 @@
 #define GAMEUTIL_CRANDOM_HPP
 
 #include <revolution/types.h>
-#include <revolution/OS/OSTime.h>
+#include <revolution/OS.h>
 
 class CRandom {
 public:
