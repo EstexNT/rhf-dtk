@@ -1,6 +1,8 @@
 #include "CFileManager.hpp"
 #include <string.h>
 
+char CFileManager::lbl_803D5C48[64];
+
 void CFileManager::fn_801D392C(s32 result, DVDFileInfo *fileInfo) {
     s32 temp_r6 = gFileManager->getFileInfoIdx(fileInfo);
     if (result == DVD_RESULT_FATAL_ERROR) {
@@ -104,7 +106,7 @@ struct TimeThing { // TODO: move this somewhere else?
 void CFileManager::fn_801D3D94(void) {
     TimeThing thing = 0;
     while (fn_801D3D58()) {
-        gFileManager->checkDrive(); // <-- regswap
+        gFileManager->checkDrive(); // <--TODO: regswap
         gFileManager->fn_801D4544();
         OSSleepTicks(OS_MSEC_TO_TICKS(thing.GetMsecVal()));
     }
@@ -113,14 +115,14 @@ void CFileManager::fn_801D3D94(void) {
 void CFileManager::fn_801D3E94(void) {
     TimeThing thing = 0;
     while (fn_801D3D58()) {
-        gFileManager->checkDrive(); // <-- regswap
+        gFileManager->checkDrive(); // <--TODO: regswap
         gFileManager->fn_801D4544();
         OSSleepTicks(OS_MSEC_TO_TICKS(thing.GetMsecVal()));
     }
 }
 
-void CFileManager::fn_801D3F94(s32 idx, const char *fname, EHeapMEM heap, s32 alignment) {
-    sprintf(lbl_803D5C48, "%s%s", gFileManager->fn_801D3C44(), fname);
+void CFileManager::fn_801D3F94(s32 idx, const char *file, EHeapMEM heap, s32 alignment) {
+    sprintf(lbl_803D5C48, "%s%s", gFileManager->fn_801D3C44(), file);
     s32 temp_r28 = -1;
     for (int i = 0; i < unk08; i++) {
         if (unk14[i] == 0) {
@@ -131,7 +133,7 @@ void CFileManager::fn_801D3F94(s32 idx, const char *fname, EHeapMEM heap, s32 al
     unk1C[idx].unk0 = unk0C + temp_r28;
     unk1C[idx].unk24 = heap;
     unk1C[idx].unk28 = fn_801D363C();
-    char *temp = ".szs"; // fake match?
+    char *temp = ".szs"; // TODO: fake match?
     unk1C[idx].unk2A = strstr(lbl_803D5C48, temp) != 0;
     unk1C[idx].unk2C = 1;
     DVDOpen(lbl_803D5C48, (unk0C + temp_r28));
@@ -143,7 +145,7 @@ void CFileManager::fn_801D3F94(s32 idx, const char *fname, EHeapMEM heap, s32 al
 }
 
 void CFileManager::fn_801D412C(s32 result, DVDFileInfo *fileInfo) {
-    s32 temp_r7 = -1; // not using the inline function here?
+    s32 temp_r7 = -1; // doesn't match with the inline
     for (int i = 0; i < unk08; i++) {
         if ((unk0C + i) == fileInfo) {
             temp_r7 = i;
@@ -170,3 +172,150 @@ void CFileManager::fn_801D41CC(s32 idx) {
     unk1C[idx].unk2C = 0;
 }
 
+u32 CFileManager::fn_801D422C(s32 idx, const char *file) {
+    ARCFileInfo fileInfo;
+    ARCOpen(&unk1C[idx].unk4, file, &fileInfo);
+    u32 length = ARCGetLength(&fileInfo);
+    //ARCClose(&fileInfo); // why is this not present?
+    return length;
+}
+
+void *CFileManager::fn_801D4270(s32 idx, const char *file) {
+    ARCFileInfo fileInfo;
+    ARCOpen(&unk1C[idx].unk4, file, &fileInfo);
+    void *startAddr = ARCGetStartAddrInMem(&fileInfo);
+    ARCClose(&fileInfo);
+    return startAddr;
+}
+
+void *CFileManager::fn_801D42CC(s32 idx) {
+    return unk1C[idx].unk20;
+}
+
+bool CFileManager::fn_801D42E0(s32 idx) {
+    return unk1C[idx].unk2C == 0;
+}
+
+bool CFileManager::fn_801D42FC(s32 idx) {
+    return unk1C[idx].unk2C == 5;
+}
+
+bool CFileManager::fn_801D431C(void) {
+    bool temp_r6 = true;
+    for (int i = 0; i < unk08; i++) {
+        if ((unk1C[i].unk2C != 0) && (unk1C[i].unk2C != 5)) {
+            temp_r6 = false;
+        }
+    }
+    return temp_r6;
+}
+
+void CFileManager::fn_801D4364(s32 idx) {
+    TimeThing thing = 0;
+    while (unk1C[idx].unk2C != 5) {
+        gFileManager->checkDrive(); // <--TODO: regswap
+        gFileManager->fn_801D4544();
+        OSSleepTicks(OS_MSEC_TO_TICKS(thing.GetMsecVal()));
+    }
+}
+
+void CFileManager::fn_801D443C(void) {
+    TimeThing thing = 0;
+    while (!fn_801D431C()) {
+        gFileManager->checkDrive(); // <--TODO: regswap
+        gFileManager->fn_801D4544();
+        OSSleepTicks(OS_MSEC_TO_TICKS(thing.GetMsecVal()));
+    }
+}
+
+void CFileManager::fn_801D4544(void) {
+    for (short i = 0; i < unk18; i++) {
+        CFileManager_sub1 *sub1 = &unk1C[i];
+        bool temp_r25 = false;
+
+        if (sub1->unk2C == 2) {
+            if (sub1->unk2A) {
+                void *addr = fn_801D46A4(sub1->unk20, 1, i, sub1->unk24, -32);
+                if (addr) {
+                    sub1->unk20 = addr;
+                    sub1->unk2C = 3;
+                }
+            } else {
+                temp_r25 = true;
+            }
+        } else if (sub1->unk2C == 4) {
+            temp_r25 = true;
+        }
+        if (temp_r25) {
+            ARCInitHandle(sub1->unk20, &sub1->unk4);
+            sub1->unk0 = 0;
+            sub1->unk2C = 5;
+        }
+    }
+}
+
+// TODO: pretty sure this belongs to the nw4r headers
+static inline u32 Nw4rSize(u8 *data) {
+    return (data[4] << 0x18) | (data[5] << 0x10) | (data[6] << 8) | data[7];
+}
+
+void *CFileManager::fn_801D461C(void *data, u32 arg1, EHeapMEM heap, s32 alignment) {
+    u32 temp_r31 = Nw4rSize((u8 *)data);
+    u32 size = ROUND_UP(temp_r31, 32);
+    void *out = new (heap, alignment) u8[size];
+    fn_801D47F8(data, out, temp_r31, size, -1, arg1);
+    return out;
+}
+
+
+struct struct_803d5c88 {
+    void *unk0;
+    void *unk4;
+    u32 unk8;
+    u32 unkC;
+    s16 unk10;
+    u8 unk12;
+};
+
+static struct_803d5c88 lbl_803D5C88;
+
+void *CFileManager::fn_801D46A4(void *data, u32 arg1, s32 arg2, EHeapMEM heap, s32 alignment) {
+    BOOL terminated = OSIsThreadTerminated(&gFileManager->unk30);
+    if (terminated) {
+        u32 temp_r26 = Nw4rSize((u8 *)data);
+        u32 size = ROUND_UP(temp_r26, 32);
+        if (arg2 >= 0) {
+            fn_801D369C(gFileManager->unk1C[arg2].unk28);
+        }
+        void *alloc = new (heap, alignment) u8[size];
+        if (arg2 >= 0) {
+            fn_801D3644();
+        }
+        lbl_803D5C88.unk0 = data;
+        lbl_803D5C88.unk4 = alloc;
+        lbl_803D5C88.unk8 = temp_r26;
+        lbl_803D5C88.unkC = size;
+        lbl_803D5C88.unk10 = arg2;
+        lbl_803D5C88.unk12 = arg1;
+        OSCreateThread(&gFileManager->unk30, CFileManager::fn_801D47B8, &lbl_803D5C88, &gFileManager->unk348[0xa00], 0xa00 * sizeof(u32), 31, 1);
+        OSResumeThread(&gFileManager->unk30);
+        return alloc;
+    }
+    return 0;
+}
+
+void *CFileManager::fn_801D47B8(void *arg) {
+    struct_803d5c88 *temp = (struct_803d5c88 *)arg;
+
+    fn_801D47F8(temp->unk0, temp->unk4, temp->unk8, temp->unkC, temp->unk10, temp->unk12);
+    return 0;
+}
+
+bool CFileManager::fn_801D47F8(void *in, void *out, u32 arg2, u32 size, s32 arg4, u32 arg5) {
+    // TODO: decompile
+    return false;
+}
+
+void CFileManager::fn_801D49D4(void) {
+    checkDrive();
+}
