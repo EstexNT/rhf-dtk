@@ -302,7 +302,7 @@ config.libs = [
             Object(NonMatching, "GameUtil/CGraphicManager.cpp"),
             Object(NonMatching, "GameUtil/CLayoutManager.cpp"),
             Object(NonMatching, "GameUtil/CGameManager.cpp"),
-            Object(NonMatching, "GameUtil/CScene.cpp"),
+            Object(Matching, "GameUtil/CScene.cpp"),
             Object(NonMatching, "GameUtil/code_801d85bc.cpp"),
             Object(NonMatching, "GameUtil/CLayout.cpp"),
             Object(NonMatching, "GameUtil/CLayoutAnimation.cpp"),

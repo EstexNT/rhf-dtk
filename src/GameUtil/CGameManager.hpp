@@ -16,8 +16,8 @@ public:
     virtual void _20(void *, u32); // TODO: proper type for the CScene::create function
     virtual void _24(void);
     virtual void _28(void);
-    virtual void _2C(void);
-    virtual void _30(void);
+    virtual bool _2C(void);
+    virtual bool _30(void);
     virtual void _34(u32 *tickflow) { // TODO: proper type for TickFlow
         unk14 = tickflow;
     } 
