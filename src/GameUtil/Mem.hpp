@@ -3,8 +3,7 @@
 
 #include <revolution/types.h>
 #include <revolution/OS.h>
-#include <revolution/MEM/mem_heapCommon.h>
-#include <revolution/MEM/mem_expHeap.h>
+#include <revolution/MEM.h>
 
 enum EHeapMEM {
     eHeap_MEM1 = 0,

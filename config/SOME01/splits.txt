@@ -152,11 +152,13 @@ GameUtil/CFileManager.cpp:
 	.sdata      start:0x8031FFD8 end:0x8031FFE8
 	.bss        start:0x803D5C48 end:0x803D5CA0
 
-GameUtil/CController.cpp:
-	.text       start:0x801D4A54 end:0x801D5950
-
 GameUtil/CControllerManager.cpp:
-	.text       start:0x801D5950 end:0x801D6090
+	.text       start:0x801D4A54 end:0x801D6090
+	.rodata     start:0x802E4B28 end:0x802E4B80
+	.data       start:0x80315F68 end:0x80316070
+	.sdata      start:0x8031FFE8 end:0x80320008
+	.sbss       start:0x80320F90 end:0x80320F98
+	.sdata2     start:0x80329520 end:0x80329550
 
 GameUtil/CGraphicManager.cpp:
 	.text       start:0x801D6090 end:0x801D668C

@@ -4,7 +4,7 @@
 #include <revolution/types.h>
 #include "TSingleton.hpp"
 
-class CMessageManager : TSingleton<CMessageManager> {
+class CMessageManager : public TSingleton<CMessageManager> {
 public:
 
     CMessageManager(void);

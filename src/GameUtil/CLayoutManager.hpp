@@ -5,7 +5,7 @@
 #include "TSingleton.hpp"
 #include "CLayout.hpp"
 
-class CLayoutManager : TSingleton<CLayoutManager> {
+class CLayoutManager : public TSingleton<CLayoutManager> {
 public:
 
     CLayoutManager(void);
