@@ -10,7 +10,40 @@
 
 */
 
+CController::CController(s32 i) {
+    unk04 = i;
+    unk136D = false;
+    unk136C = false;
+    unk1370 = 0;
+    unk1375 = 0;
+    unk1338 = 0;
+    unk133C = 0;
+    unk1340 = 0;
+    for (int i = 0; i < (s32)ARRAY_LENGTH(unk1344); i++) {
+        unk1344[i] = 0;
+    }
+    unk1364 = 10;
+    unk1365 = 4;
+    for (int i = 0; i < (s32)ARRAY_LENGTH(unk1354); i++) {
+        if ((u16)(1 << i)) {
+            unk1354[i] = 0;
+        }
+    }
 
+    for (int i = 0; i < (s32)ARRAY_LENGTH(unk1354); i++) {
+        if (((1 << i) & (0x800 | 0x400))) {
+            unk1354[i] = 6;
+        }
+    }
+}
+
+void CController::_0C(void) {
+    unk1398 = false;
+}
+
+void CController::_10(void) {
+    
+}
 
 
 

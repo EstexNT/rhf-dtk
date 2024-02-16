@@ -47,7 +47,7 @@ public:
     virtual bool _3C(void) {
         return false; // TODO
     }
-    virtual void _40(const char *, u32);
+    virtual void _40(const char *, bool);
     virtual void _44(void);
     virtual bool _48(void) {
         return false; // TODO
@@ -55,7 +55,37 @@ public:
     virtual void _4C(void);
     
     CController(s32);
+private:
 
+    s32 unk04;
+    s32 unk08;
+    u32 unk0C;
+    s32 unk10;
+    u32 unk14;
+    KPADStatus unk18[16];
+    u8 pad858[0xf18 - 0x858];
+    KPADUnifiedWpadStatus unkF18[16];
+    u8 pad1298[0x1338 - 0x1298];
+    u32 unk1338;
+    u32 unk133C;
+    u32 unk1340;
+    u8 unk1344[0x10];
+    u8 unk1354[0x10];
+    u8 unk1364;
+    u8 unk1365;
+    u8 unk1366;
+    u32 unk1368;
+    bool unk136C;
+    bool unk136D;
+    u32 unk1370;
+    u8 unk1374;
+    u8 unk1375;
+    u8 unk1376;
+    u8 unk1377;
+    u8 pad1378[0x20];
+    bool unk1398;
+    s32 unk139C;
+    WPADInfo unk13A0;
 };
 
 class CNullController : public CController {
@@ -78,8 +108,6 @@ public:
 
     }
 private:
-
-    u8 pad04[0x13b4];
 };
 
 class CGCController {
