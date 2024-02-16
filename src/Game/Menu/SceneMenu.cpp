@@ -5,6 +5,15 @@
 #include "MessageManager.hpp"
 #include "CLayout.hpp"
 #include "SceneManager.hpp"
+#include "CanvasManager.hpp"
+#include "CLayoutManager.hpp"
+#include "CSoundManager.hpp"
+
+static u8 lbl_80320140;
+static u8 lbl_80320141;
+static u8 lbl_80320142;
+static u8 lbl_80320143;
+
 
 CExScene *CSceneMenu::create(u16 arg0) {
     fn_801D369C(arg0);
@@ -42,11 +51,15 @@ void CSceneMenu::_10(void) {
 }
 
 namespace {
-class CMenuLayout : CLayout {
+class CMenuLayout : public CLayout {
 public:
-    CMenuLayout() {
 
+    CMenuLayout() {
+        setUnk0C(0);
     }
+private:
+
+    u8 pad14[0x10];
 };
 }
 
@@ -55,5 +68,22 @@ void CSceneMenu::_14(void) {
     lbl_80320274 = false;
     memset(unk34, '\0', sizeof(unk34));
     fn_8000818C();
-    
+    gMyCanvasManager->fn_8007BE0C();
+    gLayoutManager->_20(1);
+    gLayoutManager->_24(55, "");
+    gLayoutManager->fn_801D6AEC(1);
+    gLayoutManager->registerLayout<CMenuLayout>();
+
+    gSoundManager->fn_801E6ECC(1.0f);
+    fn_800077A8(lbl_80320143);
+    unkB4 = false;
+    fn_801D3638(300);
+}
+
+void CSceneMenu::_28(void) {
+    if (unkB4) {
+        return;
+    }
+
+    // TODO: here
 }

@@ -7,7 +7,9 @@ class CScene {
 public:
 
     virtual void _08(void);
-    virtual ~CScene(void) {}
+    virtual ~CScene(void) {
+        
+    }
     virtual void _10(void) = 0;
     virtual void _14(void);
     virtual void _18(void);

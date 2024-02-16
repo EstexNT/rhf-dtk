@@ -19,6 +19,8 @@ public:
 
     }
 
+    void fn_800077A8(u32);
+
     static CExScene *create(u16 arg0);
     static void fn_80006FA4(void);
 private:

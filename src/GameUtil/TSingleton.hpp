@@ -7,7 +7,9 @@ template <typename T>
 class TSingleton { // this is probably incorrect
 public:
 
-    virtual void _08(void) { }
+    virtual void _08(void) {
+        
+    }
     virtual ~TSingleton(void) {
         _08();
     }

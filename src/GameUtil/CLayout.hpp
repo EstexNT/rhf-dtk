@@ -2,6 +2,8 @@
 #define GAMEUTIL_CLAYOUT_HPP
 
 #include <revolution/types.h>
+#include <nw4r/lyt/lyt_layout.h>
+#include "CLayoutAnimation.hpp"
 
 class CLayout {
 public:
@@ -17,6 +19,17 @@ public:
     virtual void _20(void);
     
     CLayout(void);
+
+    void setUnk0C(s32 arg0) {
+        unk0C = arg0;
+    }
+
+private:
+    nw4r::lyt::Layout *unk04;
+    CLayoutAnimation *unk08;
+    s32 unk0C;
+    u8 unk10;
+    u8 unk11;
 };
 
 #endif
