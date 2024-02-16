@@ -57,6 +57,12 @@ public:
     CMenuLayout() {
         setUnk0C(0);
     }
+
+
+    virtual ~CMenuLayout();
+    virtual void _10(void);
+    virtual void _14(void);
+    virtual void _20(void);
 private:
 
     u8 pad14[0x10];
@@ -86,4 +92,33 @@ void CSceneMenu::_28(void) {
     }
 
     // TODO: here
+}
+
+void CSceneMenu::fn_800077A8(u32 arg1) {
+    
+}
+
+void CMenuLayout::_14(void) {
+    CLayout::_14();
+}
+
+void CMenuLayout::_10(void) {
+
+}
+
+CMenuLayout::~CMenuLayout(void) {
+    _14();
+}
+
+
+void CSceneMenu::_1C(void) {
+    CExScene::_1C();
+}
+
+void CSceneMenu::_18(void) {
+    CExScene::_18();
+}
+
+CSceneMenu::~CSceneMenu(void) {
+
 }
