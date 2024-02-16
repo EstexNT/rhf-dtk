@@ -297,7 +297,7 @@ config.libs = [
         "objects": [
             Object(Matching, "GameUtil/Mem.cpp"),
             Object(NonMatching, "GameUtil/CFileManager.cpp"),
-            Object(NonMatching, "GameUtil/CControllerManager.cpp"),
+            Object(NonMatching, "GameUtil/Controller.cpp"),
             Object(NonMatching, "GameUtil/CGraphicManager.cpp"),
             Object(NonMatching, "GameUtil/CLayoutManager.cpp"),
             Object(NonMatching, "GameUtil/CGameManager.cpp"),

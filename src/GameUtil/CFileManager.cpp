@@ -237,7 +237,7 @@ void CFileManager::fn_801D4544(void) {
             if (sub1->unk2A) {
                 void *addr = fn_801D46A4(sub1->unk20, 1, i, sub1->unk24, -32);
                 if (addr) {
-                    sub1->unk20 = addr;
+                    sub1->unk20 = (u8 *)addr;
                     sub1->unk2C = 3;
                 }
             } else {
