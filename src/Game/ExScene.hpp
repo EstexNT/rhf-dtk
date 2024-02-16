@@ -3,8 +3,9 @@
 
 #include <revolution/types.h>
 #include "CScene.hpp"
+#include "CCellAnim.hpp"
 
-class CExScene : private CScene {
+class CExScene : public CScene {
 public:
 
     virtual void _08(void);
@@ -20,12 +21,21 @@ public:
     virtual void _28(void);
 
     CExScene(void);
+    void fn_8000818C(void);
 
 private:
 
     u32 unk10;
     u32 unk14;
     u32 unk18;
+    CCellAnim *unk1C;
+    CCellAnim *unk20;
+    u8 unk24;
+    u8 unk25;
+    u32 unk28;
+    u16 unk2C;
+    u16 unk2E;
+    s32 unk30;
 };
 
 #endif

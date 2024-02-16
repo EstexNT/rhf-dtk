@@ -115,7 +115,9 @@ private:
     u8 unk404;
 };
 
+extern bool lbl_80320274;
 
 extern CSceneManager *gSceneManager;
+
 
 #endif

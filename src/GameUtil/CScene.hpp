@@ -7,7 +7,7 @@ class CScene {
 public:
 
     virtual void _08(void);
-    virtual ~CScene(void);
+    virtual ~CScene(void) {}
     virtual void _10(void) = 0;
     virtual void _14(void);
     virtual void _18(void);
@@ -25,6 +25,10 @@ public:
     void fn_801D83DC(void);
     void fn_801D8554(void);
     void fn_801D8578(void);
+
+    void setUnk0C(u16 arg0) {
+        unk0C = arg0;
+    }
 private:
 
     u8 unk04;

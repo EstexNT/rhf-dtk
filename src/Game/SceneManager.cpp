@@ -3,6 +3,9 @@
 #include "CTickFlowManager.hpp"
 
 
+#include "Menu/SceneMenu.hpp"
+
+
 CSceneManager::CSceneManager(void) {
 
 }
@@ -36,7 +39,6 @@ void CSceneManager::_18(void) {
 }
 
 // TODO: migrate these functions into their respective scene files
-extern "C" void fn_80006F00(void);
 extern "C" void fn_800136F4(void);
 extern "C" void fn_800204F0(void);
 extern "C" void fn_80022D8C(void);
@@ -187,7 +189,7 @@ void CSceneManager::fn_80089FE0(eSceneID sceneID, u32 *tickflow) {
 
     switch (sceneID) {
         case EScene_0:
-            fn = (void *)fn_80006F00;
+            fn = (void *)CSceneMenu::create;
             break;
         case EScene_5:
             fn = (void *)fn_800136F4;
@@ -667,7 +669,6 @@ void CSceneManager::fn_8008A4DC(eSceneID sceneID, u32 ver) {
 
 
 // TODO: migrate these functions into their respective scene files
-extern "C" void fn_80006FA4(void);
 extern "C" void fn_800606E4(void);
 extern "C" void fn_800658F8(void);
 extern "C" void fn_8003BEE4(void);
@@ -736,7 +737,7 @@ extern "C" void fn_800C42AC(void);
 void CSceneManager::fn_8008A704(eSceneID sceneID) {
     switch (sceneID) {
         case EScene_0:
-            fn_80006FA4();
+            CSceneMenu::fn_80006FA4();
             break;
         case EScene_1:
             fn_800606E4();
@@ -1190,8 +1191,6 @@ bool CSceneManager::fn_8008B0FC(s32 idx, u32 sceneID) {
 bool CSceneManager::fn_8008B118(eSceneID sceneID) {
     return sceneIdx(sceneID) >= 0;
 }
-
-extern bool lbl_80320274;
 
 bool CSceneManager::fn_8008B27C(void) {
     if (lbl_80320274) {
