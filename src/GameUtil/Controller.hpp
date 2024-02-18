@@ -6,6 +6,7 @@
 #include <revolution/MEM.h>
 #include <revolution/PAD.h>
 #include "TSingleton.hpp"
+#include "CLayout.hpp"
 
 
 class CController {
@@ -55,7 +56,33 @@ public:
     virtual void _4C(void);
     
     CController(s32);
+    void fn_801D4DDC(void);
+    void fn_801D4E38(u32);
+    void fn_801D4EA4(u32, u32);
+    void fn_801D4F74(u32);
+    void fn_801D4FD8(void);
+    void fn_801D5170(bool);
+    Vec2 fn_801D51E4(f32, f32);
+    Vec2 fn_801D523C(CLayout *);
+    bool fn_801D52D4(void);
+    bool fn_801D5340(void);
+    f32 fn_801D547C(void);
+    void fn_801D5500(u32, u8);
+    void fn_801D55D8(u32, u8);
+    bool fn_801D5850(void);
+    bool fn_801D58A0(void);
+    u32 fn_801D58A8(void);
+
+    void do801D4EA4(u32 arg0) {
+        u32 temp = unk18[0].hold;
+        if (!_24()) {
+            temp = 0;
+        }
+        fn_801D4EA4(temp, arg0);
+    }
 private:
+
+    static void fn_801D5830(s32, s32); // WPADCallback
 
     s32 unk04;
     s32 unk08;
@@ -81,8 +108,7 @@ private:
     u8 unk1374;
     u8 unk1375;
     u8 unk1376;
-    u8 unk1377;
-    u8 pad1378[0x20];
+    u8 unk1377[0x21];
     bool unk1398;
     s32 unk139C;
     WPADInfo unk13A0;
@@ -138,7 +164,8 @@ private:
     PADStatus *unk0C;
     u8 unk10;
     u8 unk11;
-    u32 pad14;
+    u8 unk12;
+    u32 unk14;
 };
 
 
@@ -182,6 +209,10 @@ public:
         Lock<void *> lock(alloc);
         MEMFreeToAllocator(&unk1C, alloc);
         return true;
+    }
+
+    CController *getController(s32 idx) { // TODO: inline deferred memes
+        return unk04[idx];
     }
 private:
 

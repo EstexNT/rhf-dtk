@@ -67,6 +67,8 @@ typedef struct KPADUnifiedWpadStatus {
 
 void KPADInit();
 
+
+void KPADSetPosParam(s32 chan, f32 radius, f32 sensitivity);
 void KPADSetSensorHeight(s32, f32);
 s32 KPADRead(s32 chan, KPADStatus status[], u32 size);
 void KPADGetUnifiedWpadStatus(s32 chan, KPADUnifiedWpadStatus status[], u32 size);

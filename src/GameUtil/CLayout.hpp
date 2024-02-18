@@ -24,6 +24,10 @@ public:
         unk0C = arg0;
     }
 
+    nw4r::lyt::Layout *getLayout(void) {
+        return unk04;
+    }
+
 private:
     nw4r::lyt::Layout *unk04;
     CLayoutAnimation *unk08;

@@ -12,6 +12,15 @@ public:
 
     void fn_801E1E4C(void);
     void fn_801E1CC0(u32 *tickflow, f32 initRest = 0.0f); // TODO: proper type for tickflow
+
+    u8 getUnk6D(void) {
+        return unk6D;
+    }
+private:
+
+    u8 pad04[0x68];
+    u8 unk6C;
+    u8 unk6D;
 };
 
 

@@ -93,6 +93,8 @@ u8 WPADGetSensorBarPosition(void);
 
 s32 WPADProbe(s32 chan, u32 *type);
 
+void WPADControlMotor(s32 chan, u32 onOff);
+
 s32 WPADGetInfoAsync(s32, WPADInfo *, WPADCallback);
 
 #ifdef __cplusplus
