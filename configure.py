@@ -300,7 +300,11 @@ config.libs = [
             Object(NonMatching, "GameUtil/CFileManager.cpp"),
             Object(NonMatching, "GameUtil/Controller.cpp"),
             Object(NonMatching, "GameUtil/CGraphicManager.cpp"),
-            Object(NonMatching, "GameUtil/CLayoutManager.cpp"),
+            
+            # TODO: this is so fake
+            Object(NonMatching, "GameUtil/CLayoutManager.cpp", cflags=[*cflags_gameutil, "-func_align 4"]),
+            Object(Matching, "GameUtil/Layout_ArcResourceLink.cpp", cflags=[*cflags_gameutil, "-O0,p", "-func_align 4"]),
+            Object(NonMatching, "GameUtil/CLayoutManager_1.cpp", cflags=[*cflags_gameutil, "-func_align 4"]), 
             Object(NonMatching, "GameUtil/CGameManager.cpp"),
             Object(Matching, "GameUtil/CScene.cpp"),
             Object(NonMatching, "GameUtil/CLayout.cpp"),

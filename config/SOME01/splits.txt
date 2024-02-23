@@ -164,11 +164,18 @@ GameUtil/CGraphicManager.cpp:
 	.text       start:0x801D6090 end:0x801D668C
 
 GameUtil/CLayoutManager.cpp:
-	.text       start:0x801D668C end:0x801D7210
-	.rodata     start:0x802E4BB0 end:0x802E4BF0
+	.text       start:0x801D668C end:0x801D6974
+	.rodata     start:0x802E4BB0 end:0x802E4BDC
 	.data       start:0x803160A8 end:0x803160F0
 	.sdata      start:0x80320018 end:0x80320028
 	.sdata2     start:0x80329560 end:0x80329568
+
+GameUtil/Layout_ArcResourceLink.cpp:
+	.text       start:0x801D6974 end:0x801D69AC
+
+GameUtil/CLayoutManager_1.cpp:
+	.text       start:0x801D69AC end:0x801D7210
+	.rodata     start:0x802E4BDC end:0x802E4BF0
 	.sbss2      start:0x80329968 end:0x80329970
 
 GameUtil/CGameManager.cpp:

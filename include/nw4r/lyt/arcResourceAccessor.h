@@ -28,9 +28,8 @@ protected:
 class ArcResourceLink {
 public:
 
-    ArcResourceLink() {
-
-    }
+    ArcResourceLink(); // TODO: this should be weak
+    ~ArcResourceLink(); // TODO: the destructor should be auto-gen'd
     bool Set(void *archiveStart, const char *resourceRootDirectory);
 
     ut::LinkListNode mLink;

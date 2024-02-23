@@ -21,7 +21,7 @@ private:
     u8 pad00[0x20];
 };
 
-MEMAllocator *Layout::mspAllocator;
+//MEMAllocator *Layout::mspAllocator;
 
 }
 }
