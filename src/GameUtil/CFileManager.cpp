@@ -106,7 +106,7 @@ struct TimeThing { // TODO: move this somewhere else?
 void CFileManager::fn_801D3D94(void) {
     TimeThing thing = 0;
     while (fn_801D3D58()) {
-        gFileManager->checkDrive(); // <--TODO: regswap
+        gFileManager->fn_801D49D4(); // <--TODO: regswap
         gFileManager->fn_801D4544();
         OSSleepTicks(OS_MSEC_TO_TICKS(thing.GetMsecVal()));
     }
@@ -115,7 +115,7 @@ void CFileManager::fn_801D3D94(void) {
 void CFileManager::fn_801D3E94(void) {
     TimeThing thing = 0;
     while (fn_801D3D58()) {
-        gFileManager->checkDrive(); // <--TODO: regswap
+        gFileManager->fn_801D49D4(); // <--TODO: regswap
         gFileManager->fn_801D4544();
         OSSleepTicks(OS_MSEC_TO_TICKS(thing.GetMsecVal()));
     }
@@ -213,7 +213,7 @@ bool CFileManager::fn_801D431C(void) {
 void CFileManager::fn_801D4364(s32 idx) {
     TimeThing thing = 0;
     while (unk1C[idx].unk2C != 5) {
-        gFileManager->checkDrive(); // <--TODO: regswap
+        gFileManager->fn_801D49D4(); // <--TODO: regswap
         gFileManager->fn_801D4544();
         OSSleepTicks(OS_MSEC_TO_TICKS(thing.GetMsecVal()));
     }
@@ -222,7 +222,7 @@ void CFileManager::fn_801D4364(s32 idx) {
 void CFileManager::fn_801D443C(void) {
     TimeThing thing = 0;
     while (!fn_801D431C()) {
-        gFileManager->checkDrive(); // <--TODO: regswap
+        gFileManager->fn_801D49D4(); // <--TODO: regswap
         gFileManager->fn_801D4544();
         OSSleepTicks(OS_MSEC_TO_TICKS(thing.GetMsecVal()));
     }

@@ -13,10 +13,18 @@ public:
 
     }
 
+    LinkListNode *GetNext() const {
+        return mNext;
+    }
+    LinkListNode *GetPrev() const {
+        return mPrev;
+    }
+
 private:
 
     LinkListNode *mNext;
     LinkListNode *mPrev;
+
 };
 
 }

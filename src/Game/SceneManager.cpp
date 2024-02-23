@@ -1180,7 +1180,7 @@ u32 CSceneManager::fn_8008B058(s32 idx) {
 
 void CSceneManager::fn_8008B068(void) {
     for (int i = 0; i < (s32)ARRAY_LENGTH(unk04); i++) {
-        unk04[i] = -1;
+        unk04[i] = EScene_Invalid;
     }
 }
 

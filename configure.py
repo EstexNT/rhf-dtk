@@ -189,6 +189,7 @@ cflags_gameutil = [
     "-str readonly",
     "-use_lmw_stmw on",
     "-func_align 4",
+    "-ipa file",
 ]
 
 

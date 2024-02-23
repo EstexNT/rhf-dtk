@@ -46,21 +46,10 @@ void CController::_0C(void) {
 
 void CController::_10(void) {
     u32 temp_r30 = unk1338;
-    unk10 = WPADProbe(unk04, &unk0C);
-    unk08 = KPADRead(unk04, unk18, ARRAY_LENGTH(unk18));
-    KPADGetUnifiedWpadStatus(unk04, unkF18, unk08);
-    do801D4EA4(temp_r30);
+    fn_801D4DDC();
+    fn_801D4E38(temp_r30);
     unk1368 = 0;
-    if (unk133C) {
-        unk1366 = 0;
-    }
-    if (temp_r30 == unk1338) {
-        unk1366++;
-        if ((unk1366 == unk1364) || (unk1366 == (unk1364 + unk1365))) {
-            unk1368 = unk1338;
-            unk1366 = unk1364;
-        }
-    }
+    fn_801D4F74(temp_r30);
     fn_801D4FD8();
 
     KPADSetPosParam(unk04, .05f, .8f);

@@ -59,6 +59,7 @@ void CLayoutManager::_20(s32 arg1) {
     unk41 = 0;
 }
 
+
 // TODO: order of ArcResourceLink funcs here
 
 void CLayoutManager::_24(s32 arg1, const char *arg2) {
@@ -121,8 +122,7 @@ void CLayoutManager::_18(void) {
 }
 
 void CLayoutManager::_1C(void) {
-    GXSetCullMode(GX_CULL_NONE);
-    GXSetZMode(FALSE, GX_NEVER, FALSE);
+    fn_801D6D78();
     for (int i = 0; i < unk51; i++) {
         if (unk54[i]->getUnk11()) {
             unk54[i]->_1C(unk4C);

@@ -3,7 +3,7 @@
 
 #include <revolution/types.h>
 #include <revolution/MEM.h>
-#include <nw4r/ut/rect.h>
+#include <nw4r/ut/Rect.h>
 
 namespace nw4r {
 namespace lyt {
