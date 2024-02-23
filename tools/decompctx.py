@@ -18,6 +18,9 @@ script_dir = os.path.dirname(os.path.realpath(__file__))
 root_dir = os.path.abspath(os.path.join(script_dir, ".."))
 src_dir = os.path.join(root_dir, "src")
 include_dir = os.path.join(root_dir, "include")
+stl_dir = os.path.join(include_dir, "stl")
+game_dir = os.path.join(src_dir, "Game")
+gameutil_dir = os.path.join(src_dir, "GameUtil")
 
 include_pattern = re.compile(r'^#include\s*[<"](.+?)[>"]$')
 guard_pattern = re.compile(r'^#ifndef\s+(.*)$')
@@ -27,11 +30,22 @@ defines = set()
 def import_h_file(in_file: str, r_path: str) -> str:
     rel_path = os.path.join(root_dir, r_path, in_file)
     inc_path = os.path.join(include_dir, in_file)
+    stl_path = os.path.join(stl_dir, in_file)
+    game_path = os.path.join(game_dir, in_file)
+    gameutil_path = os.path.join(gameutil_dir, in_file)
     if os.path.exists(rel_path):
       return import_c_file(rel_path)
     elif os.path.exists(inc_path):
       return import_c_file(inc_path)
+    elif os.path.exists(stl_path):
+      return import_c_file(stl_path)
+    elif os.path.exists(game_path):
+      return import_c_file(game_path)
+    elif os.path.exists(gameutil_path):
+      return import_c_file(gameutil_path)
     else:
+      print(rel_path)
+      print(inc_path)
       print("Failed to locate", in_file)
       exit(1)
 

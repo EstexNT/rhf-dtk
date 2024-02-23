@@ -23,6 +23,8 @@ public:
     CExScene(void);
     void fn_8000818C(void);
 
+    void fn_80008A20(void);
+
 private:
 
     u32 unk10;

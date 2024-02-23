@@ -1,6 +1,6 @@
 #ifndef RVL_SDK_KPAD_H
 #define RVL_SDK_KPAD_H
-#include <types.h>
+#include <revolution/types.h>
 #include <revolution/MTX.h>
 #include <revolution/WPAD.h>
 #ifdef __cplusplus

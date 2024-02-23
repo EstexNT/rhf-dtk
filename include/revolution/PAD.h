@@ -1,6 +1,6 @@
 #ifndef RVL_SDK_PAD_H
 #define RVL_SDK_PAD_H
-#include <types.h>
+#include <revolution/types.h>
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -38,6 +38,11 @@ extern "C" {
 #define PAD_ERR_NO_CONTROLLER -1
 #define PAD_ERR_NOT_READY -2
 #define PAD_ERR_TRANSFER -3
+
+#define PADButtonDown(buttonLast, button) ((((buttonLast) ^ (button)) & (button)))
+
+#define PADButtonUp(buttonLast, button) ((((buttonLast) ^ (button)) & (buttonLast)))
+
 
 typedef struct PADStatus {
     u16 button;

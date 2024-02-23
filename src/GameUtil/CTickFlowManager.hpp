@@ -11,7 +11,7 @@ public:
     virtual ~CTickFlowManager(void);
 
     void fn_801E1E4C(void);
-    void fn_801E1CC0(u32 *tickflow, f32 initRest = 0.0f); // TODO: proper type for tickflow
+    void fn_801E1CC0(u8 *tickflow, f32 initRest = 0.0f); // TODO: proper type for tickflow
 
     u8 getUnk6D(void) {
         return unk6D;

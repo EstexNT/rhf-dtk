@@ -5,6 +5,7 @@
 #include <revolution/OS.h>
 #include <revolution/MEM.h>
 #include <revolution/PAD.h>
+#include <revolution/KPAD.h>
 #include "TSingleton.hpp"
 #include "CLayout.hpp"
 
@@ -80,6 +81,16 @@ public:
         }
         fn_801D4EA4(temp, arg0);
     }
+    
+    u32 getUnk133C(void) {
+        return unk133C;
+    }
+    u32 getUnk1340(void) {
+        return unk1340;
+    }
+    u32 getUnk1368(void) {
+        return unk1368;
+    }
 private:
 
     static void fn_801D5830(s32, s32); // WPADCallback
@@ -154,11 +165,23 @@ public:
     void setUnk08(PADStatus *arg0) {
         unk08 = arg0;
     }
+    PADStatus *getUnk08(void) {
+        return unk08;
+    }
     void setUnk0C(PADStatus *arg0) {
         unk0C = arg0;
     }
-
+    PADStatus *getUnk0C(void) {
+        return unk0C;
+    }
+    u32 getUnk14(void) {
+        return unk14;
+    }
+    bool unkInputCheck(u32 mask) {
+        return (((unk08->err == PAD_ERR_NONE)) && (PADButtonDown(unk0C->button, unk08->button) & mask));
+    }
 private:
+
     s32 unk04;
     PADStatus *unk08;
     PADStatus *unk0C;

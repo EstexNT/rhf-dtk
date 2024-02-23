@@ -1093,12 +1093,12 @@ void CSceneManager::fn_8008A82C(eSceneID sceneID) {
 extern "C" bool fn_80009FB4(void);
 
 // TODO: migrate tickflow into respective files
-extern u32 lbl_80253E18[];
-extern u32 lbl_8027C3E8[];
-extern u32 lbl_8027C424[];
-extern u32 lbl_8027C460[];
-extern u32 lbl_8027C49C[];
-extern u32 lbl_80256F30[];
+extern u8 lbl_80253E18[];
+extern u8 lbl_8027C3E8[];
+extern u8 lbl_8027C424[];
+extern u8 lbl_8027C460[];
+extern u8 lbl_8027C49C[];
+extern u8 lbl_80256F30[];
 
 void CSceneManager::fn_8008A8D8(void) {
     gTickFlowManager->fn_801E1E4C();
