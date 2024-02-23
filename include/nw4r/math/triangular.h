@@ -1,5 +1,5 @@
-#ifndef NW4R_MATH_MATH_TRIANGULAR_H
-#define NW4R_MATH_MATH_TRIANGULAR_H
+#ifndef NW4R_MATH_TRIANGULAR_H
+#define NW4R_MATH_TRIANGULAR_H
 
 #include <revolution/types.h>
 

@@ -2,7 +2,7 @@
 #include <revolution/PAD.h>
 #include <revolution/KPAD.h>
 #include <revolution/WPAD.h>
-#include <nw4r/math/math_triangular.h>
+#include <nw4r/math/triangular.h>
 #include "Controller.hpp"
 #include "Mem.hpp"
 #include "CTickFlowManager.hpp"
