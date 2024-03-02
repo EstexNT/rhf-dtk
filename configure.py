@@ -169,7 +169,8 @@ cflags_game = [
     *cflags_base,
     "-RTTI on",
     "-str readonly",
-    "-func_align 4", 
+    "-func_align 4",
+    "-enc mb",
 ]
 
 # Metrowerks library flags

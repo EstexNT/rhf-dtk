@@ -40,6 +40,9 @@ private:
     s32 unk0C;
     u8 unk10;
     u8 unk11;
+    u8 unk12;
+    f32 unk14;
+    f32 unk18;
 };
 
 #endif

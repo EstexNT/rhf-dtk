@@ -3,7 +3,11 @@
 
 #include <revolution/types.h>
 #include <revolution/MEM.h>
+#include <nw4r/ut/LinkList.h>
 #include <nw4r/ut/Rect.h>
+#include <nw4r/lyt/animation.h>
+#include <nw4r/lyt/pane.h>
+#include <nw4r/lyt/group.h>
 
 namespace nw4r {
 namespace lyt {
@@ -13,15 +17,21 @@ public:
 
     static MEMAllocator *mspAllocator;
 
-    Layout(void);
+    Layout();
+    virtual ~Layout();
 
-    ut::Rect GetLayoutRect(void) const;
-private:
+    ut::Rect GetLayoutRect() const;
+    Pane *GetRootPane() {
+        return mpRootPane;
+    }
 
-    u8 pad00[0x20];
+protected:
+
+    ut::LinkList<AnimTransform, offsetof(AnimTransform, mLink)> mAnimTransList;
+    Pane *mpRootPane;
+    GroupContainer *mpGroupContainer;
+    Size mLayoutSize;
 };
-
-//MEMAllocator *Layout::mspAllocator;
 
 }
 }

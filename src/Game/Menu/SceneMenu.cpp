@@ -1,5 +1,6 @@
 #include "Menu/SceneMenu.hpp"
 #include <string.h>
+#include <nw4r/lyt/textBox.h>
 #include "Mem.hpp"
 #include "CFileManager.hpp"
 #include "MessageManager.hpp"
@@ -71,14 +72,22 @@ public:
         setUnk0C(0);
     }
 
+    nw4r::lyt::TextBox *getUnk1C(void) {
+        return unk1C;
+    }
+    nw4r::lyt::TextBox *getUnk20(void) {
+        return unk20;
+    }
+    
 
-    virtual ~CMenuLayout();
+    virtual ~CMenuLayout(void);
     virtual void _10(void);
     virtual void _14(void);
     virtual void _20(void);
 private:
 
-    u8 pad14[0x10];
+    nw4r::lyt::TextBox *unk1C;
+    nw4r::lyt::TextBox *unk20;
 };
 }
 
@@ -219,6 +228,7 @@ extern "C" wchar_t *wcscat(wchar_t *, const wchar_t *); // TODO: move to a prope
 extern wchar_t lbl_80329980[512];
 extern wchar_t lbl_8032A180[16];
 
+// TODO: the utf-16 text generated here is incorrect because of wibo things
 void CSceneMenu::fn_800077A8(u8 arg1) {
     lbl_80320143 = arg1;
     s32 temp_r26 = 20;
@@ -232,12 +242,29 @@ void CSceneMenu::fn_800077A8(u8 arg1) {
     wcscat(lbl_80329980, L"\n");
     for (int i = 0; i < temp_r26; i++, tempdiv++) {
         swprintf(lbl_8032A180, sizeof(lbl_8032A180), L"%03d : ", tempdiv);
-        wcscat(lbl_80329980, ((tempdiv * 20) == lbl_80320143) ? L"→" : L" ");
+        wcscat(lbl_80329980, ((tempdiv * 20) == lbl_80320143) ? L"→" : L"0");
         wcscat(lbl_80329980, lbl_8032A180);
         wcscat(lbl_80329980, lbl_801F8460[tempdiv].unk0);
         wcscat(lbl_80329980, L"\n");
     }
-    // TODO: keep going
+    CMenuLayout *menuLayout = gLayoutManager->getLayout<CMenuLayout>(0);
+    if (!lbl_80329980) {
+        menuLayout->getUnk1C()->SetVisible(false);
+    } else {
+        menuLayout->getUnk1C()->SetString(lbl_80329980);
+        menuLayout->getUnk1C()->SetVisible(true);
+    }
+    swprintf(lbl_80329980, sizeof(lbl_80329980), L"");
+    wcscat(lbl_80329980, L"<操作説明、コメント>\n");
+    wcscat(lbl_80329980, lbl_801F8460[lbl_80320143].unkC);
+    CMenuLayout *menuLayout1 = gLayoutManager->getLayout<CMenuLayout>(0);
+    if (!lbl_80329980) {
+        menuLayout1->getUnk20()->SetVisible(false);
+    } else {
+        menuLayout1->getUnk20()->SetString(lbl_80329980);
+        menuLayout1->getUnk20()->SetVisible(true);
+    }
+    gSoundManager->fn_801E4F60(0x116);
 }
 
 void CMenuLayout::_14(void) {

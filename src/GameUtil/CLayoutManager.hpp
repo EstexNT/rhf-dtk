@@ -51,6 +51,10 @@ public:
     void registerLayout(void) {
         fn_801D6B2C(new T);
     }
+    template <typename T>
+    T *getLayout(u8 idx) {
+        return static_cast<T *>(fn_801D6C50(idx));
+    }
 private:
 
     u8 *unk04;
