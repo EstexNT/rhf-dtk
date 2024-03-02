@@ -15,12 +15,15 @@
 #include "SaveData.hpp"
 #include "CGameManager.hpp"
 
+const char msgTest_brlyt[] = "msgTest.brlyt";
+static const char *brlytFiles[] = {msgTest_brlyt, 0};
+
 static u8 lbl_80320140;
 static u8 lbl_80320141;
 static u8 lbl_80320142;
 static u8 lbl_80320143;
 
-const struct {
+const struct DebugMenuEntry {
     wchar_t *unk0;
     void *unk4;
     u8 *unk8;
@@ -228,7 +231,7 @@ extern "C" wchar_t *wcscat(wchar_t *, const wchar_t *); // TODO: move to a prope
 extern wchar_t lbl_80329980[512];
 extern wchar_t lbl_8032A180[16];
 
-// TODO: the utf-16 text generated here is incorrect because of wibo things
+// TODO: wibo bork on utf-16
 void CSceneMenu::fn_800077A8(u8 arg1) {
     lbl_80320143 = arg1;
     s32 temp_r26 = 20;
@@ -240,9 +243,11 @@ void CSceneMenu::fn_800077A8(u8 arg1) {
     swprintf(lbl_80329980, sizeof(lbl_80329980), L"");
     wcscat(lbl_80329980, unk34);
     wcscat(lbl_80329980, L"\n");
+    tempdiv *= 20;
     for (int i = 0; i < temp_r26; i++, tempdiv++) {
+        // TODO: reg weirdness here
         swprintf(lbl_8032A180, sizeof(lbl_8032A180), L"%03d : ", tempdiv);
-        wcscat(lbl_80329980, ((tempdiv * 20) == lbl_80320143) ? L"→" : L"0");
+        wcscat(lbl_80329980, (tempdiv == lbl_80320143) ? L"→" : L"　");
         wcscat(lbl_80329980, lbl_8032A180);
         wcscat(lbl_80329980, lbl_801F8460[tempdiv].unk0);
         wcscat(lbl_80329980, L"\n");
@@ -272,7 +277,22 @@ void CMenuLayout::_14(void) {
 }
 
 void CMenuLayout::_10(void) {
-
+    u32 size;
+    buildLayout(gLayoutManager->getUnk38()->GetResource(0, brlytFiles[0], &size), gLayoutManager->getUnk38());
+    gMessageManager->fn_80088474(getLayout()->GetRootPane());
+    unk1C = static_cast<nw4r::lyt::TextBox *>(getLayout()->GetRootPane()->FindPaneByName("T_Title"));
+    unk20 = static_cast<nw4r::lyt::TextBox *>(getLayout()->GetRootPane()->FindPaneByName("T_Comment"));
+    nw4r::math::VEC3 titleTranslate = unk1C->GetTranslate();
+    nw4r::math::VEC3 commentTranslate = unk20->GetTranslate();
+    titleTranslate.y -= 25.f;
+    commentTranslate.y -= 25.f;
+    unk1C->SetScale(nw4r::math::VEC2(.9f, .9f));
+    unk20->SetScale(nw4r::math::VEC2(.9f, .9f));
+    unk1C->SetTranslate(titleTranslate);
+    unk20->SetTranslate(commentTranslate);
+    fn_801D9B10();
+    unk1C->SetVisible(false);
+    unk20->SetVisible(false);
 }
 
 CMenuLayout::~CMenuLayout(void) {

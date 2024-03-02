@@ -7,6 +7,7 @@
 #include <nw4r/math/types.h>
 #include <nw4r/lyt/drawInfo.h>
 #include <nw4r/ut/Color.h>
+#include <nw4r/lyt/material.h>
 
 namespace nw4r {
 namespace lyt {
@@ -40,6 +41,18 @@ public:
     void SetVisible(bool bVisible) {
         detail::SetBit(&mFlag, 0, bVisible);
     }
+    const math::VEC3 &GetTranslate() const {
+        return mTranslate;
+    }
+    void SetTranslate(const math::VEC3 &value) {
+        mTranslate = value;
+    }
+    void SetScale(const math::VEC2 &value) {
+        mScale = value;
+    }
+    void SetSize(const Size &value) {
+        mSize = value;
+    }
     
     virtual const ut::Color GetVtxColor(u32 idx) const;
     virtual void SetVtxColor(u32 idx, ut::Color value);
@@ -48,7 +61,7 @@ public:
     virtual u8 GetVtxColorElement(u32 idx) const;
     virtual void SetVtxColorElement(u32 idx, u8 value);
     virtual Pane *FindPaneByName(const char *findName, bool bRecursive = true);
-    virtual void *FindMaterialByName(const char *findName, bool bRecursive = true); // TODO: Material *
+    virtual Material *FindMaterialByName(const char *findName, bool bRecursive = true);
     virtual void BindAnimation(AnimTransform *pAnimTrans, bool bRecursive = true, bool bDisable = false);
     virtual void UnbindAnimation(AnimTransform *pAnimTrans,  bool bRecursive = true);
     virtual void UnbindAllAnimation(bool bRecursive = true);
@@ -58,8 +71,8 @@ public:
     virtual void SetAnimationEnable(AnimTransform *pAnimTrans, bool bEnable, bool bRecursive = true);
     virtual void SetAnimationEnable(const void *animRes, bool bEnable, bool bRecursive = true); // TODO: const AnimResource &
     virtual u8 GetMaterialNum() const;
-    virtual void *GetMaterial() const; // TODO: Material *
-    virtual void *GetMaterial(u32 idx) const; // TODO: Material *
+    virtual Material *GetMaterial() const;
+    virtual Material *GetMaterial(u32 idx) const;
 protected:
 
     virtual void LoadMtx(const DrawInfo &drawInfo);
@@ -67,7 +80,7 @@ protected:
     Pane *mpParent;
     ut::LinkList<Pane, offsetof(detail::PaneBase, mLink)> mChildList;
     ut::LinkList<AnimationLink, offsetof(AnimationLink, mLink)> mAnimList;
-    void *mpMaterial; // TODO: class Material *
+    Material *mpMaterial;
     math::VEC3 mTranslate;
     math::VEC3 mRotate;
     math::VEC2 mScale;

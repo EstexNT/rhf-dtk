@@ -8,6 +8,7 @@
 #include <nw4r/lyt/animation.h>
 #include <nw4r/lyt/pane.h>
 #include <nw4r/lyt/group.h>
+#include <nw4r/lyt/arcResourceAccessor.h>
 
 namespace nw4r {
 namespace lyt {
@@ -19,6 +20,7 @@ public:
 
     Layout();
     virtual ~Layout();
+    virtual bool Build(const void *lytResBuf, ResourceAccessor *pResAcsr);
 
     ut::Rect GetLayoutRect() const;
     Pane *GetRootPane() {

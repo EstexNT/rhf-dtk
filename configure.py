@@ -170,7 +170,7 @@ cflags_game = [
     "-RTTI on",
     "-str readonly",
     "-func_align 4",
-    "-enc mb",
+    "-enc multibyte",
 ]
 
 # Metrowerks library flags
@@ -225,6 +225,7 @@ config.libs = [
         "mw_version": config.linker_version,
         "cflags": cflags_game,
         "host": False,
+        "shiftjis": False,
         "objects": [
             Object(NonMatching, "Game/Menu/SceneMenu.cpp"),
             Object(NonMatching, "Game/ExScene.cpp"),

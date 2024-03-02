@@ -9,6 +9,16 @@ namespace nw4r {
 namespace lyt {
 
 struct Size {
+    Size() : width(0), height(0) {
+
+    }
+    Size(f32 aWidth, f32 aHeight) : width(aWidth), height(aHeight) {
+
+    }
+    Size(const Size &other) : width(other.width), height(other.height) {
+
+    }
+    
     f32 width;
     f32 height;
 };

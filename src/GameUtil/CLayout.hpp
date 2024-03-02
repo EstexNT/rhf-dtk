@@ -21,8 +21,13 @@ public:
     
     CLayout(void);
 
+    void fn_801D9B10(void);
+
     nw4r::lyt::Layout *getLayout(void) {
         return unk04;
+    }
+    void buildLayout(const void *buf, nw4r::lyt::ResourceAccessor *resAccessor) {
+        getLayout()->Build(buf, resAccessor);
     }
     void setUnk0C(s32 arg0) {
         unk0C = arg0;

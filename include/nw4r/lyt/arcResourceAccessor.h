@@ -46,7 +46,7 @@ public:
 
     MultiArcResourceAccessor();
     virtual ~MultiArcResourceAccessor();
-    virtual void *GetResource(u32, const char *, u32 *);
+    virtual void *GetResource(u32 resType, const char *name, u32 *pSize = 0);
     virtual void *GetFont(const char *);
 
     void RegistFont(FontRefLink *pLink);

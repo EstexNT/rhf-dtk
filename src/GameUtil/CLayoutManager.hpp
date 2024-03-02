@@ -55,6 +55,9 @@ public:
     T *getLayout(u8 idx) {
         return static_cast<T *>(fn_801D6C50(idx));
     }
+    nw4r::lyt::MultiArcResourceAccessor *getUnk38(void) {
+        return unk38;
+    }
 private:
 
     u8 *unk04;
