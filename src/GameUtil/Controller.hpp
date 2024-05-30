@@ -91,6 +91,9 @@ public:
     u32 getUnk1368(void) {
         return unk1368;
     }
+    bool unk136CCheck(void) {
+        return unk136C && !unk136D;
+    }
 private:
 
     static void fn_801D5830(s32, s32); // WPADCallback

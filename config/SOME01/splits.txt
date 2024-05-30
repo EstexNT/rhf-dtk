@@ -230,6 +230,11 @@ GameUtil/CInputChecker.cpp:
 
 GameUtil/CInputCheckManager.cpp:
 	.text       start:0x801E8118 end:0x801E9D90
+	.rodata     start:0x802E4FE0 end:0x802E5098
+	.data       start:0x8031E980 end:0x8031E9B8
+	.sdata      start:0x80320090 end:0x803200A0
+	.sdata2     start:0x80329740 end:0x80329770
+	.bss        start:0x803D5D78 end:0x803D5D88
 
 GameUtil/CTimeRatio.cpp:
 	.text       start:0x801E9D90 end:0x801EAA7C
