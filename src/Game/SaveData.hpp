@@ -10,6 +10,8 @@ struct SaveDataFile {
     void fn_80077C0C(s8);
     
     s8 fn_80077DF8(void);
+    u8 fn_80077E08(void);
+    void fn_800786E4(void);
 };
 
 class CSaveData : public TSingleton<CSaveData> {
@@ -21,6 +23,7 @@ public:
     CSaveData();
 
     SaveDataFile *fn_80078F4C(void);
+    void fn_80078F68(void);
 };
 
 extern CSaveData *gSaveData;

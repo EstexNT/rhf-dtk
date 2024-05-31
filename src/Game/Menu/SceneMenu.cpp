@@ -4,7 +4,6 @@
 #include "Mem.hpp"
 #include "CFileManager.hpp"
 #include "MessageManager.hpp"
-#include "CLayout.hpp"
 #include "SceneManager.hpp"
 #include "CanvasManager.hpp"
 #include "CLayoutManager.hpp"
@@ -30,7 +29,10 @@ const struct DebugMenuEntry {
     wchar_t *unkC;
 } lbl_801F8460[106];
 
-u8 *lbl_802E5740[9];
+u8 *lbl_802E5740[9] = {
+    (u8 *)1, 
+    // TODO
+};
 
 CExScene *CSceneMenu::create(u16 arg0) {
     fn_801D369C(arg0);
@@ -244,7 +246,8 @@ void CSceneMenu::fn_800077A8(u8 arg1) {
     wcscat(lbl_80329980, unk34);
     wcscat(lbl_80329980, L"\n");
     tempdiv *= 20;
-    for (int i = 0; i < temp_r26; i++, tempdiv++) {
+
+    for (int i = 0; i < temp_r26; tempdiv++, i++) {
         // TODO: reg weirdness here
         swprintf(lbl_8032A180, sizeof(lbl_8032A180), L"%03d : ", tempdiv);
         wcscat(lbl_80329980, (tempdiv == lbl_80320143) ? L"→" : L"　");
@@ -252,6 +255,7 @@ void CSceneMenu::fn_800077A8(u8 arg1) {
         wcscat(lbl_80329980, lbl_801F8460[tempdiv].unk0);
         wcscat(lbl_80329980, L"\n");
     }
+
     CMenuLayout *menuLayout = gLayoutManager->getLayout<CMenuLayout>(0);
     if (!lbl_80329980) {
         menuLayout->getUnk1C()->SetVisible(false);
@@ -262,12 +266,13 @@ void CSceneMenu::fn_800077A8(u8 arg1) {
     swprintf(lbl_80329980, sizeof(lbl_80329980), L"");
     wcscat(lbl_80329980, L"<操作説明、コメント>\n");
     wcscat(lbl_80329980, lbl_801F8460[lbl_80320143].unkC);
-    CMenuLayout *menuLayout1 = gLayoutManager->getLayout<CMenuLayout>(0);
+
+    menuLayout = gLayoutManager->getLayout<CMenuLayout>(0);
     if (!lbl_80329980) {
-        menuLayout1->getUnk20()->SetVisible(false);
+        menuLayout->getUnk20()->SetVisible(false);
     } else {
-        menuLayout1->getUnk20()->SetString(lbl_80329980);
-        menuLayout1->getUnk20()->SetVisible(true);
+        menuLayout->getUnk20()->SetString(lbl_80329980);
+        menuLayout->getUnk20()->SetVisible(true);
     }
     gSoundManager->fn_801E4F60(0x116);
 }

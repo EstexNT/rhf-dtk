@@ -29,6 +29,14 @@ Game/ExScene.cpp:
 	.sbss       start:0x80320198 end:0x803201CC
 	.bss        start:0x8032A1A0 end:0x8032A278
 
+Game/Prologue/ScenePrologue.cpp:
+	.text       start:0x8000AD34 end:0x8000B1D4
+	.rodata     start:0x801F8D98 end:0x801F8E58
+	.data       start:0x802E5920 end:0x802E5960
+	.sdata      start:0x8031EF68 end:0x8031EF70
+	.sbss       start:0x80320238 end:0x80320240
+	.bss        start:0x8032A278 end:0x8032A378
+
 Game/SceneManager.cpp:
 	.text       start:0x80089DF0 end:0x8008B844
 	.rodata     start:0x80255710 end:0x80255888

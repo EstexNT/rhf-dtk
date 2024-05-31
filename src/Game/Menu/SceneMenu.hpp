@@ -2,6 +2,7 @@
 #define GAME_MENU_SCENEMENU_HPP
 
 #include <revolution/types.h>
+#include "CLayout.hpp"
 #include "ExScene.hpp"
 
 class CSceneMenu : public CExScene {
