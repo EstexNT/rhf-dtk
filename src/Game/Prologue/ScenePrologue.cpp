@@ -11,7 +11,7 @@
 
 static char lbl_8032A278[0x100];
 static u32 lbl_80320238;
-u32 lbl_8032023C;
+s32 lbl_8032023C;
 
 CExScene *CScenePrologue::create(u16 arg0) {
     fn_801D369C(arg0);

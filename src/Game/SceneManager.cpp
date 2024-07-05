@@ -4,6 +4,7 @@
 
 
 #include "Menu/SceneMenu.hpp"
+#include "Prologue/ScenePrologue.hpp"
 
 
 CSceneManager::CSceneManager(void) {
@@ -93,7 +94,6 @@ extern "C" void fn_800A0B60(void);
 extern "C" void fn_80092098(void);
 extern "C" void fn_8000EC28(void);
 extern "C" void fn_800A4674(void);
-extern "C" void fn_8000AD34(void);
 extern "C" void fn_8000B4B4(void);
 extern "C" void fn_8000C2E4(void);
 extern "C" void fn_800CF810(void);
@@ -354,7 +354,7 @@ void CSceneManager::fn_80089FE0(eSceneID sceneID, u32 *tickflow) {
             fn = (void *)fn_800A4674;
             break;
         case EScene_37:
-            fn = (void *)fn_8000AD34;
+            fn = (void *)CScenePrologue::create;
             break;
         case EScene_38:
             fn = (void *)fn_8000B4B4;
@@ -723,7 +723,6 @@ extern "C" void fn_800A0BC4(void);
 extern "C" void fn_80092104(void);
 extern "C" void fn_8000EC8C(void);
 extern "C" void fn_800A46D8(void);
-extern "C" void fn_8000AD98(void);
 extern "C" void fn_8000B518(void);
 extern "C" void fn_8000C348(void);
 extern "C" void fn_800CF884(void);
@@ -902,7 +901,7 @@ void CSceneManager::fn_8008A704(eSceneID sceneID) {
             fn_800A46D8();
             break;
         case EScene_37:
-            fn_8000AD98();
+            CScenePrologue::fn_8000AD98();
             break;
         case EScene_38:
             fn_8000B518();

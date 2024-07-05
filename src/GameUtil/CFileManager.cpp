@@ -317,5 +317,17 @@ bool CFileManager::fn_801D47F8(void *in, void *out, u32 arg2, u32 size, s32 arg4
 }
 
 void CFileManager::fn_801D49D4(void) {
-    checkDrive();
+    s32 driveStatus = DVDGetDriveStatus();
+    switch (driveStatus) {
+        case DVD_STATE_NO_DISK:
+        case DVD_STATE_WRONG_DISK:
+        case DVD_STATE_RETRY:
+            if (unk34C) {
+                unk34C();
+            }
+            fn_801D7538(driveStatus);
+            if (unk350) {
+                unk350();
+            }
+    }
 }

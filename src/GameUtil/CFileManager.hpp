@@ -65,21 +65,6 @@ public:
         }
         return temp_r6;
     }
-    inline void checkDrive(void) {
-        s32 driveStatus = DVDGetDriveStatus();
-        switch (driveStatus) {
-            case DVD_STATE_NO_DISK:
-            case DVD_STATE_WRONG_DISK:
-            case DVD_STATE_RETRY:
-                if (unk34C) {
-                    unk34C();
-                }
-                fn_801D7538(driveStatus);
-                if (unk350) {
-                    unk350();
-                }
-        }
-    }
 private:
 
     static char lbl_803D5C48[64];
