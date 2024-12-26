@@ -16,6 +16,14 @@ public:
     void removeCurrent(void);
     void removeAll(void);
 
+    CList *getNext(void) {
+        return mNext;
+    }
+    CList *getPrev(void) {
+        return mPrev;
+    }
+
+private:
     CList *mNext;
     CList *mPrev;
 };

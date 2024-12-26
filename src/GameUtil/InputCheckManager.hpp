@@ -90,12 +90,12 @@ private:
 
     void resetUnk0C(void) {
         for (CInputChecker *cur = unk0C, *next; cur != 0; cur = next) {
-            next = (CInputChecker *)cur->mNext;
+            next = cur->getNext();
             if (!cur->_18()) {
                 continue;
             }
             if (cur == unk0C) {
-                unk0C = (CInputChecker *)cur->mNext;
+                unk0C = cur->getNext();
             }
             cur->removeCurrent();
         }

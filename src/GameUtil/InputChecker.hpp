@@ -7,6 +7,13 @@
 class CInputChecker : public CList {
 public:
 
+    CInputChecker *getNext(void) {
+        return static_cast<CInputChecker *>(this->CList::getNext());
+    }
+    CInputChecker *getPrev(void) {
+        return static_cast<CInputChecker *>(this->CList::getPrev());
+    }
+
     virtual ~CInputChecker(void);
     virtual void finalInsert(void);
     virtual void finalDestroy(void);
@@ -43,7 +50,7 @@ public:
     }
     
 
-protected:
+private:
 
     u8 pad0C[0x50-0xc];
     u8 unk50;

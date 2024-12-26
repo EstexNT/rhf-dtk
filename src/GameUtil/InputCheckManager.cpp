@@ -135,7 +135,7 @@ void CInputCheckManager::fn_801E8BD0(void) {
         u32 temp_r23 = 0;
         u32 temp_r20 = unk4A4[unk10[i].unk4];
         for (CInputChecker *cur = unk0C, *next; cur != 0; cur = next) {
-            next = static_cast<CInputChecker *>(cur->mNext);
+            next = cur->getNext();
             if (!cur->getUnk71()) {
                 if (!cur->fn_801E7E28(temp_r20)) {
                     continue;
@@ -167,7 +167,7 @@ void CInputCheckManager::fn_801E8BD0(void) {
                     continue;
                 }
                 if (cur == unk0C) {
-                    unk0C = static_cast<CInputChecker *>(cur->mNext);
+                    unk0C = cur->getNext();
                 }
                 cur->removeCurrent();
             } else {
@@ -194,7 +194,7 @@ void CInputCheckManager::fn_801E8BD0(void) {
                     continue;
                 }
                 if (cur == unk0C) {
-                    unk0C = static_cast<CInputChecker *>(cur->mNext);
+                    unk0C = cur->getNext();
                 }
                 cur->removeCurrent();
             }
