@@ -2,17 +2,17 @@
 #include <string.h>
 #include <nw4r/lyt/textBox.h>
 #include "Mem.hpp"
-#include "CFileManager.hpp"
+#include "FileManager.hpp"
 #include "MessageManager.hpp"
 #include "SceneManager.hpp"
 #include "CanvasManager.hpp"
-#include "CLayoutManager.hpp"
-#include "CSoundManager.hpp"
+#include "LayoutManager.hpp"
+#include "SoundManager.hpp"
 #include "Controller.hpp"
-#include "CCheckPointManager.hpp"
-#include "CTickFlowManager.hpp"
+#include "CheckPointManager.hpp"
+#include "TickFlowManager.hpp"
 #include "SaveData.hpp"
-#include "CGameManager.hpp"
+#include "GameManager.hpp"
 
 const char msgTest_brlyt[] = "msgTest.brlyt";
 static const char *brlytFiles[] = {msgTest_brlyt, 0};

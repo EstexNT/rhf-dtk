@@ -2,7 +2,7 @@
 #define GAMEUTIL_CTICKFLOWMANAGER_HPP
 
 #include <revolution/types.h>
-#include "TSingleton.hpp"
+#include "Singleton.hpp"
 
 class CTickFlowManager : public TSingleton<CTickFlowManager> {
 public:

@@ -5,7 +5,7 @@
 #include <nw4r/math/triangular.h>
 #include "Controller.hpp"
 #include "Mem.hpp"
-#include "CTickFlowManager.hpp"
+#include "TickFlowManager.hpp"
 
 /*
 

@@ -2,7 +2,7 @@
 #define GAME_PROLOGUE_MYLAYOUT_HPP
 
 #include <revolution/types.h>
-#include "CLayout.hpp"
+#include "Layout.hpp"
 
 namespace Prologue {
 

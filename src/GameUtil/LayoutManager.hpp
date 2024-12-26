@@ -7,8 +7,8 @@
 #include <nw4r/lyt/drawInfo.h>
 #include <nw4r/ut/ResFont.h>
 #include <nw4r/ut/ArchiveFont.h>
-#include "TSingleton.hpp"
-#include "CLayout.hpp"
+#include "Singleton.hpp"
+#include "Layout.hpp"
 
 class CLayoutManager_sub { // CFontInfo
 public:

@@ -2,7 +2,7 @@
 #define GAMEUTIL_CCELLANIMMANAGER_HPP
 
 #include <revolution/types.h>
-#include "TSingleton.hpp"
+#include "Singleton.hpp"
 
 class CCellAnimManager : public TSingleton<CCellAnimManager> {
 public:

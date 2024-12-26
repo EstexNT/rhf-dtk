@@ -1,4 +1,4 @@
-#include "CFileManager.hpp"
+#include "FileManager.hpp"
 #include <string.h>
 
 char CFileManager::lbl_803D5C48[64];

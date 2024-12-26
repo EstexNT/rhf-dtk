@@ -4,7 +4,7 @@
 #include <revolution/types.h>
 #include <nw4r/lyt/layout.h>
 #include <nw4r/lyt/drawInfo.h>
-#include "CLayoutAnimation.hpp"
+#include "LayoutAnimation.hpp"
 
 class CLayout {
 public:

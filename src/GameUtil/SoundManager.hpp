@@ -2,7 +2,7 @@
 #define GAMEUTIL_CSOUNDMANAGER_HPP
 
 #include <revolution/types.h>
-#include "TSingleton.hpp"
+#include "Singleton.hpp"
 
 class CSoundManager : public TSingleton<CSoundManager> {
 public:

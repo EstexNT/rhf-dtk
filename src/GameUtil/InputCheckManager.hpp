@@ -3,10 +3,10 @@
 
 #include <revolution/types.h>
 #include <revolution/MEM.h>
-#include "TSingleton.hpp"
-#include "CInputChecker.hpp"
-#include "CTickFlowManager.hpp"
-#include "CCheckPointManager.hpp"
+#include "Singleton.hpp"
+#include "InputChecker.hpp"
+#include "TickFlowManager.hpp"
+#include "CheckPointManager.hpp"
 
 class CInputCheckManager : public TSingleton<CInputCheckManager> {
 public:

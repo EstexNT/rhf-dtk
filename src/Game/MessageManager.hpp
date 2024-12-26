@@ -3,7 +3,7 @@
 
 #include <revolution/types.h>
 #include <nw4r/lyt/pane.h>
-#include "TSingleton.hpp"
+#include "Singleton.hpp"
 
 class CMessageManager : public TSingleton<CMessageManager> {
 public:

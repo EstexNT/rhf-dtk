@@ -1,4 +1,4 @@
-#include "CRandom.hpp"
+#include "Random.hpp"
 
 CRandom sRandom;
 

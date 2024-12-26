@@ -2,7 +2,7 @@
 #define GAME_SAVEDATA_HPP
 
 #include <revolution/types.h>
-#include "TSingleton.hpp"
+#include "Singleton.hpp"
 
 struct SaveDataFile {
     u8 pad00[0x280];

@@ -1,13 +1,13 @@
 #include "Prologue/ScenePrologue.hpp"
 #include "Prologue/MyLayout.hpp"
 #include "Mem.hpp"
-#include "CFileManager.hpp"
+#include "FileManager.hpp"
 #include "SceneManager.hpp"
 #include "SaveData.hpp"
 #include "BackupManager.hpp"
-#include "CCellAnimManager.hpp"
-#include "CLayoutManager.hpp"
-#include "CTickFlowManager.hpp"
+#include "CellAnimManager.hpp"
+#include "LayoutManager.hpp"
+#include "TickFlowManager.hpp"
 
 static char lbl_8032A278[0x100];
 static u32 lbl_80320238;

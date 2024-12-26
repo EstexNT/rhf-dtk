@@ -2,7 +2,7 @@
 #define GAMEUTIL_CINPUTCHECKER_HPP
 
 #include <revolution/types.h>
-#include "CList.hpp"
+#include "List.hpp"
 
 class CInputChecker : public CList {
 public:

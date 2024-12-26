@@ -1,6 +1,6 @@
 #include "SceneManager.hpp"
-#include "CGameManager.hpp"
-#include "CTickFlowManager.hpp"
+#include "GameManager.hpp"
+#include "TickFlowManager.hpp"
 
 
 #include "Menu/SceneMenu.hpp"

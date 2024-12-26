@@ -2,7 +2,7 @@
 #define GAMEUTIL_CSDMANAGER_HPP
 
 #include <revolution/types.h>
-#include "TSingleton.hpp"
+#include "Singleton.hpp"
 
 class CSDManager : public TSingleton<CSDManager> {
 public:

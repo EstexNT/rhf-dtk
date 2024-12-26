@@ -5,7 +5,7 @@
 #include <revolution/DVD.h>
 #include <revolution/ARC.h>
 #include "Mem.hpp"
-#include "TSingleton.hpp"
+#include "Singleton.hpp"
 
 struct CFileManager_sub {
     u8 pad00[0x44];

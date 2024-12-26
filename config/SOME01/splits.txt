@@ -153,7 +153,7 @@ GameUtil/Mem.cpp:
 	.sbss       start:0x80320F80 end:0x80320F90
 	.bss        start:0x803D5C28 end:0x803D5C48
 
-GameUtil/CFileManager.cpp:
+GameUtil/FileManager.cpp:
 	.text       start:0x801D392C end:0x801D4A54
 	.rodata     start:0x802E4AE8 end:0x802E4B28
 	.data       start:0x80315F30 end:0x80315F68
@@ -168,10 +168,10 @@ GameUtil/Controller.cpp:
 	.sbss       start:0x80320F90 end:0x80320F98
 	.sdata2     start:0x80329520 end:0x80329550
 
-GameUtil/CGraphicManager.cpp:
+GameUtil/GraphicManager.cpp:
 	.text       start:0x801D6090 end:0x801D668C
 
-GameUtil/CLayoutManager.cpp:
+GameUtil/LayoutManager.cpp:
 	.text       start:0x801D668C end:0x801D7210
 	.rodata     start:0x802E4BB0 end:0x802E4BF0
 	.data       start:0x803160A8 end:0x803160F0
@@ -179,24 +179,24 @@ GameUtil/CLayoutManager.cpp:
 	.sdata2     start:0x80329560 end:0x80329568
 	.sbss2      start:0x80329968 end:0x80329970
 
-GameUtil/CGameManager.cpp:
+GameUtil/GameManager.cpp:
 	.text       start:0x801D7210 end:0x801D83BC
 	.ctors      start:0x801F7564 end:0x801F7568
 
-GameUtil/CScene.cpp:
+GameUtil/Scene.cpp:
 	.text       start:0x801D83BC end:0x801D85BC
 
-GameUtil/CLayout.cpp:
+GameUtil/Layout.cpp:
 	.text       start:0x801D85BC end:0x801D9E40
 	.ctors      start:0x801F7568 end:0x801F756C
 	.data       start:0x803162F8 end:0x803163E0
 	.sbss       start:0x80320FA0 end:0x80320FA8
 	.sdata2     start:0x80329590 end:0x803295A8
 
-GameUtil/CLayoutAnimation.cpp:
+GameUtil/LayoutAnimation.cpp:
 	.text       start:0x801D9E40 end:0x801DA8A4
 
-GameUtil/CRandom.cpp:
+GameUtil/Random.cpp:
 	.text       start:0x801DA8A4 end:0x801DAA60
 	.ctors      start:0x801F756C end:0x801F7570
 	.data       start:0x803163F0 end:0x80316400
@@ -207,36 +207,36 @@ GameUtil/CRandom.cpp:
 GameUtil/DiscMessages.cpp:
 	.data       start:0x80316400 end:0x80316560
 
-GameUtil/CCellAnimManager.cpp:
+GameUtil/CellAnimManager.cpp:
 	.text       start:0x801DAA60 end:0x801DC188
 	.rodata     start:0x802E4C58 end:0x802E4C90
 	.data       start:0x8031E6E0 end:0x8031E728
 	.sdata      start:0x80320048 end:0x80320058
 	.sdata2     start:0x803295E0 end:0x80329618
 
-GameUtil/CCellAnim.cpp:
+GameUtil/CellAnim.cpp:
 	.text       start:0x801DC188 end:0x801DD6F4
 	.rodata     start:0x802E4C90 end:0x802E4CA0
 	.data       start:0x8031E728 end:0x8031E748
 	.sdata      start:0x80320058 end:0x80320060
 	.sdata2     start:0x80329618 end:0x80329670
 
-GameUtil/CTickFlow.cpp:
+GameUtil/TickFlow.cpp:
 	.text       start:0x801DD6F4 end:0x801DEFE4
 	.data       start:0x8031E748 end:0x8031E8B0
 	.sbss       start:0x80320FA8 end:0x80320FB0
 	.bss        start:0x803D5D38 end:0x803D5D78
 
-GameUtil/CTickFlowManager.cpp:
+GameUtil/TickFlowManager.cpp:
 	.text       start:0x801DEFE4 end:0x801E4198
 
-GameUtil/CSoundManager.cpp:
+GameUtil/SoundManager.cpp:
 	.text       start:0x801E4198 end:0x801E7B40
 
-GameUtil/CInputChecker.cpp:
+GameUtil/InputChecker.cpp:
 	.text       start:0x801E7B40 end:0x801E8118
 
-GameUtil/CInputCheckManager.cpp:
+GameUtil/InputCheckManager.cpp:
 	.text       start:0x801E8118 end:0x801E9D90
 	.rodata     start:0x802E4FE0 end:0x802E5098
 	.data       start:0x8031E980 end:0x8031E9B8
@@ -244,30 +244,30 @@ GameUtil/CInputCheckManager.cpp:
 	.sdata2     start:0x80329740 end:0x80329770
 	.bss        start:0x803D5D78 end:0x803D5D88
 
-GameUtil/CTimeRatio.cpp:
+GameUtil/TimeRatio.cpp:
 	.text       start:0x801E9D90 end:0x801EAA7C
 
-GameUtil/CList.cpp:
+GameUtil/List.cpp:
 	.text       start:0x801EAA7C end:0x801EAC38
 	.data       start:0x8031EA40 end:0x8031EA58
 
-GameUtil/CCheckPointManager.cpp:
+GameUtil/CheckPointManager.cpp:
 	.text       start:0x801EAC38 end:0x801EC2B4
 
-GameUtil/CSDManager.cpp:
+GameUtil/SDManager.cpp:
 	.text       start:0x801EC2B4 end:0x801EC3B0
 	.rodata     start:0x802E5160 end:0x802E5188
 	.data       start:0x8031EA90 end:0x8031EAC8
 	.sdata      start:0x803200D0 end:0x803200E0
 
-GameUtil/CDebugPrint.cpp:
+GameUtil/DebugPrint.cpp:
 	.text       start:0x801EC3B0 end:0x801ECEC4
 
-GameUtil/CVarParamManager.cpp:
+GameUtil/VarParamManager.cpp:
 	.text       start:0x801ECEC4 end:0x801ED6A8
 
 GameUtil/code_801ed6a8.cpp:
 	.text       start:0x801ED6A8 end:0x801ED7EC
 
-GameUtil/CDebugConsole.cpp:
+GameUtil/DebugConsole.cpp:
 	.text       start:0x801ED7EC end:0x801EDA30

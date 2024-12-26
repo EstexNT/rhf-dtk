@@ -2,8 +2,8 @@
 #define GAME_EXSCENE_HPP
 
 #include <revolution/types.h>
-#include "CScene.hpp"
-#include "CCellAnim.hpp"
+#include "Scene.hpp"
+#include "CellAnim.hpp"
 
 class CExScene : public CScene {
 public:

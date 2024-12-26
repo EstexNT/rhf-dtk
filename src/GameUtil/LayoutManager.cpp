@@ -3,8 +3,8 @@
 #include <nw4r/lyt/init.h>
 #include <nw4r/lyt/arcResourceAccessor.h>
 #include "Mem.hpp"
-#include "CLayoutManager.hpp"
-#include "CFileManager.hpp"
+#include "LayoutManager.hpp"
+#include "FileManager.hpp"
 
 const char lbl_80329968[] = "\0";
 

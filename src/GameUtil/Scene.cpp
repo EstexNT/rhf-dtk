@@ -1,7 +1,7 @@
-#include "CScene.hpp"
+#include "Scene.hpp"
 #include "Mem.hpp"
-#include "CGameManager.hpp"
-#include "CFileManager.hpp"
+#include "GameManager.hpp"
+#include "FileManager.hpp"
 
 void CScene::fn_801D83BC(void) {
     delete this;

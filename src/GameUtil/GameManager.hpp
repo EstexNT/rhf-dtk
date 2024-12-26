@@ -2,7 +2,7 @@
 #define GAMEUTIL_CGAMEMANAGER_HPP
 
 #include <revolution/types.h>
-#include "TSingleton.hpp"
+#include "Singleton.hpp"
 
 class CGameManager : public TSingleton<CGameManager> {
 public:

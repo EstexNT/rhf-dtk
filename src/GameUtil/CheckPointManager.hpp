@@ -2,7 +2,7 @@
 #define GAMEUTIL_CCHECKPOINTMANAGER_HPP
 
 #include <revolution/types.h>
-#include "TSingleton.hpp"
+#include "Singleton.hpp"
 
 class CCheckPointManager : public TSingleton<CCheckPointManager> {
 public:

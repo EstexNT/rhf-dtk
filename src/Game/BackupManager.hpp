@@ -2,7 +2,7 @@
 #define GAME_BACKUPMANAGER_HPP
 
 #include <revolution/types.h>
-#include "TSingleton.hpp"
+#include "Singleton.hpp"
 
 class CBackupManager : public TSingleton<CBackupManager> {
 public:

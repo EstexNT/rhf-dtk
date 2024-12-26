@@ -1,8 +1,8 @@
-#include "CInputCheckManager.hpp"
+#include "InputCheckManager.hpp"
 #include "Mem.hpp"
 #include "Controller.hpp"
-#include "CTickFlowManager.hpp"
-#include "CCheckPointManager.hpp"
+#include "TickFlowManager.hpp"
+#include "CheckPointManager.hpp"
 
 const u32 lbl_802E4FE0[] = {
     0x8, 0x4, 0x1, 0x2,

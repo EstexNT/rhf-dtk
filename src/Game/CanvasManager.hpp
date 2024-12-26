@@ -2,7 +2,7 @@
 #define GAME_CANVASMANAGER_HPP
 
 #include <revolution/types.h>
-#include "TSingleton.hpp"
+#include "Singleton.hpp"
 
 class CMyCanvasManager : public TSingleton<CMyCanvasManager> {
 public:

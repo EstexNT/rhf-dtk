@@ -6,8 +6,8 @@
 #include <revolution/MEM.h>
 #include <revolution/PAD.h>
 #include <revolution/KPAD.h>
-#include "TSingleton.hpp"
-#include "CLayout.hpp"
+#include "Singleton.hpp"
+#include "Layout.hpp"
 
 
 class CController {

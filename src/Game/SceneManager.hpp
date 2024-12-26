@@ -3,7 +3,7 @@
 
 #include <revolution/types.h>
 #include <revolution/OS/OSError.h>
-#include "TSingleton.hpp"
+#include "Singleton.hpp"
 
 enum eSceneID { // TODO: move this somewhere else
     EScene_0 = 0,
