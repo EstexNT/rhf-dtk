@@ -33,6 +33,9 @@ struct MTX34 : public _MTX34 {
 };
 
 struct VEC2 : public _VEC2 {
+    VEC2() {
+
+    }
     VEC2(f32 fx, f32 fy) {
         x = fx;
         y = fy;

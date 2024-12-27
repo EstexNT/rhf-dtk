@@ -19,9 +19,16 @@ public:
     CList *getNext(void) {
         return mNext;
     }
+    void setNext(CList *next) {
+        mNext = next;
+    }
     CList *getPrev(void) {
         return mPrev;
     }
+    void setPrev(CList *prev) {
+        mPrev = prev;
+    }
+
 
 private:
     CList *mNext;

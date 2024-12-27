@@ -17,7 +17,9 @@ public:
 
     void fn_801E1E4C(void);
     void fn_801E1CC0(u8 *tickflow, f32 initRest = 0.0f); // TODO: proper type for tickflow
-    f32 fn_801E2698();
+    f32 fn_801E2698(void);
+    f32 fn_801E2CA8(void);
+    bool fn_801E4178(void);
 
     u8 getUnk6D(void) {
         return unk6D;
