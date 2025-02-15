@@ -12,12 +12,14 @@
 # Append --help to see available options.
 ###
 
-import sys
 import argparse
-
+import sys
 from pathlib import Path
+from typing import Any, Dict, List
+
 from tools.project import (
     Object,
+    ProgressCategory,
     ProjectConfig,
     calculate_progress,
     generate_build,
@@ -30,106 +32,151 @@ VERSIONS = [
     "SOME01",	# 0
 ]
 
-if len(VERSIONS) > 1:
-    versions_str = ", ".join(VERSIONS[:-1]) + f" or {VERSIONS[-1]}"
-else:
-    versions_str = VERSIONS[0]
-
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "mode",
+    choices=["configure", "progress"],
     default="configure",
-    help="configure or progress (default: configure)",
+    help="script mode (default: configure)",
     nargs="?",
 )
 parser.add_argument(
+    "-v",
     "--version",
-    dest="version",
+    choices=VERSIONS,
+    type=str.upper,
     default=VERSIONS[DEFAULT_VERSION],
-    help=f"version to build ({versions_str})",
+    help="version to build",
 )
 parser.add_argument(
     "--build-dir",
-    dest="build_dir",
+    metavar="DIR",
     type=Path,
     default=Path("build"),
     help="base build directory (default: build)",
 )
 parser.add_argument(
+    "--binutils",
+    metavar="BINARY",
+    type=Path,
+    help="path to binutils (optional)",
+)
+parser.add_argument(
     "--compilers",
-    dest="compilers",
+    metavar="DIR",
     type=Path,
     help="path to compilers (optional)",
 )
 parser.add_argument(
     "--map",
-    dest="map",
     action="store_true",
     help="generate map file(s)",
 )
 parser.add_argument(
     "--debug",
-    dest="debug",
     action="store_true",
     help="build with debug info (non-matching)",
 )
 if not is_windows():
     parser.add_argument(
         "--wrapper",
-        dest="wrapper",
+        metavar="BINARY",
         type=Path,
         help="path to wibo or wine (optional)",
     )
 parser.add_argument(
-    "--build-dtk",
-    dest="build_dtk",
+    "--dtk",
+    metavar="BINARY | DIR",
     type=Path,
-    help="path to decomp-toolkit source (optional)",
+    help="path to decomp-toolkit binary or source (optional)",
+)
+parser.add_argument(
+    "--objdiff",
+    metavar="BINARY | DIR",
+    type=Path,
+    help="path to objdiff-cli binary or source (optional)",
 )
 parser.add_argument(
     "--sjiswrap",
-    dest="sjiswrap",
+    metavar="EXE",
     type=Path,
     help="path to sjiswrap.exe (optional)",
 )
 parser.add_argument(
     "--verbose",
-    dest="verbose",
     action="store_true",
     help="print verbose output",
+)
+parser.add_argument(
+    "--non-matching",
+    dest="non_matching",
+    action="store_true",
+    help="builds equivalent (but non-matching) or modded objects",
+)
+parser.add_argument(
+    "--no-progress",
+    dest="progress",
+    action="store_false",
+    help="disable progress calculation",
 )
 args = parser.parse_args()
 
 config = ProjectConfig()
-config.version = args.version.upper()
-if config.version not in VERSIONS:
-    sys.exit(f"Invalid version '{config.version}', expected {versions_str}")
+config.version = str(args.version)
 version_num = VERSIONS.index(config.version)
 
 # Apply arguments
 config.build_dir = args.build_dir
-config.build_dtk_path = args.build_dtk
+config.dtk_path = args.dtk
+config.objdiff_path = args.objdiff
+config.binutils_path = args.binutils
 config.compilers_path = args.compilers
-config.debug = args.debug
 config.generate_map = args.map
+config.non_matching = args.non_matching
 config.sjiswrap_path = args.sjiswrap
+config.progress = args.progress
 if not is_windows():
     config.wrapper = args.wrapper
+# Don't build asm unless we're --non-matching
+if not config.non_matching:
+    config.asm_dir = None
 
 # Tool versions
-config.compilers_tag = "20231018"
-config.dtk_tag = "v0.6.2"
-config.sjiswrap_tag = "v1.1.1"
-config.wibo_tag = "0.6.9"
+config.binutils_tag = "2.42-1"
+config.compilers_tag = "20240706"
+config.dtk_tag = "v1.3.0"
+config.objdiff_tag = "v2.4.0"
+config.sjiswrap_tag = "v1.2.0"
+config.wibo_tag = "0.6.11"
 
 # Project
 config.config_path = Path("config") / config.version / "config.yml"
 config.check_sha_path = Path("config") / config.version / "build.sha1"
+config.asflags = [
+    "-mgekko",
+    "--strip-local-absolute",
+    "-I include",
+    f"-I build/{config.version}/include",
+    f"--defsym BUILD_VERSION={version_num}",
+    f"--defsym VERSION_{config.version}",
+]
 config.ldflags = [
     "-fp hardware",
     "-nodefaults",
-    "-listclosure",
 ]
+if args.debug:
+    config.ldflags.append("-gdwarf-2")  # Or -gdwarf-2 for Wii linkers
+if args.map:
+    config.ldflags.append("-mapunused")
+    config.ldflags.append("-listclosure") # For Wii linkers
+
+# Use for any additional files that should cause a re-configure when modified
+config.reconfig_deps = []
+
+# Optional numeric ID for decomp.me preset
+# Can be overridden in libraries or objects
+config.scratch_preset_id = None
+
 
 cflags_base = [
     "-nodefaults",
@@ -155,14 +202,17 @@ cflags_base = [
     "-i src/GameUtil",
     "-i src/Game",
     f"-i build/{config.version}/include",
-    f"-DVERSION={version_num}",
+    f"-DBUILD_VERSION={version_num}",
+    f"-DVERSION_{config.version}",
 ]
 
 # Debug flags
-if config.debug:
-    cflags_base.extend(["-sym on", "-DDEBUG=1"])
+if args.debug:
+    # Or -sym dwarf-2 for Wii compilers
+    cflags_base.extend(["-sym dwarf-2", "-DDEBUG=1"])
 else:
     cflags_base.append("-DNDEBUG=1")
+
 
 # Actual game code 
 cflags_game = [
@@ -196,26 +246,36 @@ cflags_gameutil = [
 
 config.linker_version = "Wii/1.0"
 
-def RevolutionLib(lib_name, objects):
+# Helper function for Revolution libraries
+def RevolutionLib(lib_name: str, objects: List[Object]) -> Dict[str, Any]:
     return {
         "lib": lib_name,
-        "mw_version": config.linker_version,
+        "mw_version": "Wii/1.0",
         "cflags": cflags_base,
-        "host": False,
+        "progress_category": "sdk",
         "objects": objects,
     }
 
-def Nw4rLib(lib_name, objects):
+
+# Helper function for NW4R libraries
+def Nw4rLib(lib_name: str, objects: List[Object]) -> Dict[str, Any]:
     return {
         "lib": lib_name,
-        "mw_version": config.linker_version,
+        "mw_version": "Wii/1.0",
         "cflags": cflags_base,
-        "host": False,
+        "progress_category": "nw4r",
         "objects": objects,
     }
 
-Matching = True
-NonMatching = False
+Matching = True                   # Object matches and should be linked
+NonMatching = False               # Object does not match and should not be linked
+Equivalent = config.non_matching  # Object should be linked when configured with --non-matching
+
+
+# Object is only matching for specific versions
+def MatchingFor(*versions):
+    return config.version in versions
+
 
 config.warn_missing_config = True
 config.warn_missing_source = False
@@ -224,8 +284,8 @@ config.libs = [
         "lib": "Game", 
         "mw_version": config.linker_version,
         "cflags": cflags_game,
-        "host": False,
         "shiftjis": False,
+        "progress_category": "game",
         "objects": [
             Object(NonMatching, "Game/Menu/SceneMenu.cpp"),
             Object(NonMatching, "Game/ExScene.cpp"),
@@ -237,7 +297,7 @@ config.libs = [
         "lib": "Runtime.PPCEABI.H",
         "mw_version": config.linker_version,
         "cflags": cflags_runtime,
-        "host": False,
+        "progress_category": "runtime",  # str | List[str]
         "objects": [
             Object(NonMatching, "Runtime.PPCEABI.H/global_destructor_chain.c"),
             Object(NonMatching, "Runtime.PPCEABI.H/__init_cpp_exceptions.cpp"),
@@ -297,7 +357,7 @@ config.libs = [
         "lib": "GameUtil",
         "mw_version": config.linker_version,
         "cflags": cflags_gameutil,
-        "host": False,
+        "progress_category": "gameutil",
         "objects": [
             Object(Matching, "GameUtil/Mem.cpp"),
             Object(NonMatching, "GameUtil/FileManager.cpp"),
@@ -330,12 +390,39 @@ config.libs = [
     },
 ]
 
+# Optional callback to adjust link order. This can be used to add, remove, or reorder objects.
+# This is called once per module, with the module ID and the current link order.
+#
+# For example, this adds "dummy.c" to the end of the DOL link order if configured with --non-matching.
+# "dummy.c" *must* be configured as a Matching (or Equivalent) object in order to be linked.
+def link_order_callback(module_id: int, objects: List[str]) -> List[str]:
+    # Don't modify the link order for matching builds
+    if not config.non_matching:
+        return objects
+    if module_id == 0:  # DOL
+        return objects + ["dummy.c"]
+    return objects
+
+# Uncomment to enable the link order callback.
+# config.link_order_callback = link_order_callback
+
+
+# Optional extra categories for progress tracking
+# Adjust as desired for your project
+config.progress_categories = [
+    ProgressCategory("game", "Game Code"),
+    ProgressCategory("sdk", "SDK Code"),
+    ProgressCategory("runtime", "Runtime Code"),
+    ProgressCategory("nw4r", "NW4R Code"),
+    ProgressCategory("gameutil", "Game Utility Code"),
+]
+config.progress_each_module = args.verbose
+
 if args.mode == "configure":
     # Write build.ninja and objdiff.json
     generate_build(config)
 elif args.mode == "progress":
     # Print progress and write progress.json
-    config.progress_each_module = args.verbose
     calculate_progress(config)
 else:
     sys.exit("Unknown mode: " + args.mode)
