@@ -22,45 +22,81 @@ typedef f32 Mtx44[4][4];
 #define MTXDegToRad(a) ((a) * 0.01745329252f)
 #define MTXRadToDeg(a) ((a) * 57.29577951f)
 
-#define VECSquareMag PSVECSquareMag
-#define VECNormalize PSVECNormalize
-#define VECAdd PSVECAdd
-#define VECDotProduct PSVECDotProduct
-#define VECSquareDistance PSVECSquareDistance
-#define VECCrossProduct PSVECCrossProduct
-
-#define MTXCopy PSMTXCopy
-#define MTXConcat PSMTXConcat
-#define MTXInverse PSMTXInverse
-#define MTXTranspose PSMTXTranspose
-#define MTXIdentity PSMTXIdentity
-#define MTXScale PSMTXScale
-#define MTXRotRad PSMTXRotRad
-#define MTXTrans PSMTXTrans
-
 #define MTXRotDeg(m, axis, deg) \
     MTXRotRad(m, axis, MTXDegToRad(deg))
 
-void PSMTXIdentity(Mtx);
-void PSMTXCopy(const Mtx, Mtx);
-void PSMTXConcat(const Mtx, const Mtx, Mtx);
-void PSMTXConcatArray(const Mtx, const Mtx, Mtx, u32);
-void PSMTXTranspose(const Mtx, Mtx);
-u32 PSMTXInverse(const Mtx, Mtx);
-u32 PSMTXInvXpose(const Mtx, Mtx);
-void PSMTXRotRad(Mtx, f32, char);
-void PSMTXRotTrig(Mtx, f32, f32, char);
-void PSMTXRotAxisRad(Mtx, const Vec*, f32);
-void PSMTXTrans(Mtx, f32, f32, f32);
-void PSMTXTransApply(const Mtx, Mtx, f32, f32, f32);
-void PSMTXScale(Mtx, f32, f32, f32);
-void PSMTXScaleApply(const Mtx, Mtx, f32, f32, f32);
-void PSMTXQuat(Mtx, const Quaternion*);
+// MTX
+// C version
+void C_MTXIdentity(Mtx m);
+void C_MTXCopy(const Mtx src, Mtx dst);
+void C_MTXConcat(const Mtx a, const Mtx b, Mtx ab);
+void C_MTXConcatArray(const Mtx a, const Mtx* srcBase, Mtx* dstBase, u32 count);
+void C_MTXTranspose(const Mtx src, Mtx xPose);
+u32 C_MTXInverse(const Mtx src, Mtx inv);
+u32 C_MTXInvXpose(const Mtx src, Mtx invX);
+void C_MTXRotRad(Mtx m, char axis, f32 rad);
+void C_MTXRotTrig(Mtx m, char axis, f32 sinA, f32 cosA);
+void C_MTXRotAxisRad(Mtx m, const Vec* axis, f32 rad);
+void C_MTXTrans(Mtx m, f32 xT, f32 yT, f32 zT);
+void C_MTXTransApply(const Mtx src, Mtx dst, f32 xT, f32 yT, f32 zT);
+void C_MTXScale(Mtx m, f32 xS, f32 yS, f32 zS);
+void C_MTXScaleApply(const Mtx src, Mtx dst, f32 xS, f32 yS, f32 zS);
+void C_MTXQuat(Mtx m, const Quaternion* q);
+void C_MTXReflect(Mtx m, const Vec* p, const Vec* n);
 
-void C_MTXLookAt(Mtx, const Vec*, const Vec*, const Vec*);
-void C_MTXLightFrustum(Mtx, f32, f32, f32, f32, f32, f32, f32, f32, f32);
-void C_MTXLightPerspective(Mtx, f32, f32, f32, f32, f32, f32);
-void C_MTXLightOrtho(Mtx, f32, f32, f32, f32, f32, f32, f32, f32);
+// PS version
+void PSMTXIdentity(Mtx m);
+void PSMTXCopy(const Mtx src, Mtx dst);
+void PSMTXConcat(const Mtx a, const Mtx b, Mtx ab);
+void PSMTXConcatArray(const Mtx a, const Mtx* srcBase, Mtx* dstBase, u32 count);
+void PSMTXTranspose(const Mtx src, Mtx xPose);
+u32 PSMTXInverse(const Mtx src, Mtx inv);
+u32 PSMTXInvXpose(const Mtx src, Mtx invX);
+void PSMTXRotRad(Mtx m, char axis, f32 rad);
+void PSMTXRotTrig(Mtx m, char axis, f32 sinA, f32 cosA);
+void PSMTXRotAxisRad(Mtx m, const Vec* axis, f32 rad);
+void PSMTXTrans(Mtx m, f32 xT, f32 yT, f32 zT);
+void PSMTXTransApply(const Mtx src, Mtx dst, f32 xT, f32 yT, f32 zT);
+void PSMTXScale(Mtx m, f32 xS, f32 yS, f32 zS);
+void PSMTXScaleApply(const Mtx src, Mtx dst, f32 xS, f32 yS, f32 zS);
+void PSMTXQuat(Mtx m, const Quaternion* q);
+void PSMTXReflect(Mtx m, const Vec* p, const Vec* n);
+
+#ifdef DEBUG
+#define MTXIdentity   C_MTXIdentity
+#define MTXCopy       C_MTXCopy
+#define MTXConcat     C_MTXConcat
+#define MTXInverse    C_MTXInverse
+#define MTXTranspose  C_MTXTranspose
+#define MTXInverse    C_MTXInverse
+#define MTXInvXpose   C_MTXInvXpose
+#define MTXRotRad     C_MTXRotRad
+#define MTXRotTrig    C_MTXRotTrig
+#define MTXRotAxisRad C_MTXRotAxisRad
+#define MTXTrans      C_MTXTrans
+#define MTXTransApply C_MTXTransApply
+#define MTXScale      C_MTXScale
+#define MTXScaleApply C_MTXScaleApply
+#define MTXQuat       C_MTXQuat
+#define MTXReflect    C_MTXReflect
+#else
+#define MTXIdentity   PSMTXIdentity
+#define MTXCopy       PSMTXCopy
+#define MTXConcat     PSMTXConcat
+#define MTXInverse    PSMTXInverse
+#define MTXTranspose  PSMTXTranspose
+#define MTXInverse    PSMTXInverse
+#define MTXInvXpose   PSMTXInvXpose
+#define MTXRotRad     PSMTXRotRad
+#define MTXRotTrig    PSMTXRotTrig
+#define MTXRotAxisRad PSMTXRotAxisRad
+#define MTXTrans      PSMTXTrans
+#define MTXTransApply PSMTXTransApply
+#define MTXScale      PSMTXScale
+#define MTXScaleApply PSMTXScaleApply
+#define MTXQuat       PSMTXQuat
+#define MTXReflect    PSMTXReflect
+#endif
 
 #ifdef __cplusplus
 }
