@@ -4,6 +4,8 @@
 
 #include <revolution/VI.h>
 
+#include <nw4r/g3d.hpp>
+
 GXRenderModeObj CGraphicManager::sRenderModeObj;
 
 CGraphicManager::CGraphicManager(void) {}
@@ -15,9 +17,6 @@ CGraphicManager::~CGraphicManager(void) {
 void CGraphicManager::_10(void) {}
 
 void CGraphicManager::_08(void) {}
-
-extern "C" void G3dInit__Q24nw4r3g3dFb(bool); // TODO: move out
-extern "C" void G3dReset__Q24nw4r3g3dFv(void); // TODO: move out
 
 void CGraphicManager::_14(GXRenderModeObj *renderMode, GXColor *clearColor, u32 clearZ) {
     mScreenBlack = true;
@@ -70,7 +69,7 @@ void CGraphicManager::_14(GXRenderModeObj *renderMode, GXColor *clearColor, u32 
         VIWaitForRetrace();
     }
 
-    G3dInit__Q24nw4r3g3dFb(true);
+    nw4r::g3d::G3dInit(TRUE);
 }
 
 void CGraphicManager::fn_801D63B4(void) {
@@ -87,7 +86,7 @@ void CGraphicManager::fn_801D63B4(void) {
     GXInvalidateVtxCache();
     GXInvalidateTexAll();
 
-    G3dReset__Q24nw4r3g3dFv();
+    nw4r::g3d::G3dReset();
 }
 
 void CGraphicManager::fn_801D6478(void) {
