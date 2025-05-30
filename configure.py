@@ -312,7 +312,7 @@ config.libs = [
             Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_textBox.cpp"),
             Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_window.cpp"),
             Object(NonMatching, "revolution/hbm/nw4hbm/lyt/ut_TextWriterBase.cpp"),
-            Object(NonMatching, "revolution/hbm/nw4hbm/ut/ut_TextWriterBase.cpp"),   
+            Object(NonMatching, "revolution/hbm/nw4hbm/ut/ut_TextWriterBase.cpp"),
         ]
     ),
     Nw4rLib(
@@ -362,7 +362,7 @@ config.libs = [
             Object(Matching, "GameUtil/Mem.cpp"),
             Object(NonMatching, "GameUtil/FileManager.cpp"),
             Object(NonMatching, "GameUtil/Controller.cpp"),
-            Object(NonMatching, "GameUtil/GraphicManager.cpp"),
+            Object(Matching, "GameUtil/GraphicManager.cpp"),
             Object(NonMatching, "GameUtil/LayoutManager.cpp"),
             Object(NonMatching, "GameUtil/GameManager.cpp"),
             Object(Matching, "GameUtil/Scene.cpp"),
