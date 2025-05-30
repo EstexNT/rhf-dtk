@@ -6,6 +6,9 @@
 extern "C" {
 #endif
 
+void GXBegin(GXPrimitive prim, GXVtxFmt fmt, u16 verts);
+inline void GXEnd(void) {}
+
 void GXSetCullMode(GXCullMode mode);
 
 #ifdef __cplusplus
