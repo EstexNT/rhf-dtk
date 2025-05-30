@@ -37,7 +37,7 @@ void CGraphicManager::_14(GXRenderModeObj *renderMode, GXColor *clearColor, u32 
         GXSetCopyClear(*clearColor, clearZ);
     }
 
-    GXSetViewport(0.f, 0.f, mRenderMode->fbWidth, mRenderMode->efbHeight, 0.f, 1.f);
+    GXSetViewport(0.0f, 0.0f, mRenderMode->fbWidth, mRenderMode->efbHeight, 0.0f, 1.0f);
     GXSetScissor(0, 0, mRenderMode->fbWidth, mRenderMode->efbHeight);
 
     float yScaleFactor = GXGetYScaleFactor(mRenderMode->efbHeight, mRenderMode->xfbHeight);
@@ -66,7 +66,7 @@ void CGraphicManager::_14(GXRenderModeObj *renderMode, GXColor *clearColor, u32 
 
     VIFlush();
     VIWaitForRetrace();
-    if ((mRenderMode->tvInfo & 1)) {
+    if (mRenderMode->tvInfo & 1) {
         VIWaitForRetrace();
     }
 
@@ -78,10 +78,10 @@ void CGraphicManager::fn_801D63B4(void) {
     
     if (rmode->field_rendering != 0) {
         u32 nextField = VIGetNextField();
-        GXSetViewportJitter(0.f, 0.f, rmode->fbWidth, rmode->efbHeight, 0.f, 1.f, nextField);
+        GXSetViewportJitter(0.0f, 0.0f, rmode->fbWidth, rmode->efbHeight, 0.0f, 1.0f, nextField);
     }
     else {
-        GXSetViewport(0.f, 0.f, rmode->fbWidth, rmode->efbHeight, 0.f, 1.f);
+        GXSetViewport(0.0f, 0.0f, rmode->fbWidth, rmode->efbHeight, 0.0f, 1.0f);
     }
 
     GXInvalidateVtxCache();
