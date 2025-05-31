@@ -256,7 +256,6 @@ def RevolutionLib(lib_name: str, objects: List[Object]) -> Dict[str, Any]:
         "objects": objects,
     }
 
-
 # Helper function for NW4R libraries
 def Nw4rLib(lib_name: str, objects: List[Object]) -> Dict[str, Any]:
     return {
@@ -293,26 +292,509 @@ config.libs = [
             Object(Matching, "Game/SceneManager.cpp"),
         ],
     },
+    RevolutionLib(
+        "base",
+        [
+            Object(NonMatching, "revolution/base/PPCArch.c"),
+        ]
+    ),
+    RevolutionLib(
+        "os",
+        [
+            Object(NonMatching, "revolution/os/OS.c"),
+            Object(NonMatching, "revolution/os/OSAlarm.c"),
+            Object(NonMatching, "revolution/os/OSAlloc.c"),
+            Object(NonMatching, "revolution/os/OSArena.c"),
+            Object(NonMatching, "revolution/os/OSAudioSystem.c"),
+            Object(NonMatching, "revolution/os/OSCache.c"),
+            Object(NonMatching, "revolution/os/OSContext.c"),
+            Object(NonMatching, "revolution/os/OSError.c"),
+            Object(NonMatching, "revolution/os/OSExec.c"),
+            Object(NonMatching, "revolution/os/OSFatal.c"),
+            Object(NonMatching, "revolution/os/OSFont.c"),
+            Object(NonMatching, "revolution/os/OSInterrupt.c"),
+            Object(NonMatching, "revolution/os/OSLink.c"),
+            Object(NonMatching, "revolution/os/OSMessage.c"),
+            Object(NonMatching, "revolution/os/OSMemory.c"),
+            Object(NonMatching, "revolution/os/OSMutex.c"),
+            Object(NonMatching, "revolution/os/OSReboot.c"),
+            Object(NonMatching, "revolution/os/OSReset.c"),
+            Object(NonMatching, "revolution/os/OSRtc.c"),
+            Object(NonMatching, "revolution/os/OSSync.c"),
+            Object(NonMatching, "revolution/os/OSThread.c"),
+            Object(NonMatching, "revolution/os/OSTime.c"),
+            Object(NonMatching, "revolution/os/OSUtf.c"),
+            Object(NonMatching, "revolution/os/OSIpc.c"),
+            Object(NonMatching, "revolution/os/OSStateTM.c"),
+            Object(NonMatching, "revolution/os/__start.c"),
+            Object(NonMatching, "revolution/os/OSPlayRecord.c"),
+            Object(NonMatching, "revolution/os/OSStateFlags.c"),
+            Object(NonMatching, "revolution/os/OSNet.c"),
+            Object(NonMatching, "revolution/os/OSNandbootInfo.c"),
+            Object(NonMatching, "revolution/os/OSPlayTime.c"),
+            Object(NonMatching, "revolution/os/OSCrc.c"),
+            Object(NonMatching, "revolution/os/OSLaunch.c"),
+            Object(NonMatching, "revolution/os/__ppc_eabi_init.c"),
+        ]
+    ),
+    RevolutionLib(
+        "mtx",
+        [
+            Object(NonMatching, "revolution/mtx/mtx.c"),
+            Object(NonMatching, "revolution/mtx/mtxvec.c"),
+            Object(NonMatching, "revolution/mtx/mtx44.c"),
+            Object(NonMatching, "revolution/mtx/vec.c"),
+        ]
+    ),
+    RevolutionLib(
+        "dvd",
+        [
+            Object(NonMatching, "revolution/dvd/dvdfs.c"),
+            Object(NonMatching, "revolution/dvd/dvd.c"),
+            Object(NonMatching, "revolution/dvd/dvdqueue.c"),
+            Object(NonMatching, "revolution/dvd/dvderror.c"),
+            Object(NonMatching, "revolution/dvd/dvdidutils.c"),
+            Object(NonMatching, "revolution/dvd/dvdFatal.c"),
+            Object(NonMatching, "revolution/dvd/dvdDeviceError.c"),
+            Object(NonMatching, "revolution/dvd/dvd_broadway.c"),
+        ]
+    ),
+    RevolutionLib(
+        "vi",
+        [
+            Object(NonMatching, "revolution/vi/vi.c"),
+            Object(NonMatching, "revolution/vi/i2c.c"),
+            Object(NonMatching, "revolution/vi/vi3in1.c"),
+        ]
+    ),
+    RevolutionLib(
+        "pad",
+        [
+            Object(NonMatching, "revolution/pad/Pad.c"),
+        ]
+    ),
+    RevolutionLib(
+        "ai",
+        [
+            Object(NonMatching, "revolution/ai/ai.c"),
+        ]
+    ),
+    RevolutionLib(
+        "ax",
+        [
+            Object(NonMatching, "revolution/ax/AX.c"),
+            Object(NonMatching, "revolution/ax/AXAlloc.c"),
+            Object(NonMatching, "revolution/ax/AXAux.c"),
+            Object(NonMatching, "revolution/ax/AXCL.c"),
+            Object(NonMatching, "revolution/ax/AXOut.c"),
+            Object(NonMatching, "revolution/ax/AXSPB.c"),
+            Object(NonMatching, "revolution/ax/AXVPB.c"),
+            Object(NonMatching, "revolution/ax/AXComp.c"),
+            Object(NonMatching, "revolution/ax/DSPCode.c"),
+            Object(NonMatching, "revolution/ax/AXProf.c"),
+            
+        ]
+    ),
+    RevolutionLib(
+        "axfx",
+        [
+            Object(NonMatching, "revolution/axfx/AXFXReverbHi.c"),
+            Object(NonMatching, "revolution/axfx/AXFXReverbHiExp.c"),
+            Object(NonMatching, "revolution/axfx/AXFXHooks.c"),
+            
+        ]
+    ),
+    RevolutionLib(
+        "dsp",
+        [
+            Object(NonMatching, "revolution/dsp/dsp.c"),
+            Object(NonMatching, "revolution/dsp/dsp_debug.c"),
+            Object(NonMatching, "revolution/dsp/dsp_task.c"),
+            
+        ]
+    ),
+    RevolutionLib(
+        "gx",
+        [
+            Object(NonMatching, "revolution/gx/GXInit.c"),
+            Object(NonMatching, "revolution/gx/GXFifo.c"),
+            Object(NonMatching, "revolution/gx/GXAttr.c"),
+            Object(NonMatching, "revolution/gx/GXMisc.c"),
+            Object(NonMatching, "revolution/gx/GXGeometry.c"),
+            Object(NonMatching, "revolution/gx/GXFrameBuf.c"),
+            Object(NonMatching, "revolution/gx/GXLight.c"),
+            Object(NonMatching, "revolution/gx/GXTexture.c"),
+            Object(NonMatching, "revolution/gx/GXBump.c"),
+            Object(NonMatching, "revolution/gx/GXTev.c"),
+            Object(NonMatching, "revolution/gx/GXPixel.c"),
+            Object(NonMatching, "revolution/gx/GXDisplayList.c"),
+            Object(NonMatching, "revolution/gx/GXTransform.c"),
+            Object(NonMatching, "revolution/gx/GXPerf.c"),
+            
+        ]
+    ),
     {
-        "lib": "Runtime.PPCEABI.H",
+        "lib": "PowerPC_EABI_Support/Runtime",
         "mw_version": config.linker_version,
         "cflags": cflags_runtime,
         "progress_category": "runtime",  # str | List[str]
         "objects": [
-            Object(NonMatching, "Runtime.PPCEABI.H/global_destructor_chain.c"),
-            Object(NonMatching, "Runtime.PPCEABI.H/__init_cpp_exceptions.cpp"),
+            Object(NonMatching, "PowerPC_EABI_Support/Runtime/Src/New.cp"),
+            Object(NonMatching, "PowerPC_EABI_Support/Runtime/Src/__mem.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/Runtime/Src/__va_arg.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/Runtime/Src/global_destructor_chain.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/Runtime/Src/NMWException.cp"),
+            Object(NonMatching, "PowerPC_EABI_Support/Runtime/Src/ptmf.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/Runtime/Src/MWRTTI.cp"),
+            Object(NonMatching, "PowerPC_EABI_Support/Runtime/Src/runtime.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/Runtime/Src/__init_cpp_exceptions.cpp"),
+            Object(NonMatching, "PowerPC_EABI_Support/Runtime/Src/Gecko_ExceptionPPC.cp"),
+            Object(NonMatching, "PowerPC_EABI_Support/Runtime/Src/GCN_mem_alloc.c"),
+        ],
+    },
+    {
+        "lib": "PowerPC_EABI_Support/MSL",
+        "mw_version": config.linker_version,
+        "cflags": cflags_base,
+        "progress_category": "msl",  # str | List[str]
+        "objects": [
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/alloc.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/errno.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/ansi_files.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Src/ansi_fp.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/ctype.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/locale.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/buffer_io.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/direct_io.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/file_io.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/file_pos.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/mbstring.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/mem.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/mem_funcs.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/math_api.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/misc_io.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/printf.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/float.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/wctype.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/scanf.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/signal.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/string.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/strtoul.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/wmem.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/wprintf.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/wstring.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/wchar_io.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/PPC_EABI/SRC/uart_console_io_gcn.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/PPC_EABI/SRC/abort_exit_ppc_eabi.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/secure_error.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Src/math_sun.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/e_atan2.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/e_log.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/e_log10.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/e_pow.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/e_rem_pio2.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/k_cos.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/k_rem_pio2.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/k_sin.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/k_tan.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/s_atan.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/s_copysign.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/s_cos.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/s_floor.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/s_frexp.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/s_ldexp.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/s_sin.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/s_tan.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/w_atan2.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/w_log10.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/w_pow.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/e_sqrt.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Double_precision/w_sqrt.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/extras.c"),
         ],
     },
     RevolutionLib(
+        "exi",
+        [
+            Object(NonMatching, "revolution/exi/EXIBios.c"),
+            Object(NonMatching, "revolution/exi/EXIUart.c"),
+            Object(NonMatching, "revolution/exi/EXICommon.c"),
+        ]
+    ),
+    RevolutionLib(
+        "si",
+        [
+            Object(NonMatching, "revolution/si/SIBios.c"),
+            Object(NonMatching, "revolution/si/SISamplingRate.c"),
+        ]
+    ),
+    {
+        "lib": "PowerPC_EABI_Support/MetroTRK",
+        "mw_version": config.linker_version,
+        "cflags": cflags_base,
+        "progress_category": "metrotrk",  # str | List[str]
+        "objects": [
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/targsupp.s"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/custconn/cc_gdev.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/custconn/MWCriticalSection_gc.cpp"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/custconn/CircleBuffer.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/flush_cache.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/main_TRK.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/mainloop.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/mem_TRK.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/dispatch.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/dolphin_trk.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/dolphin_trk_glue.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/notify.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/nubevent.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/nubinit.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/serpoll.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/string_TRK.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/support.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/targcont.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/mpc_7xx_603e.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/msg.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/msgbuf.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/msghndlr.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/mslsupp.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/targimpl.c"),
+            Object(NonMatching, "PowerPC_EABI_Support/MetroTRK/target_options.c"),
+        ],
+    },
+    RevolutionLib( # not actually rvl sdk
+        "ndevexi2a",
+        [
+            Object(NonMatching, "NdevExi2A/DebuggerDriver.c"),
+            Object(NonMatching, "NdevExi2A/exi.c"),
+        ]
+    ),
+    RevolutionLib(
+        "mem",
+        [
+            Object(NonMatching, "revolution/mem/mem_heapCommon.c"),
+            Object(NonMatching, "revolution/mem/mem_expHeap.c"),
+            Object(NonMatching, "revolution/mem/mem_frameHeap.c"),
+            Object(NonMatching, "revolution/mem/mem_allocator.c"),
+            Object(NonMatching, "revolution/mem/mem_list.c"),
+        ]
+    ),
+    RevolutionLib(
+        "euart",
+        [
+            Object(NonMatching, "revolution/euart/euart.c"),
+        ]
+    ),
+    RevolutionLib(
+        "fs",
+        [
+            Object(NonMatching, "revolution/fs/fs.c"),
+        ]
+    ),
+    RevolutionLib(
+        "ipc",
+        [
+            Object(NonMatching, "revolution/ipc/ipcMain.c"),
+            Object(NonMatching, "revolution/ipc/ipcclt.c"),
+            Object(NonMatching, "revolution/ipc/memory.c"),
+            Object(NonMatching, "revolution/ipc/ipcProfile.c"),
+        ]
+    ),
+    RevolutionLib(
+        "nand",
+        [
+            Object(NonMatching, "revolution/nand/nand.c"),
+            Object(NonMatching, "revolution/nand/NANDOpenClose.c"),
+            Object(NonMatching, "revolution/nand/NANDCore.c"),
+            Object(NonMatching, "revolution/nand/NANDCheck.c"),
+            Object(NonMatching, "revolution/nand/NANDLogging.c"),
+            Object(NonMatching, "revolution/nand/NANDErrorMessage.c"),
+            
+        ]
+    ),
+    RevolutionLib(
+        "sc",
+        [
+            Object(NonMatching, "revolution/sc/scsystem.c"),
+            Object(NonMatching, "revolution/sc/scapi.c"),
+            Object(NonMatching, "revolution/sc/scapi_prdinfo.c"),
+        ]
+    ),
+    RevolutionLib(
+        "wenc",
+        [
+            Object(NonMatching, "revolution/wenc/wenc.c"),
+        ]
+    ),
+    RevolutionLib(
+        "arc",
+        [
+            Object(NonMatching, "revolution/arc/arc.c"),
+        ]
+    ),
+    RevolutionLib(
+        "cx",
+        [
+            Object(NonMatching, "revolution/cx/CXStreamingUncompression.c"),
+            Object(NonMatching, "revolution/cx/CXUncompression.c"),
+            Object(NonMatching, "revolution/cx/CXSecureUncompression.c"),
+        ]
+    ),
+    RevolutionLib(
+        "wpad",
+        [
+            Object(NonMatching, "revolution/wpad/WPAD.c"),
+            Object(NonMatching, "revolution/wpad/WPADHIDParser.c"),
+            Object(NonMatching, "revolution/wpad/WPADEncrypt.c"),
+            Object(NonMatching, "revolution/wpad/WPADMem.c"),
+            Object(NonMatching, "revolution/wpad/lint.c"),
+            Object(NonMatching, "revolution/wpad/WUD.c"),
+            Object(NonMatching, "revolution/wpad/WUDHidHost.c"),
+            
+        ]
+    ),
+    RevolutionLib(
+        "bte",
+        [
+            Object(NonMatching, "revolution/bte/gki/gki_buffer.c"),
+            Object(NonMatching, "revolution/bte/gki/gki_time.c"),
+            Object(NonMatching, "revolution/bte/gki/gki_ppc.c"),
+            Object(NonMatching, "revolution/bte/hci/hcisu_h2.c"),
+            Object(NonMatching, "revolution/bte/hci/uusb_ppc.c"),
+            Object(NonMatching, "revolution/bte/bta/dm/bta_dm_cfg.c"),
+            Object(NonMatching, "revolution/bte/bta/hh/bta_hh_cfg.c"),
+            Object(NonMatching, "revolution/bte/bta/sys/bta_sys_cfg.c"),
+            Object(NonMatching, "revolution/bte/main/bte_hcisu.c"),
+            Object(NonMatching, "revolution/bte/main/bte_init.c"),
+            Object(NonMatching, "revolution/bte/main/bte_logmsg.c"),
+            Object(NonMatching, "revolution/bte/main/bte_main.c"),
+            Object(NonMatching, "revolution/bte/main/btu_task1.c"),
+            Object(NonMatching, "revolution/bte/bta/sys/bd.c"),
+            Object(NonMatching, "revolution/bte/bta/sys/bta_sys_conn.c"),
+            Object(NonMatching, "revolution/bte/bta/sys/bta_sys_main.c"),
+            Object(NonMatching, "revolution/bte/bta/sys/ptim.c"),
+            Object(NonMatching, "revolution/bte/bta/sys/utl.c"),
+            Object(NonMatching, "revolution/bte/bta/dm/bta_dm_act.c"),
+            Object(NonMatching, "revolution/bte/bta/dm/bta_dm_api.c"),
+            Object(NonMatching, "revolution/bte/bta/dm/bta_dm_main.c"),
+            Object(NonMatching, "revolution/bte/bta/dm/bta_dm_pm.c"),
+            Object(NonMatching, "revolution/bte/bta/hh/bta_hh_act.c"),
+            Object(NonMatching, "revolution/bte/bta/hh/bta_hh_api.c"),
+            Object(NonMatching, "revolution/bte/bta/hh/bta_hh_main.c"),
+            Object(NonMatching, "revolution/bte/bta/hh/bta_hh_utils.c"),
+            Object(NonMatching, "revolution/bte/stack/btm/btm_acl.c"),
+            Object(NonMatching, "revolution/bte/stack/btm/btm_dev.c"),
+            Object(NonMatching, "revolution/bte/stack/btm/btm_devctl.c"),
+            Object(NonMatching, "revolution/bte/stack/btm/btm_discovery.c"),
+            Object(NonMatching, "revolution/bte/stack/btm/btm_inq.c"),
+            Object(NonMatching, "revolution/bte/stack/btm/btm_main.c"),
+            Object(NonMatching, "revolution/bte/stack/btm/btm_pm.c"),
+            Object(NonMatching, "revolution/bte/stack/btm/btm_sco.c"),
+            Object(NonMatching, "revolution/bte/stack/btm/btm_sec.c"),
+            Object(NonMatching, "revolution/bte/stack/btu/btu_hcif.c"),
+            Object(NonMatching, "revolution/bte/stack/btu/btu_init.c"),
+            Object(NonMatching, "revolution/bte/stack/wbt/wbt_ext.c"),
+            Object(NonMatching, "revolution/bte/stack/gap/gap_api.c"),
+            Object(NonMatching, "revolution/bte/stack/gap/gap_conn.c"),
+            Object(NonMatching, "revolution/bte/stack/gap/gap_utils.c"),
+            Object(NonMatching, "revolution/bte/stack/hcic/hcicmds.c"),
+            Object(NonMatching, "revolution/bte/stack/hid/hidd_api.c"),
+            Object(NonMatching, "revolution/bte/stack/hid/hidd_conn.c"),
+            Object(NonMatching, "revolution/bte/stack/hid/hidd_mgmt.c"),
+            Object(NonMatching, "revolution/bte/stack/hid/hidd_pm.c"),
+            Object(NonMatching, "revolution/bte/stack/hid/hidh_api.c"),
+            Object(NonMatching, "revolution/bte/stack/hid/hidh_conn.c"),
+            Object(NonMatching, "revolution/bte/stack/l2cap/l2c_api.c"),
+            Object(NonMatching, "revolution/bte/stack/l2cap/l2c_csm.c"),
+            Object(NonMatching, "revolution/bte/stack/l2cap/l2c_link.c"),
+            Object(NonMatching, "revolution/bte/stack/l2cap/l2c_main.c"),
+            Object(NonMatching, "revolution/bte/stack/l2cap/l2c_utils.c"),
+            Object(NonMatching, "revolution/bte/stack/rfcomm/port_api.c"),
+            Object(NonMatching, "revolution/bte/stack/rfcomm/port_rfc.c"),
+            Object(NonMatching, "revolution/bte/stack/rfcomm/port_utils.c"),
+            Object(NonMatching, "revolution/bte/stack/rfcomm/rfc_l2cap_if.c"),
+            Object(NonMatching, "revolution/bte/stack/rfcomm/rfc_mx_fsm.c"),
+            Object(NonMatching, "revolution/bte/stack/rfcomm/rfc_port_fsm.c"),
+            Object(NonMatching, "revolution/bte/stack/rfcomm/rfc_port_if.c"),
+            Object(NonMatching, "revolution/bte/stack/rfcomm/rfc_ts_frames.c"),
+            Object(NonMatching, "revolution/bte/stack/rfcomm/rfc_utils.c"),
+            Object(NonMatching, "revolution/bte/stack/sdp/sdp_api.c"),
+            Object(NonMatching, "revolution/bte/stack/sdp/sdp_db.c"),
+            Object(NonMatching, "revolution/bte/stack/sdp/sdp_discovery.c"),
+            Object(NonMatching, "revolution/bte/stack/sdp/sdp_main.c"),
+            Object(NonMatching, "revolution/bte/stack/sdp/sdp_server.c"),
+            Object(NonMatching, "revolution/bte/stack/sdp/sdp_utils.c"),
+        ]
+    ),
+    RevolutionLib(
+        "usb",
+        [
+            Object(NonMatching, "revolution/usb/usb.c"),
+        ]
+    ),
+    RevolutionLib(
+        "kpad",
+        [
+            Object(NonMatching, "revolution/kpad/KPAD.c"),
+            Object(NonMatching, "revolution/kpad/KMPLS.c"),
+            Object(NonMatching, "revolution/kpad/KZMplsTestSub.c"),
+        ]
+    ),
+    RevolutionLib(
+        "tpl",
+        [
+            Object(NonMatching, "revolution/tpl/TPL.c"),
+        ]
+    ),
+    RevolutionLib(
+        "esp",
+        [
+            Object(NonMatching, "revolution/esp/esp.c"),
+        ]
+    ),
+    RevolutionLib(
         "hbm", 
         [
+            Object(NonMatching, "revolution/hbm/HBMFrameController.cpp"),
+            Object(NonMatching, "revolution/hbm/HBMAnmController.cpp"),
+            Object(NonMatching, "revolution/hbm/HBMGUIManager.cpp"),
+            Object(NonMatching, "revolution/hbm/HBMController.cpp"),
+            Object(NonMatching, "revolution/hbm/HBMRemoteSpk.cpp"),
+            Object(NonMatching, "revolution/hbm/HBMAxSound.cpp"),
+            Object(NonMatching, "revolution/hbm/HBMCommon.cpp"),
+            Object(NonMatching, "revolution/hbm/HBMBase.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_animation.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_arcResourceAccessor.cpp"),
             Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_bounding.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_common.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_drawInfo.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_group.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_layout.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_material.cpp"),
             Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_pane.cpp"),
             Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_picture.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_resourceAccessor.cpp"),
             Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_textBox.cpp"),
             Object(NonMatching, "revolution/hbm/nw4hbm/lyt/lyt_window.cpp"),
-            Object(NonMatching, "revolution/hbm/nw4hbm/lyt/ut_TextWriterBase.cpp"),
-            Object(NonMatching, "revolution/hbm/nw4hbm/ut/ut_TextWriterBase.cpp"),   
+            Object(NonMatching, "revolution/hbm/nw4hbm/math/math_triangular.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/ut/ut_binaryFileFormat.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/ut/ut_CharStrmReader.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/ut/ut_CharWriter.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/ut/ut_Font.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/ut/ut_LinkList.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/ut/ut_list.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/ut/ut_ResFont.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/ut/ut_ResFontBase.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/ut/ut_TagProcessorBase.cpp"),
+            Object(NonMatching, "revolution/hbm/nw4hbm/ut/ut_TextWriterBase.cpp"),
+            Object(NonMatching, "revolution/hbm/mix.cpp"),
+            Object(NonMatching, "revolution/hbm/syn.cpp"),
+            Object(NonMatching, "revolution/hbm/synctrl.cpp"),
+            Object(NonMatching, "revolution/hbm/synenv.cpp"),
+            Object(NonMatching, "revolution/hbm/synmix.cpp"),
+            Object(NonMatching, "revolution/hbm/synpitch.cpp"),
+            Object(NonMatching, "revolution/hbm/synsample.cpp"),
+            Object(NonMatching, "revolution/hbm/synvoice.cpp"),
+            Object(NonMatching, "revolution/hbm/seq.cpp"), 
         ]
     ),
     Nw4rLib(
@@ -413,6 +895,8 @@ config.progress_categories = [
     ProgressCategory("game", "Game Code"),
     ProgressCategory("sdk", "SDK Code"),
     ProgressCategory("runtime", "Runtime Code"),
+    ProgressCategory("msl", "MSL C/C++ Code"),
+    ProgressCategory("metrotrk", "MetroTRK Code"),
     ProgressCategory("nw4r", "NW4R Code"),
     ProgressCategory("gameutil", "Game Utility Code"),
 ]
