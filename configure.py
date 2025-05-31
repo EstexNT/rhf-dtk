@@ -844,7 +844,7 @@ config.libs = [
             Object(Matching, "GameUtil/Mem.cpp"),
             Object(NonMatching, "GameUtil/FileManager.cpp"),
             Object(NonMatching, "GameUtil/Controller.cpp"),
-            Object(NonMatching, "GameUtil/GraphicManager.cpp"),
+            Object(Matching, "GameUtil/GraphicManager.cpp"),
             Object(NonMatching, "GameUtil/LayoutManager.cpp"),
             Object(NonMatching, "GameUtil/GameManager.cpp"),
             Object(Matching, "GameUtil/Scene.cpp"),

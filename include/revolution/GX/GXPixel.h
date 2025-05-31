@@ -6,8 +6,14 @@
 extern "C" {
 #endif
 
+void GXSetBlendMode(GXBlendMode mode, GXBlendFactor src, GXBlendFactor dst,
+    GXLogicOp op);
+
+void GXSetColorUpdate(GXBool enable);
+    
 void GXSetZMode(GXBool enableTest, GXCompare func, GXBool enableUpdate);
 
+void GXSetPixelFmt(GXPixelFmt pixelFmt, GXZFmt zFmt);
 
 #ifdef __cplusplus
 }
