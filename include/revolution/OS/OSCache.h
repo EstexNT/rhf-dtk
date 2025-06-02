@@ -6,6 +6,7 @@ extern "C" {
 #endif
 
 void DCInvalidateRange(const void *buf, u32 len);
+void DCFlushRange(const void* buf, u32 len);
 void DCStoreRange(const void *buf, u32 len);
 
 #ifdef __cplusplus
