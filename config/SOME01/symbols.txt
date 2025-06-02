@@ -6509,7 +6509,7 @@ SetNrmMapMtx__Q44nw4r3g3d8G3DState11IndMtxOpStdF14_GXIndTexMtxIDPCQ34nw4r4math4V
 Reset__Q44nw4r3g3d8G3DState11IndMtxOpStdFv = .text:0x8019AD10; // type:function size:0x50
 __cl__Q44nw4r3g3d8G3DState11IndMtxOpStdFPQ44nw4r3g3d8G3DState13IndTexMtxInfo = .text:0x8019AD60; // type:function size:0x16C
 __sinit_\g3d_state_cpp = .text:0x8019AED0; // type:function size:0x270 scope:local
-G3dInit__Q24nw4r3g3dFb = .text:0x8019B140; // type:function size:0xF0
+G3dInit__Q24nw4r3g3dFi = .text:0x8019B140; // type:function size:0xF0
 G3dReset__Q24nw4r3g3dFv = .text:0x8019B230; // type:function size:0x8
 __ct__Q34nw4r3g3d3FogFPQ34nw4r3g3d7FogData = .text:0x8019B240; // type:function size:0x8
 Init__Q34nw4r3g3d3FogFv = .text:0x8019B250; // type:function size:0x70
