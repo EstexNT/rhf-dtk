@@ -842,7 +842,7 @@ config.libs = [
         "progress_category": "gameutil",
         "objects": [
             Object(Matching, "GameUtil/Mem.cpp"),
-            Object(NonMatching, "GameUtil/FileManager.cpp"),
+            Object(Matching, "GameUtil/FileManager.cpp"),
             Object(NonMatching, "GameUtil/Controller.cpp"),
             Object(Matching, "GameUtil/GraphicManager.cpp"),
             Object(NonMatching, "GameUtil/LayoutManager.cpp"),

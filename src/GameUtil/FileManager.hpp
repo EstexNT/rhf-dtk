@@ -7,25 +7,10 @@
 #include "Mem.hpp"
 #include "Singleton.hpp"
 
-struct CFileManager_sub {
-    u8 pad00[0x44];
-};
-
-struct CFileManager_sub1 {
-    DVDFileInfo *unk0;
-    ARCHandle unk4;
-    u8 *unk20;
-    EHeapMEM unk24;
-    u16 unk28;
-    bool unk2A;
-    s32 unk2C;
-};
-
 extern "C" void fn_801D7538(s32);
 
 class CFileManager : public TSingleton<CFileManager> {
 public:
-
     virtual void _08(void);
     virtual ~CFileManager(void);
     virtual void _10(s32, s32);
@@ -53,40 +38,69 @@ public:
     void fn_801D4544(void);
     void fn_801D49D4(void);
 
-    static void *fn_801D461C(void *, u32, EHeapMEM, s32);
+    static void *fn_801D461C(void *, BOOL, EHeapMEM, s32);
 
-    inline s32 getFileInfoIdx(DVDFileInfo *fileInfo) {
-        s32 temp_r6 = -1;
-        for (int i = 0; i < unk08; i++) {
-            if ((unk0C + i) == fileInfo) {
-                temp_r6 = i;
+    s32 getFileInfoIdx(DVDFileInfo* fileInfo) {
+        s32 index = -1;
+        for (s32 i = 0; i < mFileCount; i++) {
+            if ((mDvdFileInfo + i) == fileInfo) {
+                index = i;
                 break;
             }
         }
-        return temp_r6;
+        return index;
     }
+
 private:
+    static void fn_801D392C(s32, DVDFileInfo *); // DVDAsyncCallback
+    static void fn_801D3988(s32, DVDFileInfo *); // DVDAsyncCallback
+
+    static void *fn_801D46A4(void *, BOOL, s32, EHeapMEM, s32);
+    static void *fn_801D47B8(void *);
+    static bool fn_801D47F8(u8 *src, u8 *dst, u32 srcSize, u32 dstSize, s32 idx, BOOL deleteSrc);
+
+private:
+    enum EArchiveInfoState {
+        eArchiveInfoState_Unloaded = 0,
+        eArchiveInfoState_Loading = 1,
+        eArchiveInfoState_Loaded = 2,
+        eArchiveInfoState_Decompressing = 3,
+        eArchiveInfoState_Decompressed = 4,
+        eArchiveInfoState_Ready = 5
+    };
+
+    struct ArchiveInfo {
+        DVDFileInfo* mDvdFileInfo;
+        ARCHandle mArcHandle;
+        u8 *mArcData;
+        EHeapMEM mHeapMode;
+        u16 mHeapId;
+        bool mIsSzs;
+        EArchiveInfoState mState;
+    };
+
+    struct UnusedFileSub {
+        u8 _pad00[0x44];
+    };
 
     static char lbl_803D5C48[64];
 
-    char unk04[4];
-    s32 unk08;
-    DVDFileInfo *unk0C;
-    CFileManager_sub *unk10;
-    u8 *unk14;
-    s32 unk18;
-    CFileManager_sub1 *unk1C;
-    u8 pad20[0x10];
-    OSThread unk30;
-    u32 *unk348;
+    char mLocaleDir[4];
+
+    s32 mFileCount;
+    DVDFileInfo* mDvdFileInfo; // DVDFileInfo[mFileCount]
+    UnusedFileSub* mUnusedFileSub; // UnusedFileSub[mFileCount]
+    bool* mDvdFileInfoActive; // bool[mFileCount]; describes if a mDvdFileInfo slot at the specified index is in use
+
+    s32 mArchiveInfoCount;
+    ArchiveInfo* mArchiveInfo; // ArchiveInfo[mArchiveInfoCount]
+
+    u8 _pad20[0x10];
+
+    OSThread mThread;
+    u32 *mThreadStack;
     void (*unk34C)(void);
     void (*unk350)(void);
-
-    static void fn_801D392C(s32, DVDFileInfo *); // DVDAsyncCallback
-    static void fn_801D3988(s32, DVDFileInfo *); // DVDAsyncCallback
-    static void *fn_801D46A4(void *, u32, s32, EHeapMEM, s32);
-    static void *fn_801D47B8(void *);
-    static bool fn_801D47F8(void *in, void *out, u32 arg2, u32 size, s32 arg4, u32 arg5);
 };
 
 extern CFileManager *gFileManager;
