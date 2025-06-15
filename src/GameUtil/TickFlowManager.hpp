@@ -24,9 +24,11 @@ public:
     u8 getUnk6D(void) {
         return unk6D;
     }
-private:
 
-    u8 pad04[0x68];
+private:
+    u8 pad04[0x1c-0x04];
+    s32 unk1C;
+    u8 pad20[0x6C-0x20];
     u8 unk6C;
     u8 unk6D;
 };

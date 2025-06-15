@@ -25,6 +25,13 @@ Game/Menu/SceneMenu.cpp:
 Game/data_802E57E0.cpp:
 	.data       start:0x802E57E0 end:0x802E57F0
 
+Game/FaderFlash.cpp:
+	.text       start:0x80007C28 end:0x80008160
+	.rodata     start:0x801F8B78 end:0x801F8B88
+	.data       start:0x802E57F0 end:0x802E5828
+	.sdata      start:0x8031EF28 end:0x8031EF38
+	.sdata2     start:0x80321138 end:0x80321168
+
 Game/ExScene.cpp:
 	.text       start:0x80008160 end:0x8000ABC0
 	.ctors      start:0x801F74E4 end:0x801F74E8

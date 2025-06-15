@@ -288,6 +288,7 @@ config.libs = [
         "objects": [
             Object(NonMatching, "Game/Menu/SceneMenu.cpp"),
             Object(Matching, "Game/data_802E57E0.cpp"),
+            Object(Matching, "Game/FaderFlash.cpp"),
             Object(NonMatching, "Game/ExScene.cpp"),
             Object(NonMatching, "Game/Prologue/ScenePrologue.cpp"),
             Object(Matching, "Game/SceneManager.cpp"),
