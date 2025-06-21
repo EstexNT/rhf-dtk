@@ -227,8 +227,6 @@ void CSceneMenu::_20(void) {
     fn_80008A20();
 }
 
-extern "C" int swprintf(wchar_t *, unsigned, const wchar_t *, ...); // TODO: move to a proper header
-extern "C" wchar_t *wcscat(wchar_t *, const wchar_t *); // TODO: move to a proper header
 
 extern wchar_t lbl_80329980[512];
 extern wchar_t lbl_8032A180[16];

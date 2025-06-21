@@ -103,9 +103,6 @@ void CScenePrologue::_20(void) {
     fn_80008A20();
 }
 
-
-extern "C" int sprintf(char *, const char *, ...); // TODO: move to a proper header
-
 void fn_8000B13C(char *arg0, u32 arg1) {
     sprintf(lbl_8032A278, "content2/layout/layout_prologue_%s_ver%d.szs", arg0, arg1);
 }
