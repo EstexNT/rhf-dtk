@@ -2,7 +2,7 @@
 #define NW4R_UT_LINK_LIST
 
 #include <revolution/types.h>
-#include <nw4r/ut/inlines.h>
+#include <nw4r/ut/NonCopyable.h>
 
 namespace nw4r {
 namespace ut {
