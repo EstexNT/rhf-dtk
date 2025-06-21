@@ -4,7 +4,7 @@
 
 #include <revolution/VI.h>
 
-#include <nw4r/g3d.hpp>
+#include <nw4r/g3d.h>
 
 GXRenderModeObj CGraphicManager::sRenderModeObj;
 
@@ -20,12 +20,12 @@ void CGraphicManager::_08(void) {}
 
 void CGraphicManager::_14(GXRenderModeObj *renderMode, GXColor *clearColor, u32 clearZ) {
     mScreenBlack = true;
-    
+
     fn_801D6514(renderMode);
 
     u32 frameBufferSize = (u16)ROUND_UP(mRenderMode->fbWidth, 16) * mRenderMode->xfbHeight * 2;
     mFrameBufferSize = frameBufferSize;
-    
+
     mFifoMem = new (eHeap_MEM1, 32) u8[0x40000];
     mFrameBuffers[0] = new (eHeap_MEM2, 32) u8[frameBufferSize];
     mFrameBuffers[1] = new (eHeap_MEM2, 32) u8[frameBufferSize];
@@ -74,7 +74,7 @@ void CGraphicManager::_14(GXRenderModeObj *renderMode, GXColor *clearColor, u32 
 
 void CGraphicManager::fn_801D63B4(void) {
     GXRenderModeObj *rmode = mRenderMode;
-    
+
     if (rmode->field_rendering != 0) {
         u32 nextField = VIGetNextField();
         GXSetViewportJitter(0.0f, 0.0f, rmode->fbWidth, rmode->efbHeight, 0.0f, 1.0f, nextField);
