@@ -2,6 +2,8 @@
 #include <string.h>
 
 char CFileManager::lbl_803D5C48[64];
+#include "GameManager.hpp"
+
 
 void CFileManager::fn_801D392C(s32 result, DVDFileInfo *fileInfo) {
     s32 index = gFileManager->getFileInfoIdx(fileInfo);

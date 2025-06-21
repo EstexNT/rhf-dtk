@@ -14,6 +14,7 @@ public:
 
     CCheckPointManager(void);
 
+    void fn_801EAE20();
     void fn_801EAF2C(u8, u32);
     void fn_801EB00C(u8, u32);
 

@@ -7,8 +7,6 @@
 #include "Mem.hpp"
 #include "Singleton.hpp"
 
-extern "C" void fn_801D7538(s32);
-
 class CFileManager : public TSingleton<CFileManager> {
 public:
     virtual void _08(void);

@@ -2085,6 +2085,12 @@ GameUtil/LayoutManager.cpp:
 GameUtil/GameManager.cpp:
 	.text       start:0x801D7210 end:0x801D83BC
 	.ctors      start:0x801F7564 end:0x801F7568
+	.rodata     start:0x802E4BF0 end:0x802E4C20
+	.data       start:0x803160F0 end:0x803162F8
+	.sdata      start:0x80320028 end:0x80320038
+	.sbss       start:0x80320F98 end:0x80320FA0
+	.sdata2     start:0x80329568 end:0x80329590
+	.bss        start:0x803D5CE0 end:0x803D5D10
 
 GameUtil/Scene.cpp:
 	.text       start:0x801D83BC end:0x801D85BC
