@@ -14,25 +14,15 @@
 #include "SaveData.hpp"
 #include "GameManager.hpp"
 
-const char msgTest_brlyt[] = "msgTest.brlyt";
-static const char *brlytFiles[] = {msgTest_brlyt, 0};
+#include "Menu/MenuData.hpp"
+
+wchar_t CSceneMenu::sTextBuffer[1024];
+wchar_t CSceneMenu::sEntryNumTextBuffer[16];
 
 static u8 lbl_80320140;
 static u8 lbl_80320141;
 static u8 lbl_80320142;
 static u8 lbl_80320143;
-
-const struct DebugMenuEntry {
-    wchar_t *unk0;
-    void *unk4;
-    u8 *unk8;
-    wchar_t *unkC;
-} lbl_801F8460[106];
-
-u8 *lbl_802E5740[9] = {
-    (u8 *)1, 
-    // TODO
-};
 
 SCENE_IMPL_CREATE_FN(CSceneMenu)
 
@@ -64,36 +54,36 @@ void CSceneMenu::_10(void) {
 }
 
 namespace {
+
 class CMenuLayout : public CLayout {
 public:
-
     CMenuLayout() {
         setUnk0C(0);
     }
 
-    nw4r::lyt::TextBox *getUnk1C(void) {
-        return unk1C;
+    nw4r::lyt::TextBox *getTitlePane(void) {
+        return mPaneTitle;
     }
-    nw4r::lyt::TextBox *getUnk20(void) {
-        return unk20;
+    nw4r::lyt::TextBox *getCommentPane(void) {
+        return mPaneComment;
     }
-    
 
     virtual ~CMenuLayout(void);
     virtual void _10(void);
     virtual void _14(void);
     virtual void _20(void);
-private:
 
-    nw4r::lyt::TextBox *unk1C;
-    nw4r::lyt::TextBox *unk20;
+private:
+    nw4r::lyt::TextBox *mPaneTitle;
+    nw4r::lyt::TextBox *mPaneComment;
 };
+
 }
 
 void CSceneMenu::_14(void) {
     gSceneManager->fn_8008B068();
     lbl_80320274 = false;
-    memset(unk34, '\0', sizeof(unk34));
+    memset(mUnk34, '\0', sizeof(mUnk34));
     fn_8000818C();
     gMyCanvasManager->fn_8007BE0C();
     gLayoutManager->_20(1);
@@ -103,36 +93,23 @@ void CSceneMenu::_14(void) {
 
     gSoundManager->fn_801E6ECC(1.0f);
     fn_800077A8(lbl_80320143);
-    unkB4 = false;
+    mUnkB4 = false;
     fn_801D3638(300);
 }
 
-// TODO: tickflow
-extern const u8 lbl_801F7890[];
-extern const u8 lbl_80320FE0[1]; // sdata2
-extern const u8 lbl_8026D3F0[];
-extern const u8 lbl_8026F248[];
-extern const u8 lbl_80273A50[];
-extern const u8 lbl_80276C90[];
-extern const u8 lbl_80278AF8[];
-extern const u8 lbl_8027A4D8[];
-extern const u8 lbl_80284530[];
-extern const u8 lbl_802BA4BC[];
-
-
 void CSceneMenu::_28(void) {
-    if (unkB4) {
+    if (mUnkB4) {
         return;
     }
 
     CController *controller = gControllerManager->fn_801D5FF0(0);
     CGCController *gcController = gControllerManager->fn_801D6000(0);
-    
+
     // TODO: regswap in unkInputCheck
     if ((controller->getUnk1340() & 0x800) || (gcController->unkInputCheck(0x100))) {
-        u8 *tickflow = lbl_801F8460[lbl_80320143].unk8;
-        if (tickflow) {
-            if (tickflow == lbl_80320FE0) {
+        const TickFlowCode *tickFlowCode = lbl_801F8460[lbl_80320143].tickFlowCode;
+        if (tickFlowCode) {
+            if (tickFlowCode == lbl_80320FE0) {
                 if (lbl_80320142 == 0) {
                     gCheckPointManager->setUnk2FC(0);
                 }
@@ -149,31 +126,31 @@ void CSceneMenu::_28(void) {
                 }
                 gTickFlowManager->fn_801E1E4C();
                 gTickFlowManager->fn_801E1CC0(lbl_802E5740[temp]);
-                unkB4 = true;
+                mUnkB4 = true;
                 return;
             }
-            if (tickflow == lbl_801F7890) {
+            if (tickFlowCode == lbl_801F7890) {
                 if (gSaveData->fn_80078F4C()->fn_80077DF8() < 5) {
                     gSaveData->fn_80078F4C()->fn_80077C0C(5);
                 }
                 gTickFlowManager->fn_801E1E4C();
-                gTickFlowManager->fn_801E1CC0(lbl_801F8460[lbl_80320143].unk8);
-                unkB4 = true;
+                gTickFlowManager->fn_801E1CC0(lbl_801F8460[lbl_80320143].tickFlowCode);
+                mUnkB4 = true;
                 return;
             }
             if (
-                (tickflow == lbl_8026F248) || (tickflow == lbl_80276C90) || 
-                (tickflow == lbl_80278AF8) || (tickflow == lbl_8027A4D8) || 
-                (tickflow == lbl_8026D3F0) || (tickflow == lbl_80273A50) || 
-                (tickflow == lbl_80284530) || (tickflow == lbl_802BA4BC)) {
+                (tickFlowCode == lbl_8026F248) || (tickFlowCode == lbl_80276C90) || 
+                (tickFlowCode == lbl_80278AF8) || (tickFlowCode == lbl_8027A4D8) || 
+                (tickFlowCode == lbl_8026D3F0) || (tickFlowCode == lbl_80273A50) || 
+                (tickFlowCode == lbl_80284530) || (tickFlowCode == lbl_802BA4BC)) {
                 lbl_80320274 = true;
             }
             gTickFlowManager->fn_801E1E4C();
-            gTickFlowManager->fn_801E1CC0(lbl_801F8460[lbl_80320143].unk8);
-            unkB4 = true;
+            gTickFlowManager->fn_801E1CC0(lbl_801F8460[lbl_80320143].tickFlowCode);
+            mUnkB4 = true;
             return;
         }
-        gGameManager->_20(lbl_801F8460[lbl_80320143].unk4, 3);
+        gGameManager->_20(lbl_801F8460[lbl_80320143].sceneCreateFn, 3);
         return;
     }
     if (((controller->getUnk133C() & 8) || (controller->getUnk1368() & 8)) 
@@ -221,10 +198,6 @@ void CSceneMenu::_20(void) {
     fn_80008A20();
 }
 
-
-extern wchar_t lbl_80329980[512];
-extern wchar_t lbl_8032A180[16];
-
 // TODO: wibo bork on utf-16
 void CSceneMenu::fn_800077A8(u8 arg1) {
     lbl_80320143 = arg1;
@@ -234,38 +207,42 @@ void CSceneMenu::fn_800077A8(u8 arg1) {
         temp_r26 = 6;
     }
 
-    swprintf(lbl_80329980, sizeof(lbl_80329980), L"");
-    wcscat(lbl_80329980, unk34);
-    wcscat(lbl_80329980, L"\n");
+    swprintf(sTextBuffer, sizeof(sTextBuffer), L"");
+    wcscat(sTextBuffer, mUnk34);
+    wcscat(sTextBuffer, L"\n");
     tempdiv *= 20;
 
     for (int i = 0; i < temp_r26; tempdiv++, i++) {
         // TODO: reg weirdness here
-        swprintf(lbl_8032A180, sizeof(lbl_8032A180), L"%03d : ", tempdiv);
-        wcscat(lbl_80329980, (tempdiv == lbl_80320143) ? L"→" : L"　");
-        wcscat(lbl_80329980, lbl_8032A180);
-        wcscat(lbl_80329980, lbl_801F8460[tempdiv].unk0);
-        wcscat(lbl_80329980, L"\n");
+        swprintf(sEntryNumTextBuffer, sizeof(sEntryNumTextBuffer), L"%03d : ", tempdiv);
+        wcscat(sTextBuffer, (tempdiv == lbl_80320143) ? L"→" : L"　");
+        wcscat(sTextBuffer, sEntryNumTextBuffer);
+        wcscat(sTextBuffer, lbl_801F8460[tempdiv].labelText);
+        wcscat(sTextBuffer, L"\n");
     }
 
     CMenuLayout *menuLayout = gLayoutManager->getLayout<CMenuLayout>(0);
-    if (!lbl_80329980) {
-        menuLayout->getUnk1C()->SetVisible(false);
-    } else {
-        menuLayout->getUnk1C()->SetString(lbl_80329980);
-        menuLayout->getUnk1C()->SetVisible(true);
+    if (!sTextBuffer) {
+        menuLayout->getTitlePane()->SetVisible(false);
     }
-    swprintf(lbl_80329980, sizeof(lbl_80329980), L"");
-    wcscat(lbl_80329980, L"<操作説明、コメント>\n");
-    wcscat(lbl_80329980, lbl_801F8460[lbl_80320143].unkC);
+    else {
+        menuLayout->getTitlePane()->SetString(sTextBuffer);
+        menuLayout->getTitlePane()->SetVisible(true);
+    }
+
+    swprintf(sTextBuffer, sizeof(sTextBuffer), L"");
+    wcscat(sTextBuffer, L"<操作説明、コメント>\n");
+    wcscat(sTextBuffer, lbl_801F8460[lbl_80320143].commentText);
 
     menuLayout = gLayoutManager->getLayout<CMenuLayout>(0);
-    if (!lbl_80329980) {
-        menuLayout->getUnk20()->SetVisible(false);
-    } else {
-        menuLayout->getUnk20()->SetString(lbl_80329980);
-        menuLayout->getUnk20()->SetVisible(true);
+    if (!sTextBuffer) {
+        menuLayout->getCommentPane()->SetVisible(false);
     }
+    else {
+        menuLayout->getCommentPane()->SetString(sTextBuffer);
+        menuLayout->getCommentPane()->SetVisible(true);
+    }
+
     gSoundManager->fn_801E4F60(0x116);
 }
 
@@ -276,20 +253,24 @@ void CMenuLayout::_14(void) {
 void CMenuLayout::_10(void) {
     u32 size;
     buildLayout(gLayoutManager->getUnk38()->GetResource(0, brlytFiles[0], &size), gLayoutManager->getUnk38());
+
     gMessageManager->fn_80088474(getLayout()->GetRootPane());
-    unk1C = static_cast<nw4r::lyt::TextBox *>(getLayout()->GetRootPane()->FindPaneByName("T_Title"));
-    unk20 = static_cast<nw4r::lyt::TextBox *>(getLayout()->GetRootPane()->FindPaneByName("T_Comment"));
-    nw4r::math::VEC3 titleTranslate = unk1C->GetTranslate();
-    nw4r::math::VEC3 commentTranslate = unk20->GetTranslate();
-    titleTranslate.y -= 25.f;
-    commentTranslate.y -= 25.f;
-    unk1C->SetScale(nw4r::math::VEC2(.9f, .9f));
-    unk20->SetScale(nw4r::math::VEC2(.9f, .9f));
-    unk1C->SetTranslate(titleTranslate);
-    unk20->SetTranslate(commentTranslate);
+
+    mPaneTitle = static_cast<nw4r::lyt::TextBox *>(getLayout()->GetRootPane()->FindPaneByName("T_Title"));
+    mPaneComment = static_cast<nw4r::lyt::TextBox *>(getLayout()->GetRootPane()->FindPaneByName("T_Comment"));
+
+    nw4r::math::VEC3 titleTranslate = mPaneTitle->GetTranslate();
+    nw4r::math::VEC3 commentTranslate = mPaneComment->GetTranslate();
+    titleTranslate.y -= 25.0f;
+    commentTranslate.y -= 25.0f;
+
+    mPaneTitle->SetScale(nw4r::math::VEC2(.9f, .9f));
+    mPaneComment->SetScale(nw4r::math::VEC2(.9f, .9f));
+    mPaneTitle->SetTranslate(titleTranslate);
+    mPaneComment->SetTranslate(commentTranslate);
     fn_801D9B10();
-    unk1C->SetVisible(false);
-    unk20->SetVisible(false);
+    mPaneTitle->SetVisible(false);
+    mPaneComment->SetVisible(false);
 }
 
 CMenuLayout::~CMenuLayout(void) {
