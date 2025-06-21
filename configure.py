@@ -968,7 +968,7 @@ config.libs = [
             Object(NonMatching, "GameUtil/Controller.cpp"),
             Object(Matching, "GameUtil/GraphicManager.cpp"),
             Object(NonMatching, "GameUtil/LayoutManager.cpp"),
-            Object(NonMatching, "GameUtil/GameManager.cpp"),
+            Object(Matching, "GameUtil/GameManager.cpp"),
             Object(Matching, "GameUtil/Scene.cpp"),
             Object(Matching, "GameUtil/FaderFlash.cpp"),
             Object(NonMatching, "GameUtil/Layout.cpp"),
