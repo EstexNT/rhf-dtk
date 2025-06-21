@@ -19,6 +19,8 @@ public:
         mUnk04 = 0;
     }
 
+    s32 getUnk04() const { return mUnk04; }
+
     static CFaderFlash *fn_80007C28(void);
     
     void fn_80007DD8(void);
@@ -27,6 +29,8 @@ public:
     void fn_800080C0(f32);
 
     bool fn_800080D0(void);
+
+    void fn_801D859C(void);
 
 private:
     s32 mUnk04;
