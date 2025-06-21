@@ -5,7 +5,6 @@
 #include "Menu/SceneMenu.hpp"
 #include "Prologue/ScenePrologue.hpp"
 
-
 CSceneManager::CSceneManager(void) {
 
 }
@@ -183,7 +182,7 @@ const char *lbl_802ECE20[] = {
     lbl_80325320, lbl_80325328, 
 };
 
-void CSceneManager::fn_80089FE0(eSceneID sceneID, u32 *tickflow) {
+void CSceneManager::fn_80089FE0(eSceneID sceneID, const TickFlowCode *tickFlowCode) {
     CScene::CreateFn fn = 0;
 
     switch (sceneID) {
@@ -385,7 +384,7 @@ void CSceneManager::fn_80089FE0(eSceneID sceneID, u32 *tickflow) {
     }
 
     gGameManager->_20(fn, 3);
-    gGameManager->_34(tickflow);
+    gGameManager->_34(tickFlowCode);
 
     for (int i = ARRAY_LENGTH(unk04) - 1; i > 0; i--) {
         unk04[i] = unk04[i - 1];
@@ -1091,12 +1090,12 @@ void CSceneManager::fn_8008A82C(eSceneID sceneID) {
 extern "C" bool fn_80009FB4(void);
 
 // TODO: migrate tickflow into respective files
-extern u8 lbl_80253E18[];
-extern u8 lbl_8027C3E8[];
-extern u8 lbl_8027C424[];
-extern u8 lbl_8027C460[];
-extern u8 lbl_8027C49C[];
-extern u8 lbl_80256F30[];
+TFD_EXTERN(lbl_80253E18)
+TFD_EXTERN(lbl_8027C3E8)
+TFD_EXTERN(lbl_8027C424)
+TFD_EXTERN(lbl_8027C460)
+TFD_EXTERN(lbl_8027C49C)
+TFD_EXTERN(lbl_80256F30)
 
 void CSceneManager::fn_8008A8D8(void) {
     gTickFlowManager->fn_801E1E4C();
