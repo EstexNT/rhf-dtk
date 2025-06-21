@@ -64,17 +64,7 @@ bool CScene::_24(void) {
     return gFileManager->fn_801D431C();
 }
 
-// TODO: this doesn't belong here.. probably
-class class_801D859C {
-public:
-    virtual void _08(void);
-    virtual void _0C(void);
-    virtual void _10(void);
-    virtual ~class_801D859C(void);
-    
-    void fn_801D859C(void);
-};
-
-void class_801D859C::fn_801D859C(void) {
+// TODO: WHAT
+void CFaderFlash::fn_801D859C(void) {
     delete this;
 }
