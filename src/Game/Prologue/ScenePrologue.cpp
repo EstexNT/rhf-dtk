@@ -9,6 +9,8 @@
 #include "LayoutManager.hpp"
 #include "TickFlowManager.hpp"
 
+#include <stdio.h>
+
 static char lbl_8032A278[0x100];
 static u32 lbl_80320238;
 s32 lbl_8032023C;

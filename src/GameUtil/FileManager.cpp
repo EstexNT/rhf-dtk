@@ -1,7 +1,9 @@
 #include "FileManager.hpp"
-#include <string.h>
 
 #include "GameManager.hpp"
+
+#include <string.h>
+#include <stdio.h>
 
 char CFileManager::sFilePathBuffer[64];
 
@@ -55,8 +57,6 @@ void CFileManager::_14(void) {
     unk34C = 0;
     unk350 = 0;
 }
-
-extern "C" int sprintf(char *, const char *, ...); // TODO: move to a proper header
 
 void CFileManager::fn_801D3C2C(const char *localeDir) {
     sprintf(mLocaleDir, "%s", localeDir);
