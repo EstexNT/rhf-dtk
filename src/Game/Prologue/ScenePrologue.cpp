@@ -13,13 +13,7 @@ static char lbl_8032A278[0x100];
 static u32 lbl_80320238;
 s32 lbl_8032023C;
 
-CExScene *CScenePrologue::create(u16 arg0) {
-    fn_801D369C(arg0);
-    CScenePrologue *scene = new CScenePrologue;
-    fn_801D3644();
-    scene->setUnk0C(arg0);
-    return scene;
-}
+SCENE_IMPL_CREATE_FN(CScenePrologue)
 
 void CScenePrologue::fn_8000AD98(void) {
     fn_801D369C(2);

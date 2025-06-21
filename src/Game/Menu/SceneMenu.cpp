@@ -34,13 +34,7 @@ u8 *lbl_802E5740[9] = {
     // TODO
 };
 
-CExScene *CSceneMenu::create(u16 arg0) {
-    fn_801D369C(arg0);
-    CSceneMenu *scene = new CSceneMenu;
-    fn_801D3644();
-    scene->setUnk0C(arg0);
-    return scene;
-}
+SCENE_IMPL_CREATE_FN(CSceneMenu)
 
 // TODO: move this
 extern "C" void fn_80008EFC(void); 

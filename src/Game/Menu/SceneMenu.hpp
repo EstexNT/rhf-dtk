@@ -22,7 +22,8 @@ public:
 
     void fn_800077A8(u8);
 
-    static CExScene *create(u16 arg0);
+    SCENE_DECL_CREATE_FN()
+
     static void fn_80006FA4(void);
 private:
 
