@@ -3,8 +3,6 @@
 #include "GameManager.hpp"
 #include "FileManager.hpp"
 
-#include "FaderFlash.hpp"
-
 void CScene::fn_801D83BC(void) {
     delete this;
 }
@@ -62,9 +60,4 @@ void CScene::fn_801D8578(void) {
 
 bool CScene::_24(void) {
     return gFileManager->fn_801D431C();
-}
-
-// TODO: WHAT
-void CFaderFlash::fn_801D859C(void) {
-    delete this;
 }

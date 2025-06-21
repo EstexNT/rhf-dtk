@@ -970,6 +970,7 @@ config.libs = [
             Object(NonMatching, "GameUtil/LayoutManager.cpp"),
             Object(NonMatching, "GameUtil/GameManager.cpp"),
             Object(Matching, "GameUtil/Scene.cpp"),
+            Object(Matching, "GameUtil/FaderFlash.cpp"),
             Object(NonMatching, "GameUtil/Layout.cpp"),
             Object(NonMatching, "GameUtil/LayoutAnimation.cpp"),
             Object(Matching, "GameUtil/Random.cpp"),
