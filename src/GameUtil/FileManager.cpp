@@ -1,9 +1,9 @@
 #include "FileManager.hpp"
 #include <string.h>
 
-char CFileManager::lbl_803D5C48[64];
 #include "GameManager.hpp"
 
+char CFileManager::sFilePathBuffer[64];
 
 void CFileManager::fn_801D392C(s32 result, DVDFileInfo *fileInfo) {
     s32 index = gFileManager->getFileInfoIdx(fileInfo);
@@ -50,7 +50,7 @@ void CFileManager::_14(void) {
     for (s32 i = 0; i < mArchiveInfoCount; i++) {
         mArchiveInfo[i].mDvdFileInfo = NULL;
         mArchiveInfo[i].mArcData = NULL;
-        mArchiveInfo[i].mState = eArchiveInfoState_Unloaded;
+        mArchiveInfo[i].mState = eArchiveInfoState_Free;
     }
     unk34C = 0;
     unk350 = 0;
@@ -67,7 +67,7 @@ char *CFileManager::fn_801D3C44(void) {
 }
 
 void *CFileManager::fn_801D3C4C(const char *file, EHeapMEM heap, s32 alignment) {
-    sprintf(lbl_803D5C48, "%s%s", gFileManager->fn_801D3C44(), file);
+    sprintf(sFilePathBuffer, "%s%s", gFileManager->fn_801D3C44(), file);
     s32 dfiIndex = -1;
     for (s32 i = 0; i < mFileCount; i++) {
         if (mDvdFileInfoActive[i] == false) {
@@ -76,7 +76,7 @@ void *CFileManager::fn_801D3C4C(const char *file, EHeapMEM heap, s32 alignment) 
         }
     }
 
-    DVDOpen(lbl_803D5C48, &mDvdFileInfo[dfiIndex]);
+    DVDOpen(sFilePathBuffer, &mDvdFileInfo[dfiIndex]);
 
     s32 size = ROUND_UP(mDvdFileInfo[dfiIndex].length, 32);
     void *alloc = new (heap, alignment) u8[size];
@@ -121,7 +121,7 @@ void CFileManager::fn_801D3E94(void) {
 }
 
 void CFileManager::fn_801D3F94(s32 idx, const char *file, EHeapMEM heap, s32 alignment) {
-    sprintf(lbl_803D5C48, "%s%s", gFileManager->fn_801D3C44(), file);
+    sprintf(sFilePathBuffer, "%s%s", gFileManager->fn_801D3C44(), file);
 
     s32 dfiIndex = -1;
     for (s32 i = 0; i < mFileCount; i++) {
@@ -136,11 +136,11 @@ void CFileManager::fn_801D3F94(s32 idx, const char *file, EHeapMEM heap, s32 ali
     mArchiveInfo[idx].mHeapId = fn_801D363C();
 
     const char *szsExtension = ".szs";
-    mArchiveInfo[idx].mIsSzs = strstr(lbl_803D5C48, szsExtension) != 0;
+    mArchiveInfo[idx].mIsCompressed = strstr(sFilePathBuffer, szsExtension) != 0;
 
     mArchiveInfo[idx].mState = eArchiveInfoState_Loading;
 
-    DVDOpen(lbl_803D5C48, &mDvdFileInfo[dfiIndex]);
+    DVDOpen(sFilePathBuffer, &mDvdFileInfo[dfiIndex]);
 
     u32 size = ROUND_UP(mDvdFileInfo[dfiIndex].length, 32);
     mArchiveInfo[idx].mArcData = new (mArchiveInfo[idx].mHeapMode, alignment) u8[size];
@@ -176,7 +176,7 @@ void CFileManager::fn_801D412C(s32 result, DVDFileInfo *fileInfo) {
 void CFileManager::fn_801D41CC(s32 idx) {
     delete[] mArchiveInfo[idx].mArcData;
     mArchiveInfo[idx].mArcData = NULL;
-    mArchiveInfo[idx].mState = eArchiveInfoState_Unloaded;
+    mArchiveInfo[idx].mState = eArchiveInfoState_Free;
 }
 
 u32 CFileManager::fn_801D422C(s32 idx, const char *file) {
@@ -204,7 +204,7 @@ void *CFileManager::fn_801D42CC(s32 idx) {
 }
 
 bool CFileManager::fn_801D42E0(s32 idx) {
-    return mArchiveInfo[idx].mState == eArchiveInfoState_Unloaded;
+    return mArchiveInfo[idx].mState == eArchiveInfoState_Free;
 }
 
 bool CFileManager::fn_801D42FC(s32 idx) {
@@ -214,7 +214,7 @@ bool CFileManager::fn_801D42FC(s32 idx) {
 bool CFileManager::fn_801D431C(void) {
     bool isIdle = true;
     for (s32 i = 0; i < mFileCount; i++) {
-        if ((mArchiveInfo[i].mState != eArchiveInfoState_Unloaded) && (mArchiveInfo[i].mState != eArchiveInfoState_Ready)) {
+        if ((mArchiveInfo[i].mState != eArchiveInfoState_Free) && (mArchiveInfo[i].mState != eArchiveInfoState_Ready)) {
             isIdle = false;
         }
     }
@@ -239,10 +239,12 @@ void CFileManager::fn_801D4544(void) {
         bool isArchiveReady = false;
 
         if (archiveInfo->mState == eArchiveInfoState_Loaded) {
-            if (archiveInfo->mIsSzs) {
-                void *addr = fn_801D46A4(archiveInfo->mArcData, 1, i, archiveInfo->mHeapMode, -32);
-                if (addr) {
-                    archiveInfo->mArcData = (u8 *)addr;
+            if (archiveInfo->mIsCompressed) {
+                // NOTE: this gets the decompressed buffer before the decompression is actually finished.
+                //       if NULL is returned, the decompression thread is still busy; we'll try again next frame.
+                void *decompressed = fn_801D46A4(archiveInfo->mArcData, TRUE, i, archiveInfo->mHeapMode, -32);
+                if (decompressed) {
+                    archiveInfo->mArcData = (u8 *)decompressed;
                     archiveInfo->mState = eArchiveInfoState_Decompressing;
                 }
             }
@@ -274,7 +276,7 @@ void *CFileManager::fn_801D461C(void *data, BOOL deleteSrc, EHeapMEM heap, s32 a
     return dst;
 }
 
-struct struct_803d5c88 {
+struct DecompThreadData {
     void *src;
     void *dst;
     u32 expandSize;
@@ -282,12 +284,11 @@ struct struct_803d5c88 {
     s16 arcInfoIdx; // Index into gFileManager->mArchiveInfo.
     u8 deleteSrc; // If nonzero, src will be deleted when decompression finishes.
 };
-
-static struct_803d5c88 lbl_803D5C88;
+static DecompThreadData sDecompThreadData;
 
 void *CFileManager::fn_801D46A4(void *data, BOOL deleteSrc, s32 arcInfoIdx, EHeapMEM heap, s32 alignment) {
-    BOOL terminated = OSIsThreadTerminated(&gFileManager->mThread);
-    if (terminated) {
+    BOOL threadInactive = OSIsThreadTerminated(&gFileManager->mThread);
+    if (threadInactive) {
         u32 expandSize = getSZSExpandSize(data);
         u32 dstSize = ROUND_UP(expandSize, 32);
 
@@ -299,26 +300,35 @@ void *CFileManager::fn_801D46A4(void *data, BOOL deleteSrc, s32 arcInfoIdx, EHea
             fn_801D3644();
         }
 
-        lbl_803D5C88.src = data;
-        lbl_803D5C88.dst = dst;
-        lbl_803D5C88.expandSize = expandSize;
-        lbl_803D5C88.dstSize = dstSize;
-        lbl_803D5C88.arcInfoIdx = arcInfoIdx;
-        lbl_803D5C88.deleteSrc = deleteSrc;
-        OSCreateThread(&gFileManager->mThread, CFileManager::fn_801D47B8, &lbl_803D5C88, &gFileManager->mThreadStack[THREAD_STACK_SIZE], THREAD_STACK_SIZE * sizeof(u32), 31, 1);
+        sDecompThreadData.src = data;
+        sDecompThreadData.dst = dst;
+        sDecompThreadData.expandSize = expandSize;
+        sDecompThreadData.dstSize = dstSize;
+        sDecompThreadData.arcInfoIdx = arcInfoIdx;
+        sDecompThreadData.deleteSrc = deleteSrc;
+
+        OSCreateThread(
+            &gFileManager->mThread,
+            CFileManager::fn_801D47B8, &sDecompThreadData,
+            &gFileManager->mThreadStack[THREAD_STACK_SIZE], THREAD_STACK_SIZE * sizeof(u32),
+            31, 1
+        );
         OSResumeThread(&gFileManager->mThread);
+
         return dst;
     }
-    return 0;
+
+    return NULL;
 }
 
 void *CFileManager::fn_801D47B8(void *arg) {
-    struct_803d5c88 *temp = (struct_803d5c88 *)arg;
+    DecompThreadData *data = (DecompThreadData *)arg;
 
-    fn_801D47F8((u8 *)temp->src, (u8 *)temp->dst, temp->expandSize, temp->dstSize, temp->arcInfoIdx, temp->deleteSrc);
-    return 0;
+    fn_801D47F8((u8 *)data->src, (u8 *)data->dst, data->expandSize, data->dstSize, data->arcInfoIdx, data->deleteSrc);
+    return NULL;
 }
 
+// Yaz0 decompression.
 bool CFileManager::fn_801D47F8(u8 *src, u8 *dst, u32 expandSize, u32 dstSize, s32 arcInfoIdx, BOOL deleteSrc) {
     DCInvalidateRange(dst, dstSize);
 
@@ -372,9 +382,10 @@ void CFileManager::fn_801D49D4(void) {
             if (unk34C) {
                 unk34C();
             }
-            fn_801D7538(driveStatus);
+            CGameManager::fn_801D7538(driveStatus);
             if (unk350) {
                 unk350();
             }
+            break;
     }
 }

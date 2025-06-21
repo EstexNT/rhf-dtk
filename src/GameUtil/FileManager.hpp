@@ -59,12 +59,12 @@ private:
 
 private:
     enum EArchiveInfoState {
-        eArchiveInfoState_Unloaded = 0,
-        eArchiveInfoState_Loading = 1,
-        eArchiveInfoState_Loaded = 2,
-        eArchiveInfoState_Decompressing = 3,
-        eArchiveInfoState_Decompressed = 4,
-        eArchiveInfoState_Ready = 5
+        eArchiveInfoState_Free = 0,          // Slot is unassigned and available.
+        eArchiveInfoState_Loading = 1,       // Waiting for DVD read ..
+        eArchiveInfoState_Loaded = 2,        // Waiting for decompression to start ..
+        eArchiveInfoState_Decompressing = 3, // Waiting for decompression to finish ..
+        eArchiveInfoState_Decompressed = 4,  // Waiting for ARCInitHandle ..
+        eArchiveInfoState_Ready = 5          // Ready for access.
     };
 
     struct ArchiveInfo {
@@ -73,7 +73,7 @@ private:
         u8 *mArcData;
         EHeapMEM mHeapMode;
         u16 mHeapId;
-        bool mIsSzs;
+        bool mIsCompressed;
         EArchiveInfoState mState;
     };
 
@@ -81,7 +81,7 @@ private:
         u8 _pad00[0x44];
     };
 
-    static char lbl_803D5C48[64];
+    static char sFilePathBuffer[64];
 
     char mLocaleDir[4];
 
