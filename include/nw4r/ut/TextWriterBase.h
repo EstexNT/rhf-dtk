@@ -65,8 +65,7 @@ public:
         return mCharSpace;
     }
     void SetCharSpace(f32 space) {
-    #line 98
-        NW4R_ASSERT_PTR(this);
+        NW4R_ASSERT_PTR(this, 98);
         mCharSpace = space;
     }
 
@@ -108,10 +107,9 @@ public:
     void CalcStringRect(Rect* pRect, const T* pStr, int len) const;
 
     void CalcStringRect(Rect* pRect, const T* str) const {
-    #line 233
-        NW4R_ASSERT_PTR(this);
-        NW4R_ASSERT_PTR(pRect);
-        NW4R_ASSERT_PTR(str);
+        NW4R_ASSERT_PTR(this, 233);
+        NW4R_ASSERT_PTR(pRect, 234);
+        NW4R_ASSERT_PTR(str, 235);
         CalcStringRect(pRect, str, StrLen(str));
     }
 
@@ -120,9 +118,8 @@ public:
     f32 Print(const T* pStr, int len);
 
     f32 Print(const T* str) {
-    #line 256
-        NW4R_ASSERT_PTR(this);
-        NW4R_ASSERT_PTR(str);
+        NW4R_ASSERT_PTR(this, 256);
+        NW4R_ASSERT_PTR(str, 257);
         return Print(str, StrLen(str));
     }
 

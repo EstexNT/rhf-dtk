@@ -8,10 +8,10 @@ extern "C" {
 // Forward declarations
 typedef struct OSContext OSContext;
 
-#define OSError(...) OSPanic(__FILE__, __LINE__, __VA_ARGS__)
-#define OSAssert(exp, ...)                                                     \
+#define OSError(line, ...) OSPanic(__FILE__, line, __VA_ARGS__)
+#define OSAssert(exp, line, ...)                                                     \
     if (!(exp))                                                                \
-    OSPanic(__FILE__, __LINE__, __VA_ARGS__)
+    OSPanic(__FILE__, line, __VA_ARGS__)
 
 typedef enum {
     OS_ERR_SYSTEM_RESET,

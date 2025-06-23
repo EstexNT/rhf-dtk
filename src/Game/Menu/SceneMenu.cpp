@@ -14,7 +14,7 @@
 #include "SaveData.hpp"
 #include "GameManager.hpp"
 
-#include "Menu/MenuData.hpp"
+#include "Menu/MenuData.inc"
 
 wchar_t CSceneMenu::sTextBuffer[1024];
 wchar_t CSceneMenu::sEntryNumTextBuffer[16];

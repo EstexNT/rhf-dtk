@@ -45,9 +45,8 @@ public:
     }
 
     void SetFont(const Font& font) {
-    #line 65
-        NW4R_ASSERT_PTR(this);
-        NW4R_ASSERT_PTR(& font);
+        NW4R_ASSERT_PTR(this, 65);
+        NW4R_ASSERT_PTR(& font, 66);
         mFont = &font;
     }
     const Font* GetFont() const {
@@ -62,8 +61,7 @@ public:
     f32 GetFontDescent() const;
 
     void SetTextColor(Color start) {
-    #line 135
-        NW4R_ASSERT_PTR(this);
+        NW4R_ASSERT_PTR(this, 135);
         mTextColor.start = start;
         UpdateVertexColor();
     }
@@ -106,8 +104,7 @@ public:
     }
 
     void SetCursor(f32 x, f32 y) {
-    #line 249
-        NW4R_ASSERT_PTR(this);
+        NW4R_ASSERT_PTR(this, 249);
         mCursorPos.x = x;
         mCursorPos.y = y;
     }
