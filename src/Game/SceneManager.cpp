@@ -2,10 +2,8 @@
 #include "GameManager.hpp"
 #include "TickFlowManager.hpp"
 
-
 #include "Menu/SceneMenu.hpp"
 #include "Prologue/ScenePrologue.hpp"
-
 
 CSceneManager::CSceneManager(void) {
 
@@ -184,209 +182,209 @@ const char *lbl_802ECE20[] = {
     lbl_80325320, lbl_80325328, 
 };
 
-void CSceneManager::fn_80089FE0(eSceneID sceneID, u32 *tickflow) {
-    void *fn = 0;
+void CSceneManager::fn_80089FE0(eSceneID sceneID, const TickFlowCode *tickFlowCode) {
+    CScene::CreateFn fn = 0;
 
     switch (sceneID) {
         case EScene_0:
-            fn = (void *)CSceneMenu::create;
+            fn = CSceneMenu::create;
             break;
         case EScene_5:
-            fn = (void *)fn_800136F4;
+            fn = (CScene::CreateFn)fn_800136F4;
             break;
         case EScene_4:
-            fn = (void *)fn_800204F0;
+            fn = (CScene::CreateFn)fn_800204F0;
             break;
         case EScene_F:
-            fn = (void *)fn_80022D8C;
+            fn = (CScene::CreateFn)fn_80022D8C;
             break;
         case EScene_7:
-            fn = (void *)fn_80027FB8;
+            fn = (CScene::CreateFn)fn_80027FB8;
             break;
         case EScene_13:
-            fn = (void *)fn_8002A5B4;
+            fn = (CScene::CreateFn)fn_8002A5B4;
             break;
         case EScene_17:
-            fn = (void *)fn_8002CF84;
+            fn = (CScene::CreateFn)fn_8002CF84;
             break;
         case EScene_E:
-            fn = (void *)fn_80034354;
+            fn = (CScene::CreateFn)fn_80034354;
             break;
         case EScene_6:
-            fn = (void *)fn_800302A8;
+            fn = (CScene::CreateFn)fn_800302A8;
             break;
         case EScene_18:
-            fn = (void *)fn_80036734;
+            fn = (CScene::CreateFn)fn_80036734;
             break;
         case EScene_1B:
-            fn = (void *)fn_8005CF38;
+            fn = (CScene::CreateFn)fn_8005CF38;
             break;
         case EScene_11:
-            fn = (void *)fn_800535D4;
+            fn = (CScene::CreateFn)fn_800535D4;
             break;
         case EScene_19:
-            fn = (void *)fn_80059D3C;
+            fn = (CScene::CreateFn)fn_80059D3C;
             break;
         case EScene_3:
-            fn = (void *)fn_8003BE58;
+            fn = (CScene::CreateFn)fn_8003BE58;
             break;
         case EScene_8:
-            fn = (void *)fn_800454B0;
+            fn = (CScene::CreateFn)fn_800454B0;
             break;
         case EScene_14:
-            fn = (void *)fn_80056CF0;
+            fn = (CScene::CreateFn)fn_80056CF0;
             break;
         case EScene_10:
-            fn = (void *)fn_8005029C;
+            fn = (CScene::CreateFn)fn_8005029C;
             break;
         case EScene_16:
-            fn = (void *)fn_80057D58;
+            fn = (CScene::CreateFn)fn_80057D58;
             break;
         case EScene_A:
-            fn = (void *)fn_8004BE50;
+            fn = (CScene::CreateFn)fn_8004BE50;
             break;
         case EScene_9:
-            fn = (void *)fn_80047AEC;
+            fn = (CScene::CreateFn)fn_80047AEC;
             break;
         case EScene_B:
-            fn = (void *)fn_8004DDC4;
+            fn = (CScene::CreateFn)fn_8004DDC4;
             break;
         case EScene_D:
-            fn = (void *)fn_80069814;
+            fn = (CScene::CreateFn)fn_80069814;
             break;
         case EScene_1A:
-            fn = (void *)fn_8006D5C0;
+            fn = (CScene::CreateFn)fn_8006D5C0;
             break;
         case EScene_2:
-            fn = (void *)fn_800657B4;
+            fn = (CScene::CreateFn)fn_800657B4;
             break;
         case EScene_1:
-            fn = (void *)fn_80060534;
+            fn = (CScene::CreateFn)fn_80060534;
             break;
         case EScene_1C:
-            fn = (void *)fn_8006F390;
+            fn = (CScene::CreateFn)fn_8006F390;
             break;
         case EScene_12:
-            fn = (void *)fn_8006C6DC;
+            fn = (CScene::CreateFn)fn_8006C6DC;
             break;
         case EScene_15:
-            fn = (void *)fn_800759C4;
+            fn = (CScene::CreateFn)fn_800759C4;
             break;
         case EScene_C:
-            fn = (void *)fn_800B5460;
+            fn = (CScene::CreateFn)fn_800B5460;
             break;
         case EScene_1D:
-            fn = (void *)fn_800BC6DC;
+            fn = (CScene::CreateFn)fn_800BC6DC;
             break;
         case EScene_1E:
-            fn = (void *)fn_800B956C;
+            fn = (CScene::CreateFn)fn_800B956C;
             break;
         case EScene_1F:
-            fn = (void *)fn_800D7F70;
+            fn = (CScene::CreateFn)fn_800D7F70;
             break;
         case EScene_20:
-            fn = (void *)fn_800C6114;
+            fn = (CScene::CreateFn)fn_800C6114;
             break;
         case EScene_21:
-            fn = (void *)fn_8003F2F8;
+            fn = (CScene::CreateFn)fn_8003F2F8;
             break;
         case EScene_22:
-            fn = (void *)fn_80015AFC;
+            fn = (CScene::CreateFn)fn_80015AFC;
             break;
         case EScene_23:
-            fn = (void *)fn_800D5294;
+            fn = (CScene::CreateFn)fn_800D5294;
             break;
         case EScene_24:
-            fn = (void *)fn_800AD4F8;
+            fn = (CScene::CreateFn)fn_800AD4F8;
             break;
         case EScene_25:
-            fn = (void *)fn_8000F838;
+            fn = (CScene::CreateFn)fn_8000F838;
             break;
         case EScene_26:
-            fn = (void *)fn_80090A54;
+            fn = (CScene::CreateFn)fn_80090A54;
             break;
         case EScene_27:
-            fn = (void *)fn_8001DCD8;
+            fn = (CScene::CreateFn)fn_8001DCD8;
             break;
         case EScene_28:
-            fn = (void *)fn_800107C0;
+            fn = (CScene::CreateFn)fn_800107C0;
             break;
         case EScene_29:
-            fn = (void *)fn_8009E9C8;
+            fn = (CScene::CreateFn)fn_8009E9C8;
             break;
         case EScene_2A:
-            fn = (void *)fn_800C86EC;
+            fn = (CScene::CreateFn)fn_800C86EC;
             break;
         case EScene_2B:
-            fn = (void *)fn_800CB2B8;
+            fn = (CScene::CreateFn)fn_800CB2B8;
             break;
         case EScene_2C:
-            fn = (void *)fn_8009D6B4;
+            fn = (CScene::CreateFn)fn_8009D6B4;
             break;
         case EScene_2D:
-            fn = (void *)fn_800A76A4;
+            fn = (CScene::CreateFn)fn_800A76A4;
             break;
         case EScene_2E:
-            fn = (void *)fn_800A5B24;
+            fn = (CScene::CreateFn)fn_800A5B24;
             break;
         case EScene_2F:
-            fn = (void *)fn_800A8FB8;
+            fn = (CScene::CreateFn)fn_800A8FB8;
             break;
         case EScene_30:
-            fn = (void *)fn_800AB9C8;
+            fn = (CScene::CreateFn)fn_800AB9C8;
             break;
         case EScene_31:
-            fn = (void *)fn_800795D8;
+            fn = (CScene::CreateFn)fn_800795D8;
             break;
         case EScene_32:
-            fn = (void *)fn_8007B274;
+            fn = (CScene::CreateFn)fn_8007B274;
             break;
         case EScene_33:
-            fn = (void *)fn_800A0B60;
+            fn = (CScene::CreateFn)fn_800A0B60;
             break;
         case EScene_34:
-            fn = (void *)fn_80092098;
+            fn = (CScene::CreateFn)fn_80092098;
             break;
         case EScene_35:
-            fn = (void *)fn_8000EC28;
+            fn = (CScene::CreateFn)fn_8000EC28;
             break;
         case EScene_36:
-            fn = (void *)fn_800A4674;
+            fn = (CScene::CreateFn)fn_800A4674;
             break;
         case EScene_37:
-            fn = (void *)CScenePrologue::create;
+            fn = CScenePrologue::create;
             break;
         case EScene_38:
-            fn = (void *)fn_8000B4B4;
+            fn = (CScene::CreateFn)fn_8000B4B4;
             break;
         case EScene_39:
-            fn = (void *)fn_8000C2E4;
+            fn = (CScene::CreateFn)fn_8000C2E4;
             break;
         case EScene_3A:
-            fn = (void *)fn_800CF810;
+            fn = (CScene::CreateFn)fn_800CF810;
             break;
         case EScene_3B:
-            fn = (void *)fn_80082FB0;
+            fn = (CScene::CreateFn)fn_80082FB0;
             break;
         case EScene_3C:
-            fn = (void *)fn_8009B39C;
+            fn = (CScene::CreateFn)fn_8009B39C;
             break;
         case EScene_3D:
-            fn = (void *)fn_8009A1C8;
+            fn = (CScene::CreateFn)fn_8009A1C8;
             break;
         case EScene_3E:
-            fn = (void *)fn_800B2918;
+            fn = (CScene::CreateFn)fn_800B2918;
             break;
         case EScene_3F:
-            fn = (void *)fn_800B3FBC;
+            fn = (CScene::CreateFn)fn_800B3FBC;
             break;
         case EScene_40:
-            fn = (void *)fn_800C4220;
+            fn = (CScene::CreateFn)fn_800C4220;
             break;
     }
 
     gGameManager->_20(fn, 3);
-    gGameManager->_34(tickflow);
+    gGameManager->_34(tickFlowCode);
 
     for (int i = ARRAY_LENGTH(unk04) - 1; i > 0; i--) {
         unk04[i] = unk04[i - 1];
@@ -663,7 +661,7 @@ void CSceneManager::fn_8008A4DC(eSceneID sceneID, u32 ver) {
             break;
         case EScene_40:
             lbl_80320578 = ver;
-            break;       
+            break;
     }
 }
 
@@ -1092,12 +1090,12 @@ void CSceneManager::fn_8008A82C(eSceneID sceneID) {
 extern "C" bool fn_80009FB4(void);
 
 // TODO: migrate tickflow into respective files
-extern u8 lbl_80253E18[];
-extern u8 lbl_8027C3E8[];
-extern u8 lbl_8027C424[];
-extern u8 lbl_8027C460[];
-extern u8 lbl_8027C49C[];
-extern u8 lbl_80256F30[];
+TFD_EXTERN(lbl_80253E18)
+TFD_EXTERN(lbl_8027C3E8)
+TFD_EXTERN(lbl_8027C424)
+TFD_EXTERN(lbl_8027C460)
+TFD_EXTERN(lbl_8027C49C)
+TFD_EXTERN(lbl_80256F30)
 
 void CSceneManager::fn_8008A8D8(void) {
     gTickFlowManager->fn_801E1E4C();
@@ -1106,7 +1104,7 @@ void CSceneManager::fn_8008A8D8(void) {
     bool temp_r30 = false;
     bool temp_r29 = false;
     bool temp_r28 = false;
-    
+
     if (unk04[0] == EScene_3C) {
         int i = sceneIdx(EScene_35);
         int j = sceneIdx(EScene_3D);
@@ -1132,7 +1130,7 @@ void CSceneManager::fn_8008A8D8(void) {
         } else {
             int i = sceneIdx(EScene_35);
             int j = sceneIdx(EScene_36);
-            
+
             if ((i >= 1) && (j >= 1)) {
                 if (i < j) {
                     temp_r31 = true;
@@ -1204,7 +1202,7 @@ bool CSceneManager::fn_8008B27C(void) {
     if ((j != -1) && (j < i)) {
         return false;
     }
-    
+
     int k = sceneIdx(EScene_40);
     if ((k != -1) && (k < i)) {
         return false;

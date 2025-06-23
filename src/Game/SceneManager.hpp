@@ -3,7 +3,10 @@
 
 #include <revolution/types.h>
 #include <revolution/OS/OSError.h>
+
 #include "Singleton.hpp"
+
+#include "ExFlowDecl.hpp"
 
 enum eSceneID { // TODO: move this somewhere else
     EScene_0 = 0,
@@ -83,7 +86,7 @@ public:
     virtual void _14(void);
     virtual void _18(void);
 
-    void fn_80089FE0(eSceneID sceneID, u32 *tickflow); // TODO: proper type for TickFlow
+    void fn_80089FE0(eSceneID sceneID, const TickFlowCode *tickFlowCode);
     void fn_8008A4DC(eSceneID sceneID, u32 ver);
     void fn_8008A704(eSceneID sceneID);
     void fn_8008A82C(eSceneID sceneID);

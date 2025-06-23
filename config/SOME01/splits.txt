@@ -16,11 +16,21 @@ Sections:
 Game/Menu/SceneMenu.cpp:
 	.text       start:0x80006F00 end:0x80007C28
 	.rodata     start:0x801F75A0 end:0x801F8B78
-	.data       start:0x802E5740 end:0x802E57F0
+	.data       start:0x802E5740 end:0x802E57E0
 	.sdata      start:0x8031EEC0 end:0x8031EF28
 	.sbss       start:0x80320140 end:0x80320148
-	.sdata2     start:0x80320FE0 end:0x80321130
+	.sdata2     start:0x80320FE0 end:0x80321138
 	.bss        start:0x80329980 end:0x8032A1A0
+
+Game/data_802E57E0.cpp:
+	.data       start:0x802E57E0 end:0x802E57F0
+
+Game/FaderFlash.cpp:
+	.text       start:0x80007C28 end:0x80008160
+	.rodata     start:0x801F8B78 end:0x801F8B88
+	.data       start:0x802E57F0 end:0x802E5828
+	.sdata      start:0x8031EF28 end:0x8031EF38
+	.sdata2     start:0x80321138 end:0x80321168
 
 Game/ExScene.cpp:
 	.text       start:0x80008160 end:0x8000ABC0
@@ -36,6 +46,13 @@ Game/Prologue/ScenePrologue.cpp:
 	.sdata      start:0x8031EF68 end:0x8031EF70
 	.sbss       start:0x80320238 end:0x80320240
 	.bss        start:0x8032A278 end:0x8032A378
+
+Game/Pseudo3D.cpp:
+	.text       start:0x800729C4 end:0x80072AAC
+	.rodata     start:0x80251F48 end:0x80251F58
+	.data       start:0x802EC0B0 end:0x802EC0C0
+	.sdata      start:0x8031F358 end:0x8031F360
+	.sdata2     start:0x80324920 end:0x80324928
 
 Game/SceneManager.cpp:
 	.text       start:0x80089DF0 end:0x8008B844
@@ -2075,9 +2092,18 @@ GameUtil/LayoutManager.cpp:
 GameUtil/GameManager.cpp:
 	.text       start:0x801D7210 end:0x801D83BC
 	.ctors      start:0x801F7564 end:0x801F7568
+	.rodata     start:0x802E4BF0 end:0x802E4C20
+	.data       start:0x803160F0 end:0x803162F8
+	.sdata      start:0x80320028 end:0x80320038
+	.sbss       start:0x80320F98 end:0x80320FA0
+	.sdata2     start:0x80329568 end:0x80329590
+	.bss        start:0x803D5CE0 end:0x803D5D10
 
 GameUtil/Scene.cpp:
-	.text       start:0x801D83BC end:0x801D85BC
+	.text       start:0x801D83BC end:0x801D859C
+
+GameUtil/FaderFlash.cpp:
+	.text       start:0x801D859C end:0x801D85BC
 
 GameUtil/Layout.cpp:
 	.text       start:0x801D85BC end:0x801D9E40

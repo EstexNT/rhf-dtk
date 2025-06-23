@@ -7,7 +7,6 @@
 
 class CSceneMenu : public CExScene {
 public:
-
     virtual ~CSceneMenu(void);
     virtual void _10(void);
     virtual void _14(void);
@@ -16,18 +15,20 @@ public:
     virtual void _20(void);
     virtual void _28(void);
 
-    CSceneMenu(void) {
-
-    }
+    CSceneMenu(void) {}
 
     void fn_800077A8(u8);
 
-    static CExScene *create(u16 arg0);
-    static void fn_80006FA4(void);
-private:
+    SCENE_DECL_CREATE_FN()
 
-    wchar_t unk34[64];
-    bool unkB4;
+    static void fn_80006FA4(void);
+
+private:
+    static wchar_t sTextBuffer[1024];
+    static wchar_t sEntryNumTextBuffer[16];
+
+    wchar_t mUnk34[64];
+    bool mUnkB4;
 };
 
 #endif

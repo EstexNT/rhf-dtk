@@ -4,6 +4,10 @@
 #include <revolution/types.h>
 #include "Singleton.hpp"
 
+#include "TickFlow.hpp"
+
+#include "TickFlowDecl.hpp"
+
 class CTickFlowManager : public TSingleton<CTickFlowManager> {
 public:
 
@@ -16,7 +20,7 @@ public:
     
 
     void fn_801E1E4C(void);
-    void fn_801E1CC0(u8 *tickflow, f32 initRest = 0.0f); // TODO: proper type for tickflow
+    void fn_801E1CC0(const TickFlowCode *code, f32 initRest = 0.0f);
     f32 fn_801E2698(void);
     f32 fn_801E2CA8(void);
     bool fn_801E4178(void);
@@ -24,9 +28,11 @@ public:
     u8 getUnk6D(void) {
         return unk6D;
     }
-private:
 
-    u8 pad04[0x68];
+private:
+    u8 pad04[0x1c-0x04];
+    s32 unk1C;
+    u8 pad20[0x6C-0x20];
     u8 unk6C;
     u8 unk6D;
 };

@@ -19,7 +19,8 @@ public:
 
     }
 
-    static CExScene *create(u16 arg0);
+    SCENE_DECL_CREATE_FN()
+
     static void fn_8000AD98(void);
 };
 

@@ -1,5 +1,5 @@
 #include "Scene.hpp"
-#include "Mem.hpp"
+
 #include "GameManager.hpp"
 #include "FileManager.hpp"
 
@@ -8,71 +8,56 @@ void CScene::fn_801D83BC(void) {
 }
 
 void CScene::fn_801D83DC(void) {
-    fn_801D369C(unk0C);
-    switch (unk08) {
-        case 0:
+    fn_801D369C(mHeapId);
+    switch (mState) {
+        case eState_Unprepared:
             _10();
-            unk08 = 1;
+            mState = eState_Preparing;
             break;
-        case 1:
+        case eState_Preparing:
             if (_24()) {
                 _14();
                 if (unk04) {
                     _18();
                     unk04 = 0;
                 }
-                unk08 = 2;
+                mState = eState_Prepared;
                 fn_801D3634();
             }
             break;
-        case 2:
+        case eState_Prepared:
             if (gGameManager->_30()) {
-                unk08 = 3;
+                mState = eState_3;
             }
             break;
-        case 3:
+        case eState_3:
             _18();
             break;
-        case 4:
+        case eState_4:
             if (gGameManager->_2C()) {
-                unk08 = 5;
+                mState = eState_5;
             }
             break;
-        case 5:
+        case eState_5:
             _20();
-            unk08 = 6;
+            mState = eState_Finished;
             break;
     }
     fn_801D3644();
 }
 
 void CScene::fn_801D8554(void) {
-    if (!((unk08 == 2) || (unk08 == 3) || (unk08 == 4))) {
+    if (!((mState == eState_Prepared) || (mState == eState_3) || (mState == eState_4))) {
         return;
     }
     _1C();
 }
 
 void CScene::fn_801D8578(void) {
-    unk08 = 4;
+    mState = eState_4;
     gGameManager->_28();
 }
 
 bool CScene::_24(void) {
     return gFileManager->fn_801D431C();
-}
-
-// TODO: this doesn't belong here.. probably
-class class_801D859C {
-public:
-    virtual void _08(void);
-    virtual void _0C(void);
-    virtual void _10(void);
-    virtual ~class_801D859C(void);
-    
-    void fn_801D859C(void);
-};
-
-void class_801D859C::fn_801D859C(void) {
-    delete this;
 }
