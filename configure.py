@@ -176,6 +176,8 @@ if args.map:
     config.ldflags.append("-mapunused")
     config.ldflags.append("-listclosure") # For Wii linkers
 
+config.apply_custom_build_rule()
+
 # Use for any additional files that should cause a re-configure when modified
 config.reconfig_deps = []
 
