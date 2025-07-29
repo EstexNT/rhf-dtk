@@ -186,34 +186,12 @@ class ProjectConfig:
         self.reconfig_deps: Optional[List[Path]] = (
             None  # Additional re-configuration dependency files
         )
-        self.custom_build_rules: Optional[List[Dict[str, Any]]] = [
-            {
-                "name": "rsid",
-                "description": "RSID $out",
-                "command": "$python " + str(self.tools_dir / "rsid_generate.py") + " $in -o $out -ig -lf",
-                "pool": "console"
-            },
-            {
-                "name": "rcad_label",
-                "description": "RCAD LABEL",
-                "command": "$python " + str(self.tools_dir / "extract_cellanim_label.py") + " $in -o $out",
-                "pool": "console"
-            }
-        ]
-        self.custom_build_steps: Optional[Dict[str, List[Dict[str, Any]]]] = {
-            "pre-compile": [
-                {
-                    "rule": "rsid",
-                    "inputs": os.path.join("orig/SOME01", "files/EN/content2/rev_tengoku.brsar"),
-                    "outputs": os.path.join(str(self.build_dir / "SOME01" / "include"), "rev_tengoku.rsid"),
-                },
-                {
-                    "rule": "rcad_label",
-                    "inputs": find_cellanim_files(os.path.join("orig/SOME01", "files/EN/content2/cellanim")),
-                    "outputs": os.path.join(str(self.build_dir / "SOME01" / "include"), "cellanim"),
-                }
-            ]
-        }
+        self.custom_build_rules: Optional[List[Dict[str, Any]]] = (
+            None  # Custom ninja build rules
+        )
+        self.custom_build_steps: Optional[Dict[str, List[Dict[str, Any]]]] = (
+            None  # Custom build steps, types are ["pre-compile", "post-compile", "post-link", "post-build"]
+        )
         self.generate_compile_commands: bool = (
             True  # Generate compile_commands.json for clangd
         )
@@ -307,6 +285,37 @@ class ProjectConfig:
             and platform.machine() in ("i386", "x86_64")
             and self.wrapper is None
         )
+
+    def apply_custom_build_rule(self):
+        self.custom_build_rules: Optional[List[Dict[str, Any]]] = [
+            {
+                "name": "rsid",
+                "description": "RSID $out",
+                "command": "$python " + str(self.tools_dir / "rsid_generate.py") + " $in -o $out -ig -lf",
+                "pool": "console"
+            },
+            {
+                "name": "rcad_label",
+                "description": "RCAD LABEL",
+                "command": "$python " + str(self.tools_dir / "extract_cellanim_label.py") + " $in -o $out",
+                "pool": "console"
+            }
+        ]
+
+        self.custom_build_steps: Optional[Dict[str, List[Dict[str, Any]]]] = {
+            "pre-compile": [
+                {
+                    "rule": "rsid",
+                    "inputs": str(Path("orig") / self.version / "files" / "EN" / "content2" / "rev_tengoku.brsar"),
+                    "outputs": str(self.build_dir / self.version / "include" / "rev_tengoku.rsid"),
+                },
+                {
+                    "rule": "rcad_label",
+                    "inputs": find_cellanim_files(str(Path("orig") / self.version / "files" / "EN" / "content2" / "cellanim")),
+                    "outputs": str(self.build_dir / self.version / "include" / "cellanim"),
+                }
+            ]
+        }
 
 
 def is_windows() -> bool:
