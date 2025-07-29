@@ -59,6 +59,8 @@ Building
 ![](assets/dolphin-extract.png)
   - To save space, the only necessary files are the following. Any others can be deleted.
     - `sys/main.dol`
+    - `files/EN/content2/rev_tengoku.brsar`
+    - all files in the directory: `files/EN/content2/cellanim`
 - Configure:
   ```
   python configure.py
